@@ -24,3 +24,8 @@ export '/suporte/atualizacoes_recentes/atualizacoes_recentes_widget.dart'
 export '/suporte/exclui_conta/exclui_conta_widget.dart' show ExcluiContaWidget;
 export '/suporte/lista_plataformas/lista_plataformas_widget.dart'
     show ListaPlataformasWidget;
+export '/cadastro/recupera_senha/recupera_senha_widget.dart'
+    show RecuperaSenhaWidget;
+export '/planos/planos/planos_widget.dart' show PlanosWidget;
+export '/plano_contratado/plano_contratado_widget.dart'
+    show PlanoContratadoWidget;

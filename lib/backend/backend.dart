@@ -10,6 +10,8 @@ import 'schema/categories_record.dart';
 import 'schema/subcategories_record.dart';
 import 'schema/topics_record.dart';
 import 'schema/blog_posts_record.dart';
+import 'schema/podcasts_record.dart';
+import 'schema/plans_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -23,6 +25,8 @@ export 'schema/categories_record.dart';
 export 'schema/subcategories_record.dart';
 export 'schema/topics_record.dart';
 export 'schema/blog_posts_record.dart';
+export 'schema/podcasts_record.dart';
+export 'schema/plans_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -204,6 +208,80 @@ Future<List<BlogPostsRecord>> queryBlogPostsRecordOnce({
     queryCollectionOnce(
       BlogPostsRecord.collection,
       BlogPostsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query PodcastsRecords (as a Stream and as a Future).
+Future<int> queryPodcastsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      PodcastsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<PodcastsRecord>> queryPodcastsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      PodcastsRecord.collection,
+      PodcastsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<PodcastsRecord>> queryPodcastsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      PodcastsRecord.collection,
+      PodcastsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query PlansRecords (as a Stream and as a Future).
+Future<int> queryPlansRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      PlansRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<PlansRecord>> queryPlansRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      PlansRecord.collection,
+      PlansRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<PlansRecord>> queryPlansRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      PlansRecord.collection,
+      PlansRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

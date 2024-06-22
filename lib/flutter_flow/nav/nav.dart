@@ -251,6 +251,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'listaPlataformas',
           path: '/listaPlataformas',
           builder: (context, params) => const ListaPlataformasWidget(),
+        ),
+        FFRoute(
+          name: 'recuperaSenha',
+          path: '/recuperaSenha',
+          builder: (context, params) => const RecuperaSenhaWidget(),
+        ),
+        FFRoute(
+          name: 'planos',
+          path: '/planos',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: PlanosWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'planoContratado',
+          path: '/planoContratado',
+          builder: (context, params) => const PlanoContratadoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

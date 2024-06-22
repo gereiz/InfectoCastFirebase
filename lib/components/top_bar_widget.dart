@@ -153,25 +153,43 @@ class _TopBarWidgetState extends State<TopBarWidget>
                 context: context,
                 desktop: false,
               ))
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 42.0, 0.0, 0.0),
-                    child: AuthUserStreamWidget(
-                      builder: (context) => AutoSizeText(
-                        currentUserDisplayName,
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              fontFamily: 'Roboto',
-                              color: Colors.white,
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
-                            ),
-                        minFontSize: 14.0,
-                      ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 42.0, 0.0, 0.0),
+                  child: AuthUserStreamWidget(
+                    builder: (context) => AutoSizeText(
+                      currentUserDisplayName,
+                      textAlign: TextAlign.start,
+                      style:
+                          FlutterFlowTheme.of(context).headlineMedium.override(
+                                fontFamily: 'Roboto',
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                              ),
+                      minFontSize: 14.0,
+                    ),
+                  ),
+                ),
+              if (responsiveVisibility(
+                context: context,
+                desktop: false,
+              ))
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(10.0, 42.0, 20.0, 0.0),
+                  child: AuthUserStreamWidget(
+                    builder: (context) => AutoSizeText(
+                      valueOrDefault(currentUserDocument?.plan, ''),
+                      textAlign: TextAlign.start,
+                      style:
+                          FlutterFlowTheme.of(context).headlineMedium.override(
+                                fontFamily: 'Roboto',
+                                color: const Color(0xFFFCAF23),
+                                fontSize: 10.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w800,
+                              ),
+                      minFontSize: 14.0,
                     ),
                   ),
                 ),
