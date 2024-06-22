@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "546042396081",
+    "project_id": "infecto-firebase-eciz28",
+    "storage_bucket": "infecto-firebase-eciz28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546042396081:android:5a3201b74e43960f64d190",
+        "android_client_info": {
+          "package_name": "com.mycompany.infectofirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAndsylp1OeoLimMssPOINGppNtaWVzK4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

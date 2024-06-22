@@ -1,0 +1,123 @@
+import 'dart:async';
+
+import 'package:collection/collection.dart';
+
+import '/backend/schema/util/firestore_util.dart';
+
+import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+
+class CategoriesRecord extends FirestoreRecord {
+  CategoriesRecord._(
+    super.reference,
+    super.data,
+  ) {
+    _initializeFields();
+  }
+
+  // "title" field.
+  String? _title;
+  String get title => _title ?? '';
+  bool hasTitle() => _title != null;
+
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
+  // "updated_time" field.
+  DateTime? _updatedTime;
+  DateTime? get updatedTime => _updatedTime;
+  bool hasUpdatedTime() => _updatedTime != null;
+
+  // "icon" field.
+  String? _icon;
+  String get icon => _icon ?? '';
+  bool hasIcon() => _icon != null;
+
+  // "id_user" field.
+  DocumentReference? _idUser;
+  DocumentReference? get idUser => _idUser;
+  bool hasIdUser() => _idUser != null;
+
+  void _initializeFields() {
+    _title = snapshotData['title'] as String?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
+    _updatedTime = snapshotData['updated_time'] as DateTime?;
+    _icon = snapshotData['icon'] as String?;
+    _idUser = snapshotData['id_user'] as DocumentReference?;
+  }
+
+  static CollectionReference get collection =>
+      FirebaseFirestore.instance.collection('categories');
+
+  static Stream<CategoriesRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => CategoriesRecord.fromSnapshot(s));
+
+  static Future<CategoriesRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => CategoriesRecord.fromSnapshot(s));
+
+  static CategoriesRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      CategoriesRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
+
+  static CategoriesRecord getDocumentFromData(
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      CategoriesRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'CategoriesRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is CategoriesRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
+}
+
+Map<String, dynamic> createCategoriesRecordData({
+  String? title,
+  DateTime? createdTime,
+  DateTime? updatedTime,
+  String? icon,
+  DocumentReference? idUser,
+}) {
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'title': title,
+      'created_time': createdTime,
+      'updated_time': updatedTime,
+      'icon': icon,
+      'id_user': idUser,
+    }.withoutNulls,
+  );
+
+  return firestoreData;
+}
+
+class CategoriesRecordDocumentEquality implements Equality<CategoriesRecord> {
+  const CategoriesRecordDocumentEquality();
+
+  @override
+  bool equals(CategoriesRecord? e1, CategoriesRecord? e2) {
+    return e1?.title == e2?.title &&
+        e1?.createdTime == e2?.createdTime &&
+        e1?.updatedTime == e2?.updatedTime &&
+        e1?.icon == e2?.icon &&
+        e1?.idUser == e2?.idUser;
+  }
+
+  @override
+  int hash(CategoriesRecord? e) => const ListEquality()
+      .hash([e?.title, e?.createdTime, e?.updatedTime, e?.icon, e?.idUser]);
+
+  @override
+  bool isValidKey(Object? o) => o is CategoriesRecord;
+}
