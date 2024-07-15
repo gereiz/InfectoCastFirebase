@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'termos_model.dart';
 export 'termos_model.dart';
 
@@ -68,7 +71,7 @@ class _TermosWidgetState extends State<TermosWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -78,7 +81,7 @@ class _TermosWidgetState extends State<TermosWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                 child: Text(
                   'Termos de Serviço',
                   style: FlutterFlowTheme.of(context).headlineLarge.override(
@@ -88,10 +91,10 @@ class _TermosWidgetState extends State<TermosWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 64.0),
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 64.0),
                 child: Html(
                   data: '<h3>H3 Header</h3> <p>Sample paragraph</p>',
-                  onLinkTap: (url, _, __, ___) => launchURL(url!),
+                  onLinkTap: (url, _, __) => launchURL(url!),
                 ),
               ),
             ],

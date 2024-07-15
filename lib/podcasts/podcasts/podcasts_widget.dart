@@ -1,10 +1,13 @@
-import '/backend/backend.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/flutter_flow_youtube_player.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'podcasts_model.dart';
 export 'podcasts_model.dart';
 
@@ -37,9 +40,11 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<PodcastsRecord>>(
-      stream: queryPodcastsRecord(
-        singleRecord: true,
+    context.watch<FFAppState>();
+
+    return FutureBuilder<ApiCallResponse>(
+      future: InfectoCastGroup.listaPodCastsCall.call(
+        authToken: FFAppState().authtoken,
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -59,14 +64,8 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
             ),
           );
         }
-        List<PodcastsRecord> podcastsPodcastsRecordList = snapshot.data!;
-        // Return an empty Container when the item does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
-        final podcastsPodcastsRecord = podcastsPodcastsRecordList.isNotEmpty
-            ? podcastsPodcastsRecordList.first
-            : null;
+        final podcastsListaPodCastsResponse = snapshot.data!;
+
         return YoutubeFullScreenWrapper(
           child: GestureDetector(
             onTap: () => _model.unfocusNode.canRequestFocus
@@ -81,7 +80,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                   wrapWithModel(
                     model: _model.topBarModel,
                     updateCallback: () => setState(() {}),
-                    child: const TopBarWidget(),
+                    child: TopBarWidget(),
                   ),
                   Expanded(
                     child: Container(
@@ -91,7 +90,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -99,7 +98,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 8.0),
                                   child: Text(
                                     'Podcasts  Adicionados recentemente',
@@ -120,13 +119,13 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                 scrollDirection: Axis.vertical,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(8.0),
                                     child: Container(
                                       width: 100.0,
                                       height: 241.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF4F4F4),
-                                        boxShadow: const [
+                                        color: Color(0xFFF4F4F4),
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x6E74746C),
@@ -143,7 +142,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 10.0),
                                         child: SingleChildScrollView(
                                           child: Column(
@@ -152,7 +151,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                 MainAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 4.0, 4.0, 4.0),
                                                 child: Row(
@@ -161,11 +160,16 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                   children: [
                                                     AutoSizeText(
                                                       valueOrDefault<String>(
-                                                        podcastsPodcastsRecord
-                                                            ?.titulo,
-                                                        'titulo',
+                                                        InfectoCastGroup
+                                                            .listaPodCastsCall
+                                                            .podcastTitle(
+                                                          podcastsListaPodCastsResponse
+                                                              .jsonBody,
+                                                        ),
+                                                        'title',
                                                       ),
                                                       maxLines: 2,
+                                                      minFontSize: 14.0,
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -175,18 +179,20 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                             fontSize: 18.0,
                                                             letterSpacing: 0.0,
                                                           ),
-                                                      minFontSize: 14.0,
                                                     ),
                                                   ],
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 10.0),
                                                 child: FlutterFlowYoutubePlayer(
                                                   url:
-                                                      '${podcastsPodcastsRecord?.link}',
+                                                      '${InfectoCastGroup.listaPodCastsCall.podcastLink(
+                                                    podcastsListaPodCastsResponse
+                                                        .jsonBody,
+                                                  )}',
                                                   autoPlay: false,
                                                   looping: true,
                                                   mute: false,
@@ -195,13 +201,13 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                   strictRelatedVideos: false,
                                                 ),
                                               ),
-                                            ].divide(const SizedBox(height: 6.0)),
+                                            ].divide(SizedBox(height: 6.0)),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 6.0)),
+                                ].divide(SizedBox(height: 6.0)),
                               ),
                             ),
                           ],

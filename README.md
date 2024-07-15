@@ -1,4 +1,4 @@
-# InfectoFirebase
+# InfectoCast
 
 A new Flutter project.
 

@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'lista_plataformas_model.dart';
 export 'lista_plataformas_model.dart';
 
@@ -64,7 +67,7 @@ class _ListaPlataformasWidgetState extends State<ListaPlataformasWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -77,7 +80,7 @@ class _ListaPlataformasWidgetState extends State<ListaPlataformasWidget> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                   child: Text(
                     'O  Infectocast está disponível em quais plataformas ?',
                     textAlign: TextAlign.center,
@@ -90,7 +93,7 @@ class _ListaPlataformasWidgetState extends State<ListaPlataformasWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                   child: Text(
                     'O aplicativo Infectcast estád disponível nas plataformas Android (Play Store), Apple (Apple Store) e através do site: infectocast.com.br',
                     textAlign: TextAlign.justify,

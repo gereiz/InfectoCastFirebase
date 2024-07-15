@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'clearance_de_creatinina_model.dart';
 export 'clearance_de_creatinina_model.dart';
@@ -74,28 +76,28 @@ class _ClearanceDeCreatininaWidgetState
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Colors.white,
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             wrapWithModel(
               model: _model.topBarModel,
               updateCallback: () => setState(() {}),
-              child: const TopBarWidget(),
+              child: TopBarWidget(),
             ),
             Expanded(
               child: Container(
                 width: double.infinity,
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 20.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -118,7 +120,7 @@ class _ClearanceDeCreatininaWidgetState
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(height: 12.0)),
+                                  ].divide(SizedBox(height: 12.0)),
                                 ),
                               ),
                             ],
@@ -132,9 +134,9 @@ class _ClearanceDeCreatininaWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 14.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
                                       child: TextFormField(
@@ -150,13 +152,13 @@ class _ClearanceDeCreatininaWidgetState
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF57636C),
+                                                    color: Color(0xFF57636C),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFF1F4F8),
                                               width: 2.0,
                                             ),
@@ -164,7 +166,7 @@ class _ClearanceDeCreatininaWidgetState
                                                 BorderRadius.circular(10.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFCAF23),
                                               width: 2.0,
                                             ),
@@ -172,7 +174,7 @@ class _ClearanceDeCreatininaWidgetState
                                                 BorderRadius.circular(10.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -181,7 +183,7 @@ class _ClearanceDeCreatininaWidgetState
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -189,13 +191,13 @@ class _ClearanceDeCreatininaWidgetState
                                                 BorderRadius.circular(10.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF1F4F8),
+                                          fillColor: Color(0xFFF1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF101213),
+                                              color: Color(0xFF101213),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -209,9 +211,9 @@ class _ClearanceDeCreatininaWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 14.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
                                       child: TextFormField(
@@ -227,13 +229,13 @@ class _ClearanceDeCreatininaWidgetState
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF57636C),
+                                                    color: Color(0xFF57636C),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFF1F4F8),
                                               width: 2.0,
                                             ),
@@ -241,7 +243,7 @@ class _ClearanceDeCreatininaWidgetState
                                                 BorderRadius.circular(10.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFCAF23),
                                               width: 2.0,
                                             ),
@@ -249,7 +251,7 @@ class _ClearanceDeCreatininaWidgetState
                                                 BorderRadius.circular(10.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -258,7 +260,7 @@ class _ClearanceDeCreatininaWidgetState
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -266,13 +268,13 @@ class _ClearanceDeCreatininaWidgetState
                                                 BorderRadius.circular(10.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF1F4F8),
+                                          fillColor: Color(0xFFF1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF101213),
+                                              color: Color(0xFF101213),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -286,9 +288,9 @@ class _ClearanceDeCreatininaWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 14.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
                                       child: TextFormField(
@@ -307,7 +309,7 @@ class _ClearanceDeCreatininaWidgetState
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFF1F4F8),
                                               width: 2.0,
                                             ),
@@ -315,7 +317,7 @@ class _ClearanceDeCreatininaWidgetState
                                                 BorderRadius.circular(10.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFCAF23),
                                               width: 2.0,
                                             ),
@@ -323,7 +325,7 @@ class _ClearanceDeCreatininaWidgetState
                                                 BorderRadius.circular(10.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -332,7 +334,7 @@ class _ClearanceDeCreatininaWidgetState
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -340,13 +342,13 @@ class _ClearanceDeCreatininaWidgetState
                                                 BorderRadius.circular(10.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF1F4F8),
+                                          fillColor: Color(0xFFF1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF101213),
+                                              color: Color(0xFF101213),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -360,7 +362,7 @@ class _ClearanceDeCreatininaWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -369,7 +371,7 @@ class _ClearanceDeCreatininaWidgetState
                                           controller: _model
                                                   .sexoValueController ??=
                                               FormFieldController<String>(null),
-                                          options: const ['Feminino', 'Masculino'],
+                                          options: ['Feminino', 'Masculino'],
                                           onChanged: (val) async {
                                             setState(
                                                 () => _model.sexoValue = val);
@@ -387,8 +389,23 @@ class _ClearanceDeCreatininaWidgetState
                                                           .text
                                                           .length);
                                             });
+                                            setState(() {
+                                              _model.pesoTextController?.text =
+                                                  functions.virgulaPorPonto(
+                                                      _model.pesoTextController
+                                                          .text)!;
+                                              _model.pesoTextController
+                                                      ?.selection =
+                                                  TextSelection.collapsed(
+                                                      offset: _model
+                                                          .pesoTextController!
+                                                          .text
+                                                          .length);
+                                            });
                                           },
-                                          width: 388.0,
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.89,
                                           height: 56.0,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
@@ -411,7 +428,7 @@ class _ClearanceDeCreatininaWidgetState
                                           ),
                                           fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
+                                                  .primaryBackground,
                                           elevation: 2.0,
                                           borderColor:
                                               FlutterFlowTheme.of(context)
@@ -419,7 +436,7 @@ class _ClearanceDeCreatininaWidgetState
                                           borderWidth: 2.0,
                                           borderRadius: 8.0,
                                           margin:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 4.0, 16.0, 4.0),
                                           hidesUnderline: true,
                                           isOverButton: true,
@@ -430,7 +447,7 @@ class _ClearanceDeCreatininaWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 30.0, 0.0, 30.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -447,7 +464,7 @@ class _ClearanceDeCreatininaWidgetState
                                               builder: (alertDialogContext) {
                                                 return WebViewAware(
                                                   child: AlertDialog(
-                                                    title: const Text('Resultado'),
+                                                    title: Text('Resultado'),
                                                     content: Text(formatNumber(
                                                       (((140 -
                                                                       int.parse(_model
@@ -471,7 +488,7 @@ class _ClearanceDeCreatininaWidgetState
                                                         onPressed: () =>
                                                             Navigator.pop(
                                                                 alertDialogContext),
-                                                        child: const Text('Ok'),
+                                                        child: Text('Ok'),
                                                       ),
                                                     ],
                                                   ),
@@ -486,7 +503,7 @@ class _ClearanceDeCreatininaWidgetState
                                                 builder: (alertDialogContext) {
                                                   return WebViewAware(
                                                     child: AlertDialog(
-                                                      title: const Text('Resultado'),
+                                                      title: Text('Resultado'),
                                                       content:
                                                           Text(formatNumber(
                                                         (((140 -
@@ -512,7 +529,7 @@ class _ClearanceDeCreatininaWidgetState
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: const Text('Ok'),
+                                                          child: Text('Ok'),
                                                         ),
                                                       ],
                                                     ),
@@ -525,15 +542,15 @@ class _ClearanceDeCreatininaWidgetState
                                                 builder: (alertDialogContext) {
                                                   return WebViewAware(
                                                     child: AlertDialog(
-                                                      title: const Text('Erro!'),
-                                                      content: const Text(
+                                                      title: Text('Erro!'),
+                                                      content: Text(
                                                           'É necessário escolher o sexo!'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: const Text('Ok'),
+                                                          child: Text('Ok'),
                                                         ),
                                                       ],
                                                     ),
@@ -548,15 +565,15 @@ class _ClearanceDeCreatininaWidgetState
                                             builder: (alertDialogContext) {
                                               return WebViewAware(
                                                 child: AlertDialog(
-                                                  title: const Text('Erro!'),
-                                                  content: const Text(
+                                                  title: Text('Erro!'),
+                                                  content: Text(
                                                       'Não foi possível calcular o resultado. Por favor prencha todos os campos.'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
@@ -571,12 +588,12 @@ class _ClearanceDeCreatininaWidgetState
                                             MediaQuery.sizeOf(context).width *
                                                 0.9,
                                         height: 44.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: const Color(0xFFFCAF23),
+                                        color: Color(0xFFFCAF23),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .headlineSmall
                                             .override(
@@ -586,7 +603,7 @@ class _ClearanceDeCreatininaWidgetState
                                               letterSpacing: 0.0,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -600,7 +617,7 @@ class _ClearanceDeCreatininaWidgetState
                             ),
                           ],
                         ),
-                      ].divide(const SizedBox(height: 12.0)),
+                      ].divide(SizedBox(height: 12.0)),
                     ),
                   ),
                 ),

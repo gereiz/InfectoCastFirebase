@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:from_css_color/from_css_color.dart';
+import '/backend/algolia/serialization_util.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -16,6 +17,72 @@ abstract class BaseStruct {
   String serialize() => json.encode(toSerializableMap());
 }
 
+dynamic deserializeStructParam<T>(
+  dynamic param,
+  ParamType paramType,
+  bool isList, {
+  required StructBuilder<T> structBuilder,
+}) {
+  if (param == null) {
+    return null;
+  } else if (isList) {
+    final paramValues;
+    try {
+      paramValues = param is Iterable ? param : json.decode(param);
+    } catch (e) {
+      return null;
+    }
+    if (paramValues is! Iterable) {
+      return null;
+    }
+    return paramValues
+        .map<T>((e) => deserializeStructParam<T>(e, paramType, false,
+            structBuilder: structBuilder))
+        .toList();
+  } else if (param is Map<String, dynamic>) {
+    return structBuilder(param);
+  } else {
+    return deserializeParam<T>(
+      param,
+      paramType,
+      isList,
+      structBuilder: structBuilder,
+    );
+  }
+}
+
+dynamic convertAlgoliaStruct<T>(
+  dynamic data,
+  ParamType paramType,
+  bool isList, {
+  required StructBuilder<T> structBuilder,
+}) {
+  if (data == null) {
+    return null;
+  } else if (isList) {
+    if (data is! Iterable) {
+      return null;
+    }
+    return data
+        .map<T>((e) => convertAlgoliaStruct<T>(
+              e,
+              paramType,
+              false,
+              structBuilder: structBuilder,
+            ))
+        .toList();
+  } else if (data is Map<String, dynamic>) {
+    return structBuilder(data);
+  } else {
+    return convertAlgoliaParam<T>(
+      data,
+      paramType,
+      isList,
+      structBuilder: structBuilder,
+    );
+  }
+}
+
 List<T>? getStructList<T>(
   dynamic value,
   StructBuilder<T> structBuilder,
@@ -23,8 +90,8 @@ List<T>? getStructList<T>(
     value is! List
         ? null
         : value
-            .whereType<Map<String, dynamic>>()
-            .map((e) => structBuilder(e))
+            .where((e) => e is Map<String, dynamic>)
+            .map((e) => structBuilder(e as Map<String, dynamic>))
             .toList();
 
 Color? getSchemaColor(dynamic value) => value is String

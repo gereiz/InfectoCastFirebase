@@ -1,7 +1,10 @@
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'calculadoras_model.dart';
 export 'calculadoras_model.dart';
 
@@ -49,7 +52,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => setState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Expanded(
                 child: Container(
@@ -59,7 +62,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -67,7 +70,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                           child: GridView(
                             padding: EdgeInsets.zero,
                             gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               crossAxisSpacing: 10.0,
                               mainAxisSpacing: 10.0,
@@ -87,11 +90,11 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                   width: 100.0,
                                   height: 100.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFF4F4F4),
+                                    color: Color(0xFFF4F4F4),
                                     borderRadius: BorderRadius.circular(6.0),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(8.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -115,7 +118,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
-                                      ].divide(const SizedBox(height: 11.0)),
+                                      ].divide(SizedBox(height: 11.0)),
                                     ),
                                   ),
                                 ),

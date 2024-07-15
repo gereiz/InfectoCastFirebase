@@ -2,7 +2,10 @@ import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'podcast_model.dart';
 export 'podcast_model.dart';
 
@@ -48,9 +51,9 @@ class _PodcastWidgetState extends State<PodcastWidget> {
             wrapWithModel(
               model: _model.topBarModel,
               updateCallback: () => setState(() {}),
-              child: const TopBarWidget(),
+              child: TopBarWidget(),
             ),
-            SizedBox(
+            Container(
               height: 240.0,
               child: Stack(
                 children: [
@@ -66,7 +69,7 @@ class _PodcastWidgetState extends State<PodcastWidget> {
                         ).image,
                       ),
                     ),
-                    child: const FlutterFlowVideoPlayer(
+                    child: FlutterFlowVideoPlayer(
                       path:
                           'https://open.spotify.com/episode/44wlcgihHKmztfZB8WzWL8',
                       videoType: VideoType.network,

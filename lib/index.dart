@@ -27,5 +27,16 @@ export '/suporte/lista_plataformas/lista_plataformas_widget.dart'
 export '/cadastro/recupera_senha/recupera_senha_widget.dart'
     show RecuperaSenhaWidget;
 export '/planos/planos/planos_widget.dart' show PlanosWidget;
-export '/plano_contratado/plano_contratado_widget.dart'
+export '/planos/plano_contratado/plano_contratado_widget.dart'
     show PlanoContratadoWidget;
+export '/busca/busca_global/busca_global_widget.dart' show BuscaGlobalWidget;
+export '/chat_groupwbubbles/chat_2_details/chat2_details_widget.dart'
+    show Chat2DetailsWidget;
+export '/chat_groupwbubbles/chat_2_main/chat2_main_widget.dart'
+    show Chat2MainWidget;
+export '/chat_groupwbubbles/chat_2_invite_users/chat2_invite_users_widget.dart'
+    show Chat2InviteUsersWidget;
+export '/chat_groupwbubbles/image_details/image_details_widget.dart'
+    show ImageDetailsWidget;
+export '/busca/busca_global_copy/busca_global_copy_widget.dart'
+    show BuscaGlobalCopyWidget;

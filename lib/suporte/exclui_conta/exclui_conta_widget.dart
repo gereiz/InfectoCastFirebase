@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'exclui_conta_model.dart';
 export 'exclui_conta_model.dart';
@@ -66,7 +68,7 @@ class _ExcluiContaWidgetState extends State<ExcluiContaWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -79,7 +81,7 @@ class _ExcluiContaWidgetState extends State<ExcluiContaWidget> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                   child: Text(
                     'Como posso excluir minha conta ?',
                     textAlign: TextAlign.center,
@@ -92,7 +94,7 @@ class _ExcluiContaWidgetState extends State<ExcluiContaWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                   child: Text(
                     'Caso deseje excluir sua conta, basta clicar no botão abaixo e enviar um email para o nosso suporte que sua conta será excluída em até 24 horas.',
                     textAlign: TextAlign.justify,
@@ -104,10 +106,10 @@ class _ExcluiContaWidgetState extends State<ExcluiContaWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.05),
+                  alignment: AlignmentDirectional(0.0, 0.05),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         await launchUrl(Uri(
@@ -126,10 +128,10 @@ class _ExcluiContaWidgetState extends State<ExcluiContaWidget> {
                         width: 270.0,
                         height: 50.0,
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: const Color(0xFFFCAF23),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFFFCAF23),
                         textStyle:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   fontFamily: 'Roboto',
@@ -139,7 +141,7 @@ class _ExcluiContaWidgetState extends State<ExcluiContaWidget> {
                                   fontWeight: FontWeight.normal,
                                 ),
                         elevation: 2.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>InfectoFirebase</string>
+	<string>InfectoCast</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>InfectoFirebase</string>
+	<string>InfectoCast</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -37,10 +37,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>infectofirebase.com</string>
+        <string>infectocast.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>infectofirebase</string>
+        <string>infectocast</string>
         </array>
         </dict>
     </array>
@@ -54,10 +54,18 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+    <string>O infectocast gostaria de acessar a câmera do seu dispsitivo,  exclusivamente para adicionar a foto de perfil em sua conta de usuário no aplicativo. Nenhuma outra ação é tomada com este acesso, assim como sua foto não será usada para nenhuma outra finalidade.</string>
+	<key>NSMicrophoneUsageDescription</key>
+    <string>O infectocast gostaria de acessar o microfone do seu dispositivo para o correto funcionamento do chat de voz, e somente para este fim, não guardando estes áudios ou capturando em demais momentos o som captado. </string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order to upload data, this app requires permission to access the photo library.</string>
-
+    <string>O infectocast gostaria de acessar a galeria de imagens do seu dispsitivo,  exclusivamente para adicionar a foto de perfil em sua conta de usuário no aplicativo. Nenhuma outra ação é tomada com este acesso, assim como sua foto não será usada para nenhuma outra finalidade.</string>
+	<key>PermissionGroupNotification</key>
+    <string>O infectocast gostaria de acessar enviar notificações sobre novos conteúdos e avisos sobre promoções.</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
 
 
 	<key>UILaunchStoryboardName</key>

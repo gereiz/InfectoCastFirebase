@@ -1,12 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/backend/stripe/payment_manager.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'planos_model.dart';
 export 'planos_model.dart';
@@ -40,6 +41,8 @@ class _PlanosWidgetState extends State<PlanosWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -53,19 +56,19 @@ class _PlanosWidgetState extends State<PlanosWidget> {
             wrapWithModel(
               model: _model.topBarModel,
               updateCallback: () => setState(() {}),
-              child: const TopBarWidget(),
+              child: TopBarWidget(),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Container(
-                width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 0.69,
-                constraints: const BoxConstraints(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: MediaQuery.sizeOf(context).height * 0.68,
+                constraints: BoxConstraints(
                   maxHeight: double.infinity,
                 ),
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primaryBackground,
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
                       blurRadius: 4.0,
                       color: Color(0x33000000),
@@ -78,9 +81,11 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                  child: StreamBuilder<List<PlansRecord>>(
-                    stream: queryPlansRecord(),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  child: FutureBuilder<ApiCallResponse>(
+                    future: InfectoCastGroup.listaPlanosCall.call(
+                      authToken: FFAppState().authtoken,
+                    ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -96,187 +101,218 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                           ),
                         );
                       }
-                      List<PlansRecord> listViewPlansRecordList =
-                          snapshot.data!;
-                      return ListView.builder(
-                        padding: const EdgeInsets.fromLTRB(
-                          0,
-                          0,
-                          0,
-                          1.0,
-                        ),
-                        scrollDirection: Axis.vertical,
-                        itemCount: listViewPlansRecordList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewPlansRecord =
-                              listViewPlansRecordList[listViewIndex];
-                          return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 10.0),
-                            child: Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              elevation: 1.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    4.0, 4.0, 4.0, 4.0),
-                                child: SingleChildScrollView(
-                                  primary: false,
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 32.0),
-                                        child: Text(
-                                          listViewPlansRecord.name,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleMedium
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                      final listViewListaPlanosResponse = snapshot.data!;
+
+                      return Builder(
+                        builder: (context) {
+                          final planos =
+                              listViewListaPlanosResponse.jsonBody.toList();
+
+                          return ListView.builder(
+                            padding: EdgeInsets.fromLTRB(
+                              0,
+                              0,
+                              0,
+                              1.0,
+                            ),
+                            scrollDirection: Axis.vertical,
+                            itemCount: planos.length,
+                            itemBuilder: (context, planosIndex) {
+                              final planosItem = planos[planosIndex];
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Card(
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  elevation: 1.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        4.0, 4.0, 4.0, 4.0),
+                                    child: SingleChildScrollView(
+                                      primary: false,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 8.0, 0.0, 32.0),
+                                            child: Text(
+                                              getJsonField(
+                                                planosItem,
+                                                r'''$.name''',
+                                              ).toString(),
+                                              maxLines: 1,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleMedium
+                                                  .override(
+                                                    fontFamily: 'Roboto',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .primaryText,
-                                                fontSize: 32.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            8.0, 0.0, 0.0, 32.0),
-                                        child: Text(
-                                          'R\$ ${listViewPlansRecord.price.toString()}/mês',
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                fontSize: 28.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle: FontStyle.italic,
-                                              ),
-                                        ),
-                                      ),
-                                      Html(
-                                        data: listViewPlansRecord.description,
-                                        onLinkTap: (url, _, __, ___) =>
-                                            launchURL(url!),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              final paymentResponse =
-                                                  await processStripePayment(
-                                                context,
-                                                amount:
-                                                    (listViewPlansRecord.price *
-                                                            100)
-                                                        .round(),
-                                                currency: 'BRL',
-                                                customerEmail: currentUserEmail,
-                                                customerName:
-                                                    currentUserDisplayName,
-                                                description: listViewPlansRecord
-                                                    .description,
-                                                allowGooglePay: true,
-                                                allowApplePay: true,
-                                                themeStyle: ThemeMode.system,
-                                                buttonColor: const Color(0xFFFCAF23),
-                                                buttonTextColor: Colors.white,
-                                              );
-                                              if (paymentResponse.paymentId ==
-                                                      null &&
-                                                  paymentResponse
-                                                          .errorMessage !=
-                                                      null) {
-                                                showSnackbar(
-                                                  context,
-                                                  'Error: ${paymentResponse.errorMessage}',
-                                                );
-                                              }
-                                              _model.paymentId =
-                                                  paymentResponse.paymentId ??
-                                                      '';
-
-                                              if (_model.paymentId != '0') {
-                                                await currentUserReference!
-                                                    .update(
-                                                        createUsersRecordData(
-                                                  plan:
-                                                      listViewPlansRecord.name,
-                                                ));
-
-                                                context.pushNamed(
-                                                    'planoContratado');
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return WebViewAware(
-                                                      child: AlertDialog(
-                                                        title: const Text('Erro'),
-                                                        content: const Text(
-                                                            'Erro ao processar pagamento!'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                    fontSize: 32.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 0.0, 20.0),
+                                            child: Text(
+                                              'R\$ ${getJsonField(
+                                                planosItem,
+                                                r'''$.price''',
+                                              ).toString()}/mês',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .headlineSmall
+                                                  .override(
+                                                    fontFamily: 'Roboto',
+                                                    fontSize: 28.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                            ),
+                                          ),
+                                          Html(
+                                            data: getJsonField(
+                                              planosItem,
+                                              r'''$.description''',
+                                            ).toString(),
+                                            onLinkTap: (url, _, __) =>
+                                                launchURL(url!),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(-1.0, 0.0),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: FFButtonWidget(
+                                                onPressed: () async {
+                                                  if (valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.paidMember,
+                                                          false) ==
+                                                      true) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            title: Text('Erro'),
+                                                            content: Text(
+                                                                'Você já é um  assinante Premium'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
                                                           ),
-                                                        ],
-                                                      ),
+                                                        );
+                                                      },
                                                     );
-                                                  },
-                                                );
-                                              }
+                                                  } else {
+                                                    _model.apiResultyob =
+                                                        await StripeCheckoutLinkCall
+                                                            .call(
+                                                      name:
+                                                          currentUserDisplayName,
+                                                      email: currentUserEmail,
+                                                      priceId: getJsonField(
+                                                        planosItem,
+                                                        r'''$.price_id''',
+                                                      ).toString(),
+                                                    );
 
-                                              setState(() {});
-                                            },
-                                            text: 'Contratar Plano',
-                                            options: FFButtonOptions(
-                                              width: double.infinity,
-                                              height: 48.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: const Color(0xFFFCAF23),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                    if ((_model.apiResultyob
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      await launchURL((_model
+                                                              .apiResultyob
+                                                              ?.bodyText ??
+                                                          ''));
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              title:
+                                                                  Text('Erro!'),
+                                                              content: Text(
+                                                                  'Não é possível comprar esse plano'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    }
+                                                  }
+
+                                                  setState(() {});
+                                                },
+                                                text: 'Contratar Plano',
+                                                options: FFButtonOptions(
+                                                  width: double.infinity,
+                                                  height: 48.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: Color(0xFFFCAF23),
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
                                                       .titleSmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         color: Colors.white,
                                                         letterSpacing: 0.0,
                                                       ),
-                                              elevation: 0.0,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
+                                                  elevation: 0.0,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
                           );
                         },
                       );

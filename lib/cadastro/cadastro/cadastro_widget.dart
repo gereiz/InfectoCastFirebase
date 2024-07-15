@@ -1,9 +1,15 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'cadastro_model.dart';
 export 'cadastro_model.dart';
 
@@ -65,11 +71,11 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                 flex: 6,
                 child: Container(
                   width: 100.0,
-                  height: MediaQuery.sizeOf(context).height * 0.9,
-                  decoration: const BoxDecoration(
+                  height: MediaQuery.sizeOf(context).height * 0.984,
+                  decoration: BoxDecoration(
                     color: Colors.white,
                   ),
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -78,7 +84,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                         Container(
                           width: double.infinity,
                           height: 11.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(16.0),
@@ -87,23 +93,23 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                         ),
                         Container(
                           width: double.infinity,
-                          constraints: const BoxConstraints(
+                          constraints: BoxConstraints(
                             maxWidth: 430.0,
                           ),
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Colors.white,
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Form(
                               key: _model.formKey,
                               autovalidateMode: AutovalidateMode.disabled,
                               child: Padding(
-                                padding: const EdgeInsets.all(24.0),
+                                padding: EdgeInsets.all(24.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,14 +120,14 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                           .headlineLarge
                                           .override(
                                             fontFamily: 'Roboto',
-                                            color: const Color(0xFF101213),
+                                            color: Color(0xFF101213),
                                             fontSize: 24.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 14.0),
                                       child: Text(
                                         'Cadastre-se gratuitamente',
@@ -129,7 +135,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF57636C),
+                                              color: Color(0xFF57636C),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -137,9 +143,9 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 14.0),
-                                      child: SizedBox(
+                                      child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
                                           controller: _model.nomeTextController,
@@ -154,14 +160,14 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                     .override(
                                                       fontFamily:
                                                           'Plus Jakarta Sans',
-                                                      color: const Color(0xFF57636C),
+                                                      color: Color(0xFF57636C),
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFF1F4F8),
                                                 width: 2.0,
                                               ),
@@ -169,7 +175,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFCAF23),
                                                 width: 2.0,
                                               ),
@@ -177,7 +183,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             errorBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -186,7 +192,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -194,8 +200,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
-                                            prefixIcon: const Icon(
+                                            fillColor: Color(0xFFF1F4F8),
+                                            prefixIcon: Icon(
                                               Icons.person_outline_sharp,
                                             ),
                                           ),
@@ -203,7 +209,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                               .bodyLarge
                                               .override(
                                                 fontFamily: 'Roboto',
-                                                color: const Color(0xFF101213),
+                                                color: Color(0xFF101213),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -215,9 +221,9 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 14.0),
-                                      child: SizedBox(
+                                      child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
                                           controller:
@@ -233,14 +239,14 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                     .override(
                                                       fontFamily:
                                                           'Plus Jakarta Sans',
-                                                      color: const Color(0xFF57636C),
+                                                      color: Color(0xFF57636C),
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFF1F4F8),
                                                 width: 2.0,
                                               ),
@@ -248,7 +254,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFCAF23),
                                                 width: 2.0,
                                               ),
@@ -256,7 +262,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             errorBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -265,7 +271,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -273,8 +279,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
-                                            prefixIcon: const Icon(
+                                            fillColor: Color(0xFFF1F4F8),
+                                            prefixIcon: Icon(
                                               Icons.email_outlined,
                                             ),
                                           ),
@@ -282,7 +288,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                               .bodyLarge
                                               .override(
                                                 fontFamily: 'Roboto',
-                                                color: const Color(0xFF101213),
+                                                color: Color(0xFF101213),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -294,9 +300,9 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 14.0),
-                                      child: SizedBox(
+                                      child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
                                           controller:
@@ -314,7 +320,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                     .override(
                                                       fontFamily:
                                                           'Plus Jakarta Sans',
-                                                      color: const Color(0xFF57636C),
+                                                      color: Color(0xFF57636C),
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -322,7 +328,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                     ),
                                             alignLabelWithHint: false,
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFF1F4F8),
                                                 width: 2.0,
                                               ),
@@ -330,7 +336,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFCAF23),
                                                 width: 2.0,
                                               ),
@@ -338,7 +344,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             errorBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -347,7 +353,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -355,8 +361,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
-                                            prefixIcon: const Icon(
+                                            fillColor: Color(0xFFF1F4F8),
+                                            prefixIcon: Icon(
                                               Icons.phone_iphone,
                                             ),
                                           ),
@@ -364,7 +370,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                               .bodyLarge
                                               .override(
                                                 fontFamily: 'Roboto',
-                                                color: const Color(0xFF101213),
+                                                color: Color(0xFF101213),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -380,9 +386,9 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 42.0),
-                                      child: SizedBox(
+                                      child: Container(
                                         width: double.infinity,
                                         child: TextFormField(
                                           controller:
@@ -398,14 +404,14 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                     .override(
                                                       fontFamily:
                                                           'Plus Jakarta Sans',
-                                                      color: const Color(0xFF57636C),
+                                                      color: Color(0xFF57636C),
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFF1F4F8),
                                                 width: 2.0,
                                               ),
@@ -413,7 +419,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFCAF23),
                                                 width: 2.0,
                                               ),
@@ -421,7 +427,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             errorBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -430,7 +436,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -438,8 +444,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
-                                            prefixIcon: const Icon(
+                                            fillColor: Color(0xFFF1F4F8),
+                                            prefixIcon: Icon(
                                               Icons.lock_outlined,
                                             ),
                                             suffixIcon: InkWell(
@@ -454,7 +460,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                     ? Icons.visibility_outlined
                                                     : Icons
                                                         .visibility_off_outlined,
-                                                color: const Color(0xFF57636C),
+                                                color: Color(0xFF57636C),
                                                 size: 24.0,
                                               ),
                                             ),
@@ -463,7 +469,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                               .bodyLarge
                                               .override(
                                                 fontFamily: 'Roboto',
-                                                color: const Color(0xFF101213),
+                                                color: Color(0xFF101213),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -476,51 +482,105 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 24.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-
-                                          final user = await authManager
-                                              .createAccountWithEmail(
-                                            context,
-                                            _model.emailTextController.text,
-                                            _model.senhaTextController.text,
+                                          Function() _navigate = () {};
+                                          _model.registerout =
+                                              await InfectoCastGroup
+                                                  .registerCall
+                                                  .call(
+                                            name:
+                                                _model.nomeTextController.text,
+                                            email:
+                                                _model.emailTextController.text,
+                                            password:
+                                                _model.senhaTextController.text,
+                                            phone: _model
+                                                .seuNumeroTextController.text,
+                                            countryId: 55,
+                                            plan: 0,
+                                            isAdmin: 0,
                                           );
-                                          if (user == null) {
-                                            return;
+
+                                          if ((_model.registerout?.succeeded ??
+                                              true)) {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+
+                                            final user = await authManager
+                                                .createAccountWithEmail(
+                                              context,
+                                              _model.emailTextController.text,
+                                              _model.senhaTextController.text,
+                                            );
+                                            if (user == null) {
+                                              return;
+                                            }
+
+                                            await UsersRecord.collection
+                                                .doc(user.uid)
+                                                .update(createUsersRecordData(
+                                                  email: _model
+                                                      .emailTextController.text,
+                                                  displayName: _model
+                                                      .nomeTextController.text,
+                                                  phoneNumber: _model
+                                                      .seuNumeroTextController
+                                                      .text,
+                                                  createdTime:
+                                                      getCurrentTimestamp,
+                                                  isSupport: false,
+                                                  paidMember: false,
+                                                  free: 1,
+                                                  gold: 0,
+                                                  premium: 0,
+                                                ));
+
+                                            _navigate = () =>
+                                                context.goNamedAuth(
+                                                    'inicio', context.mounted);
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return WebViewAware(
+                                                  child: AlertDialog(
+                                                    title: Text('Erro!'),
+                                                    content: Text((_model
+                                                            .registerout
+                                                            ?.bodyText ??
+                                                        '')),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            );
                                           }
 
-                                          await UsersRecord.collection
-                                              .doc(user.uid)
-                                              .update(createUsersRecordData(
-                                                email: _model
-                                                    .emailTextController.text,
-                                                displayName: _model
-                                                    .nomeTextController.text,
-                                                phoneNumber: _model
-                                                    .seuNumeroTextController
-                                                    .text,
-                                                createdTime:
-                                                    getCurrentTimestamp,
-                                              ));
+                                          _navigate();
 
-                                          context.goNamedAuth(
-                                              'inicio', context.mounted);
+                                          setState(() {});
                                         },
                                         text: 'Criar conta',
                                         options: FFButtonOptions(
                                           width: double.infinity,
                                           height: 44.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: const Color(0xFFFCAF23),
+                                          color: Color(0xFFFCAF23),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -532,7 +592,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -542,7 +602,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 24.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -550,7 +610,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                             'login',
                                             extra: <String, dynamic>{
                                               kTransitionInfoKey:
-                                                  const TransitionInfo(
+                                                  TransitionInfo(
                                                 hasTransition: true,
                                                 transitionType:
                                                     PageTransitionType.fade,
@@ -565,12 +625,12 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                           width: double.infinity,
                                           height: 44.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: const Color(0xFFDC2732),
+                                          color: Color(0xFFDC2732),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -582,7 +642,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -592,40 +652,40 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 10.0),
-                                      child: SizedBox(
+                                      child: Container(
                                         width: double.infinity,
                                         child: Stack(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 0.0, 12.0),
                                                 child: Container(
                                                   width: double.infinity,
                                                   height: 2.0,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     color: Color(0xFFE0E3E7),
                                                   ),
                                                 ),
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Container(
                                                 width: 70.0,
                                                 height: 32.0,
-                                                decoration: const BoxDecoration(
+                                                decoration: BoxDecoration(
                                                   color: Colors.white,
                                                 ),
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Text(
                                                   'OU',
@@ -635,7 +695,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         color:
-                                                            const Color(0xFF57636C),
+                                                            Color(0xFF57636C),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -651,9 +711,9 @@ class _CadastroWidgetState extends State<CadastroWidget> {
 
                                     // You will have to add an action on this rich text to go to your login page.
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 12.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -665,7 +725,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                               'login',
                                               extra: <String, dynamic>{
                                                 kTransitionInfoKey:
-                                                    const TransitionInfo(
+                                                    TransitionInfo(
                                                   hasTransition: true,
                                                   transitionType:
                                                       PageTransitionType.fade,
@@ -680,7 +740,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                 .textScaler,
                                             text: TextSpan(
                                               children: [
-                                                const TextSpan(
+                                                TextSpan(
                                                   text: 'Já possui uma conta? ',
                                                   style: TextStyle(),
                                                 ),
@@ -693,7 +753,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                         fontFamily:
                                                             'Plus Jakarta Sans',
                                                         color:
-                                                            const Color(0xFF4B39EF),
+                                                            Color(0xFF4B39EF),
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -706,7 +766,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Roboto',
-                                                    color: const Color(0xFF101213),
+                                                    color: Color(0xFF101213),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,

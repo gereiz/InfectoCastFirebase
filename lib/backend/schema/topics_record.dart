@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:from_css_color/from_css_color.dart';
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -10,9 +13,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class TopicsRecord extends FirestoreRecord {
   TopicsRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -46,10 +49,20 @@ class TopicsRecord extends FirestoreRecord {
   DocumentReference? get idSubcategory => _idSubcategory;
   bool hasIdSubcategory() => _idSubcategory != null;
 
-  // "plan_id" field.
-  List<int>? _planId;
-  List<int> get planId => _planId ?? const [];
-  bool hasPlanId() => _planId != null;
+  // "Free" field.
+  int? _free;
+  int get free => _free ?? 0;
+  bool hasFree() => _free != null;
+
+  // "Premium" field.
+  int? _premium;
+  int get premium => _premium ?? 0;
+  bool hasPremium() => _premium != null;
+
+  // "Gold" field.
+  int? _gold;
+  int get gold => _gold ?? 0;
+  bool hasGold() => _gold != null;
 
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
@@ -58,7 +71,9 @@ class TopicsRecord extends FirestoreRecord {
     _updatedTime = snapshotData['updated_time'] as DateTime?;
     _idUser = snapshotData['id_user'] as DocumentReference?;
     _idSubcategory = snapshotData['id_subcategory'] as DocumentReference?;
-    _planId = getDataList(snapshotData['plan_id']);
+    _free = castToType<int>(snapshotData['Free']);
+    _premium = castToType<int>(snapshotData['Premium']);
+    _gold = castToType<int>(snapshotData['Gold']);
   }
 
   static CollectionReference get collection =>
@@ -81,6 +96,68 @@ class TopicsRecord extends FirestoreRecord {
   ) =>
       TopicsRecord._(reference, mapFromFirestore(data));
 
+  static TopicsRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      TopicsRecord.getDocumentFromData(
+        {
+          'title': snapshot.data['title'],
+          'content': snapshot.data['content'],
+          'created_time': convertAlgoliaParam(
+            snapshot.data['created_time'],
+            ParamType.DateTime,
+            false,
+          ),
+          'updated_time': convertAlgoliaParam(
+            snapshot.data['updated_time'],
+            ParamType.DateTime,
+            false,
+          ),
+          'id_user': convertAlgoliaParam(
+            snapshot.data['id_user'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'id_subcategory': convertAlgoliaParam(
+            snapshot.data['id_subcategory'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'Free': convertAlgoliaParam(
+            snapshot.data['Free'],
+            ParamType.int,
+            false,
+          ),
+          'Premium': convertAlgoliaParam(
+            snapshot.data['Premium'],
+            ParamType.int,
+            false,
+          ),
+          'Gold': convertAlgoliaParam(
+            snapshot.data['Gold'],
+            ParamType.int,
+            false,
+          ),
+        },
+        TopicsRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<TopicsRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'topics',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
+
   @override
   String toString() =>
       'TopicsRecord(reference: ${reference.path}, data: $snapshotData)';
@@ -101,6 +178,9 @@ Map<String, dynamic> createTopicsRecordData({
   DateTime? updatedTime,
   DocumentReference? idUser,
   DocumentReference? idSubcategory,
+  int? free,
+  int? premium,
+  int? gold,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -110,6 +190,9 @@ Map<String, dynamic> createTopicsRecordData({
       'updated_time': updatedTime,
       'id_user': idUser,
       'id_subcategory': idSubcategory,
+      'Free': free,
+      'Premium': premium,
+      'Gold': gold,
     }.withoutNulls,
   );
 
@@ -121,14 +204,15 @@ class TopicsRecordDocumentEquality implements Equality<TopicsRecord> {
 
   @override
   bool equals(TopicsRecord? e1, TopicsRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.title == e2?.title &&
         e1?.content == e2?.content &&
         e1?.createdTime == e2?.createdTime &&
         e1?.updatedTime == e2?.updatedTime &&
         e1?.idUser == e2?.idUser &&
         e1?.idSubcategory == e2?.idSubcategory &&
-        listEquality.equals(e1?.planId, e2?.planId);
+        e1?.free == e2?.free &&
+        e1?.premium == e2?.premium &&
+        e1?.gold == e2?.gold;
   }
 
   @override
@@ -139,7 +223,9 @@ class TopicsRecordDocumentEquality implements Equality<TopicsRecord> {
         e?.updatedTime,
         e?.idUser,
         e?.idSubcategory,
-        e?.planId
+        e?.free,
+        e?.premium,
+        e?.gold
       ]);
 
   @override

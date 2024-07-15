@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'atualizacoes_recentes_model.dart';
 export 'atualizacoes_recentes_model.dart';
 
@@ -71,7 +74,7 @@ class _AtualizacoesRecentesWidgetState
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -88,7 +91,7 @@ class _AtualizacoesRecentesWidgetState
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                       child: Text(
                         'Atulizações Recentes',
                         textAlign: TextAlign.center,
@@ -104,7 +107,7 @@ class _AtualizacoesRecentesWidgetState
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                   child: Text(
                     'Últimas atualizações do infectocat por  dara de lançamento',
                     textAlign: TextAlign.center,
@@ -116,7 +119,7 @@ class _AtualizacoesRecentesWidgetState
                   ),
                 ),
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -155,7 +158,7 @@ class _AtualizacoesRecentesWidgetState
                                           .primaryBackground,
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 8.0, 16.0, 0.0),
                                       child: Text(
                                         'Versão 1.0.3',
@@ -163,14 +166,14 @@ class _AtualizacoesRecentesWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              color: const Color(0x8A000000),
+                                              color: Color(0x8A000000),
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
                                   ),
                                   expanded: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -179,7 +182,7 @@ class _AtualizacoesRecentesWidgetState
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 16.0),
                                           child: Text(
                                             '- Versão inicial de lançamento.',
@@ -187,14 +190,14 @@ class _AtualizacoesRecentesWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Readex Pro',
-                                                  color: const Color(0x8A000000),
+                                                  color: Color(0x8A000000),
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 16.0),
                                           child: Text(
                                             '- ',
@@ -202,7 +205,7 @@ class _AtualizacoesRecentesWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Readex Pro',
-                                                  color: const Color(0x8A000000),
+                                                  color: Color(0x8A000000),
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),
@@ -210,7 +213,7 @@ class _AtualizacoesRecentesWidgetState
                                       ],
                                     ),
                                   ),
-                                  theme: const ExpandableThemeData(
+                                  theme: ExpandableThemeData(
                                     tapHeaderToExpand: true,
                                     tapBodyToExpand: false,
                                     tapBodyToCollapse: false,
@@ -259,7 +262,7 @@ class _AtualizacoesRecentesWidgetState
                                           .primaryBackground,
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 8.0, 16.0, 0.0),
                                       child: Text(
                                         'Versão 1.0.4',
@@ -267,14 +270,14 @@ class _AtualizacoesRecentesWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              color: const Color(0x8A000000),
+                                              color: Color(0x8A000000),
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
                                   ),
                                   expanded: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -286,7 +289,7 @@ class _AtualizacoesRecentesWidgetState
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 16.0, 0.0, 16.0),
                                                 child: Text(
@@ -298,7 +301,7 @@ class _AtualizacoesRecentesWidgetState
                                                         fontFamily:
                                                             'Readex Pro',
                                                         color:
-                                                            const Color(0x8A000000),
+                                                            Color(0x8A000000),
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -311,7 +314,7 @@ class _AtualizacoesRecentesWidgetState
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 16.0, 0.0, 16.0),
                                                 child: Text(
@@ -323,7 +326,7 @@ class _AtualizacoesRecentesWidgetState
                                                         fontFamily:
                                                             'Readex Pro',
                                                         color:
-                                                            const Color(0x8A000000),
+                                                            Color(0x8A000000),
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -334,7 +337,7 @@ class _AtualizacoesRecentesWidgetState
                                       ],
                                     ),
                                   ),
-                                  theme: const ExpandableThemeData(
+                                  theme: ExpandableThemeData(
                                     tapHeaderToExpand: true,
                                     tapBodyToExpand: false,
                                     tapBodyToCollapse: false,

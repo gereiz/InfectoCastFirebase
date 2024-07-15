@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'suporte_model.dart';
@@ -71,7 +74,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                     letterSpacing: 0.0,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             elevation: 2.0,
           ),
@@ -82,7 +85,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                   child: Text(
                     'Suporte',
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
@@ -92,7 +95,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
                   child: Text(
                     'Perguntas Frequentes',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -103,12 +106,12 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -127,7 +130,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -141,18 +144,18 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.help_outline,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Como alterar minha senha ?',
@@ -160,14 +163,14 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                                 .labelLarge
                                                 .override(
                                                   fontFamily: 'Roboto',
-                                                  color: const Color(0xFF57636C),
+                                                  color: Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        const Expanded(
+                                        Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -192,7 +195,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                         color: FlutterFlowTheme.of(context).alternate,
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -211,7 +214,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -225,18 +228,18 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.help_outline,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Como excluir minha conta ?',
@@ -244,14 +247,14 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                                 .labelLarge
                                                 .override(
                                                   fontFamily: 'Roboto',
-                                                  color: const Color(0xFF57636C),
+                                                  color: Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        const Expanded(
+                                        Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -276,7 +279,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                         color: FlutterFlowTheme.of(context).alternate,
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -295,7 +298,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -309,18 +312,18 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.smartphone_rounded,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   4.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'O Infectocast está  em quais plataformas ?',
@@ -328,14 +331,14 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                                 .labelLarge
                                                 .override(
                                                   fontFamily: 'Roboto',
-                                                  color: const Color(0xFF57636C),
+                                                  color: Color(0xFF57636C),
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        const Expanded(
+                                        Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -363,7 +366,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
                   child: Text(
                     'Tire suas dúvidas',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -374,12 +377,12 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -396,13 +399,13 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: const Text('Chat ao vivo'),
-                                          content: const Text('Em  breve !'),
+                                          title: Text('Chat ao vivo'),
+                                          content: Text('Em  breve !'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -415,7 +418,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -429,18 +432,18 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.chat_bubble_outline,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Chat ao vivo',
@@ -448,14 +451,14 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                                 .labelLarge
                                                 .override(
                                                   fontFamily: 'Roboto',
-                                                  color: const Color(0xFF57636C),
+                                                  color: Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        const Expanded(
+                                        Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -480,7 +483,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                         color: FlutterFlowTheme.of(context).alternate,
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -509,7 +512,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -523,18 +526,18 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.email,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Envie um e-mail',
@@ -542,14 +545,14 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                                 .labelLarge
                                                 .override(
                                                   fontFamily: 'Roboto',
-                                                  color: const Color(0xFF57636C),
+                                                  color: Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        const Expanded(
+                                        Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -577,7 +580,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
                   child: Text(
                     'Sobre o aplicativo',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -588,12 +591,12 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -612,7 +615,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -626,18 +629,18 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.update,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Atualizações recentes',
@@ -645,14 +648,14 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                                 .labelLarge
                                                 .override(
                                                   fontFamily: 'Roboto',
-                                                  color: const Color(0xFF57636C),
+                                                  color: Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        const Expanded(
+                                        Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -677,7 +680,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                         color: FlutterFlowTheme.of(context).alternate,
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -694,13 +697,13 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: const Text('Avalie o Aplicativo'),
-                                          content: const Text('Em  breve !'),
+                                          title: Text('Avalie o Aplicativo'),
+                                          content: Text('Em  breve !'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -713,7 +716,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -727,18 +730,18 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.star_border,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Avalie o Aplicativo',
@@ -746,14 +749,14 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                                 .labelLarge
                                                 .override(
                                                   fontFamily: 'Roboto',
-                                                  color: const Color(0xFF57636C),
+                                                  color: Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        const Expanded(
+                                        Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),

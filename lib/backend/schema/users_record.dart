@@ -1,17 +1,21 @@
 import 'dart:async';
 
+import 'package:from_css_color/from_css_color.dart';
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -45,10 +49,45 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
-  // "plan" field.
-  String? _plan;
-  String get plan => _plan ?? '';
-  bool hasPlan() => _plan != null;
+  // "shortDescription" field.
+  String? _shortDescription;
+  String get shortDescription => _shortDescription ?? '';
+  bool hasShortDescription() => _shortDescription != null;
+
+  // "last_active_time" field.
+  DateTime? _lastActiveTime;
+  DateTime? get lastActiveTime => _lastActiveTime;
+  bool hasLastActiveTime() => _lastActiveTime != null;
+
+  // "is_support" field.
+  bool? _isSupport;
+  bool get isSupport => _isSupport ?? false;
+  bool hasIsSupport() => _isSupport != null;
+
+  // "stripe_cust_id" field.
+  String? _stripeCustId;
+  String get stripeCustId => _stripeCustId ?? '';
+  bool hasStripeCustId() => _stripeCustId != null;
+
+  // "paidMember" field.
+  bool? _paidMember;
+  bool get paidMember => _paidMember ?? false;
+  bool hasPaidMember() => _paidMember != null;
+
+  // "Free" field.
+  int? _free;
+  int get free => _free ?? 0;
+  bool hasFree() => _free != null;
+
+  // "Gold" field.
+  int? _gold;
+  int get gold => _gold ?? 0;
+  bool hasGold() => _gold != null;
+
+  // "Premium" field.
+  int? _premium;
+  int get premium => _premium ?? 0;
+  bool hasPremium() => _premium != null;
 
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
@@ -57,7 +96,14 @@ class UsersRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
-    _plan = snapshotData['plan'] as String?;
+    _shortDescription = snapshotData['shortDescription'] as String?;
+    _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
+    _isSupport = snapshotData['is_support'] as bool?;
+    _stripeCustId = snapshotData['stripe_cust_id'] as String?;
+    _paidMember = snapshotData['paidMember'] as bool?;
+    _free = castToType<int>(snapshotData['Free']);
+    _gold = castToType<int>(snapshotData['Gold']);
+    _premium = castToType<int>(snapshotData['Premium']);
   }
 
   static CollectionReference get collection =>
@@ -80,6 +126,65 @@ class UsersRecord extends FirestoreRecord {
   ) =>
       UsersRecord._(reference, mapFromFirestore(data));
 
+  static UsersRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      UsersRecord.getDocumentFromData(
+        {
+          'email': snapshot.data['email'],
+          'display_name': snapshot.data['display_name'],
+          'photo_url': snapshot.data['photo_url'],
+          'uid': snapshot.data['uid'],
+          'created_time': convertAlgoliaParam(
+            snapshot.data['created_time'],
+            ParamType.DateTime,
+            false,
+          ),
+          'phone_number': snapshot.data['phone_number'],
+          'shortDescription': snapshot.data['shortDescription'],
+          'last_active_time': convertAlgoliaParam(
+            snapshot.data['last_active_time'],
+            ParamType.DateTime,
+            false,
+          ),
+          'is_support': snapshot.data['is_support'],
+          'stripe_cust_id': snapshot.data['stripe_cust_id'],
+          'paidMember': snapshot.data['paidMember'],
+          'Free': convertAlgoliaParam(
+            snapshot.data['Free'],
+            ParamType.int,
+            false,
+          ),
+          'Gold': convertAlgoliaParam(
+            snapshot.data['Gold'],
+            ParamType.int,
+            false,
+          ),
+          'Premium': convertAlgoliaParam(
+            snapshot.data['Premium'],
+            ParamType.int,
+            false,
+          ),
+        },
+        UsersRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<UsersRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'users',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
+
   @override
   String toString() =>
       'UsersRecord(reference: ${reference.path}, data: $snapshotData)';
@@ -100,7 +205,14 @@ Map<String, dynamic> createUsersRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
-  String? plan,
+  String? shortDescription,
+  DateTime? lastActiveTime,
+  bool? isSupport,
+  String? stripeCustId,
+  bool? paidMember,
+  int? free,
+  int? gold,
+  int? premium,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -110,7 +222,14 @@ Map<String, dynamic> createUsersRecordData({
       'uid': uid,
       'created_time': createdTime,
       'phone_number': phoneNumber,
-      'plan': plan,
+      'shortDescription': shortDescription,
+      'last_active_time': lastActiveTime,
+      'is_support': isSupport,
+      'stripe_cust_id': stripeCustId,
+      'paidMember': paidMember,
+      'Free': free,
+      'Gold': gold,
+      'Premium': premium,
     }.withoutNulls,
   );
 
@@ -128,7 +247,14 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
-        e1?.plan == e2?.plan;
+        e1?.shortDescription == e2?.shortDescription &&
+        e1?.lastActiveTime == e2?.lastActiveTime &&
+        e1?.isSupport == e2?.isSupport &&
+        e1?.stripeCustId == e2?.stripeCustId &&
+        e1?.paidMember == e2?.paidMember &&
+        e1?.free == e2?.free &&
+        e1?.gold == e2?.gold &&
+        e1?.premium == e2?.premium;
   }
 
   @override
@@ -139,7 +265,14 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.uid,
         e?.createdTime,
         e?.phoneNumber,
-        e?.plan
+        e?.shortDescription,
+        e?.lastActiveTime,
+        e?.isSupport,
+        e?.stripeCustId,
+        e?.paidMember,
+        e?.free,
+        e?.gold,
+        e?.premium
       ]);
 
   @override

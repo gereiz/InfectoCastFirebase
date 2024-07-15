@@ -2,7 +2,10 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'recupera_senha_model.dart';
 export 'recupera_senha_model.dart';
 
@@ -54,11 +57,11 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                 flex: 6,
                 child: Container(
                   width: 100.0,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
+                  height: MediaQuery.sizeOf(context).height * 0.98,
+                  decoration: BoxDecoration(
                     color: Colors.white,
                   ),
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -67,7 +70,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                         Container(
                           width: double.infinity,
                           height: 11.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(16.0),
@@ -76,26 +79,26 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                         ),
                         Container(
                           width: double.infinity,
-                          constraints: const BoxConstraints(
+                          constraints: BoxConstraints(
                             maxWidth: 430.0,
                           ),
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Colors.white,
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsets.all(24.0),
+                              padding: EdgeInsets.all(24.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 8.0),
                                     child: Text(
                                       'Redefinir Senha',
@@ -103,7 +106,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                           .headlineLarge
                                           .override(
                                             fontFamily: 'Roboto',
-                                            color: const Color(0xFF101213),
+                                            color: Color(0xFF101213),
                                             fontSize: 24.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
@@ -111,7 +114,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 32.0),
                                     child: Text(
                                       'Digite o e-mail cadastrado, e enviaremos um link para redefinir uma nova senha',
@@ -120,7 +123,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Roboto',
-                                            color: const Color(0xFF57636C),
+                                            color: Color(0xFF57636C),
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
@@ -128,15 +131,15 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 250.0, 0.0, 10.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: double.infinity,
                                       child: TextFormField(
                                         controller: _model.emailTextController,
                                         focusNode: _model.emailFocusNode,
                                         autofocus: true,
-                                        autofillHints: const [AutofillHints.email],
+                                        autofillHints: [AutofillHints.email],
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Digite seu e-mail',
@@ -146,13 +149,13 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF57636C),
+                                                    color: Color(0xFF57636C),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFF1F4F8),
                                               width: 2.0,
                                             ),
@@ -160,7 +163,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFCAF23),
                                               width: 2.0,
                                             ),
@@ -168,7 +171,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -177,7 +180,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -185,8 +188,8 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF1F4F8),
-                                          prefixIcon: const Icon(
+                                          fillColor: Color(0xFFF1F4F8),
+                                          prefixIcon: Icon(
                                             Icons.email_outlined,
                                           ),
                                         ),
@@ -194,7 +197,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF101213),
+                                              color: Color(0xFF101213),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -208,7 +211,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 100.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -216,7 +219,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                             .emailTextController.text.isEmpty) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            const SnackBar(
+                                            SnackBar(
                                               content: Text(
                                                 'Email required!',
                                               ),
@@ -234,12 +237,12 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                       options: FFButtonOptions(
                                         width: double.infinity,
                                         height: 44.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: const Color(0xFFFCAF23),
+                                        color: Color(0xFFFCAF23),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -250,7 +253,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                               fontWeight: FontWeight.w500,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -262,9 +265,9 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
 
                                   // You will have to add an action on this rich text to go to your login page.
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 150.0, 0.0, 12.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
@@ -279,7 +282,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                               MediaQuery.of(context).textScaler,
                                           text: TextSpan(
                                             children: [
-                                              const TextSpan(
+                                              TextSpan(
                                                 text: 'Se lembra da senha? ',
                                                 style: TextStyle(),
                                               ),
@@ -292,7 +295,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF4B39EF),
+                                                              Color(0xFF4B39EF),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -304,7 +307,7 @@ class _RecuperaSenhaWidgetState extends State<RecuperaSenhaWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Roboto',
-                                                  color: const Color(0xFF101213),
+                                                  color: Color(0xFF101213),
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,

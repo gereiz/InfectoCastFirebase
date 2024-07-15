@@ -5,10 +5,9 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class InfectoFirebaseFirebaseUser extends BaseAuthUser {
-  InfectoFirebaseFirebaseUser(this.user);
+class InfectoCastFirebaseUser extends BaseAuthUser {
+  InfectoCastFirebaseUser(this.user);
   User? user;
-  @override
   bool get loggedIn => user != null;
 
   @override
@@ -55,18 +54,17 @@ class InfectoFirebaseFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      InfectoFirebaseFirebaseUser(user);
+      InfectoCastFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> infectoFirebaseFirebaseUserStream() =>
-    FirebaseAuth.instance
+Stream<BaseAuthUser> infectoCastFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = InfectoFirebaseFirebaseUser(user);
+        currentUser = InfectoCastFirebaseUser(user);
         return currentUser!;
       },
     );
