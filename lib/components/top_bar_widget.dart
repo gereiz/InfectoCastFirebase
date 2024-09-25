@@ -4,14 +4,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:math';
 import 'package:badges/badges.dart' as badges;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'top_bar_model.dart';
 export 'top_bar_model.dart';
@@ -55,7 +52,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -72,8 +69,8 @@ class _TopBarWidgetState extends State<TopBarWidget>
       children: [
         Container(
           width: double.infinity,
-          height: 121.0,
-          decoration: BoxDecoration(
+          height: 100.0,
+          decoration: const BoxDecoration(
             color: Color(0xFF2B5EA6),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -88,7 +85,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(2.0, 26.0, 2.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(2.0, 8.0, 2.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -120,14 +117,14 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                 builder: (alertDialogContext) {
                                   return WebViewAware(
                                     child: AlertDialog(
-                                      title: Text('Atenção'),
-                                      content: Text(
+                                      title: const Text('Atenção'),
+                                      content: const Text(
                                           'Você já está na página de Home.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                          child: const Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -137,32 +134,32 @@ class _TopBarWidgetState extends State<TopBarWidget>
                             }
                           },
                         ),
-                        Container(
-                          width: 55.0,
-                          height: 55.0,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Color(0xFFFCAF23),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(4.0),
-                            child: AuthUserStreamWidget(
-                              builder: (context) => ClipRRect(
-                                borderRadius: BorderRadius.circular(50.0),
-                                child: Image.network(
-                                  currentUserPhoto,
-                                  width: 50.0,
-                                  height: 50.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ).animateOnPageLoad(
-                                  animationsMap['imageOnPageLoadAnimation']!),
-                            ),
-                          ),
-                        ),
                       ],
+                    ),
+                    Container(
+                      width: 45.0,
+                      height: 45.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: const Color(0xFFFCAF23),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: AuthUserStreamWidget(
+                          builder: (context) => ClipRRect(
+                            borderRadius: BorderRadius.circular(50.0),
+                            child: Image.network(
+                              currentUserPhoto,
+                              width: 50.0,
+                              height: 50.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ).animateOnPageLoad(
+                              animationsMap['imageOnPageLoadAnimation']!),
+                        ),
+                      ),
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
@@ -172,21 +169,33 @@ class _TopBarWidgetState extends State<TopBarWidget>
                           desktop: false,
                         ))
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: AuthUserStreamWidget(
-                              builder: (context) => AutoSizeText(
-                                currentUserDisplayName,
-                                textAlign: TextAlign.start,
-                                minFontSize: 14.0,
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: Colors.white,
-                                      fontSize: 20.0,
-                                      letterSpacing: 0.0,
-                                    ),
+                              builder: (context) => InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('perfil');
+                                },
+                                child: AutoSizeText(
+                                  currentUserDisplayName.maybeHandleOverflow(
+                                    maxChars: 20,
+                                    replacement: '…',
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  minFontSize: 14.0,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        fontFamily: 'Fira Sans Extra Condensed',
+                                        color: Colors.white,
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
                               ),
                             ),
                           ),
@@ -194,7 +203,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -222,16 +231,13 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
-                                    return Center(
+                                    return const Center(
                                       child: SizedBox(
                                         width: 50.0,
                                         height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
+                                        child: SpinKitFadingFour(
+                                          color: Color(0xFFFCAF23),
+                                          size: 50.0,
                                         ),
                                       ),
                                     );
@@ -256,20 +262,20 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                     badgeColor:
                                         FlutterFlowTheme.of(context).error,
                                     elevation: 4.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 8.0, 8.0, 8.0),
                                     position: badges.BadgePosition.topEnd(),
                                     animationType:
                                         badges.BadgeAnimationType.scale,
                                     toAnimate: true,
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 5.0, 0.0, 0.0),
                                       child: FlutterFlowIconButton(
                                         borderRadius: 20.0,
                                         borderWidth: 1.0,
                                         buttonSize: 40.0,
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.message,
                                           color: Colors.white,
                                           size: 24.0,
@@ -284,7 +290,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                               ),
                             ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 4.0, 0.0, 2.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -294,7 +300,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                               onTap: () async {
                                 context.pushNamed('perfil');
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.engineering_sharp,
                                 color: Colors.white,
                                 size: 24.0,
@@ -302,7 +308,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -316,7 +322,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
 
                                 context.goNamedAuth('login', context.mounted);
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.output_sharp,
                                 color: Colors.white,
                                 size: 24.0,
@@ -330,96 +336,114 @@ class _TopBarWidgetState extends State<TopBarWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 8.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 8.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 6.0, 10.0, 0.0),
-                                child: Text(
-                                  'Bem Vindo(a) ao InfectoCast',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        letterSpacing: 0.0,
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                30.0, 0.0, 0.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('dashboardPlano');
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 6.0, 10.0, 0.0),
+                                    child: Text(
+                                      'Bem Vindo(a) ao InfectoCast',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                'Fira Sans Extra Condensed',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                  if ((valueOrDefault(
+                                              currentUserDocument?.gold, 0) ==
+                                          0) &&
+                                      (valueOrDefault(
+                                              currentUserDocument?.premium,
+                                              0) ==
+                                          0))
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/202404221054free.png',
+                                            width: 25.0,
+                                            height: 25.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                       ),
-                                ),
-                              ),
-                              if ((valueOrDefault(
-                                          currentUserDocument?.gold, 0) ==
-                                      0) &&
-                                  (valueOrDefault(
+                                    ),
+                                  if (valueOrDefault(
                                           currentUserDocument?.premium, 0) ==
-                                      0))
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4.0, 0.0, 0.0, 0.0),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) => ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.asset(
-                                        'assets/images/202404221054free.png',
-                                        width: 25.0,
-                                        height: 25.0,
-                                        fit: BoxFit.cover,
+                                      1)
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/premium.png',
+                                            width: 25.0,
+                                            height: 25.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              if (valueOrDefault(
-                                      currentUserDocument?.premium, 0) ==
-                                  1)
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4.0, 0.0, 0.0, 0.0),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) => ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.asset(
-                                        'assets/images/premium.png',
-                                        width: 25.0,
-                                        height: 25.0,
-                                        fit: BoxFit.cover,
+                                  if (valueOrDefault(
+                                          currentUserDocument?.gold, 0) ==
+                                      1)
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/202404221103gold.png',
+                                            width: 25.0,
+                                            height: 25.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              if (valueOrDefault(
-                                      currentUserDocument?.gold, 0) ==
-                                  1)
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4.0, 0.0, 0.0, 0.0),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) => ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.asset(
-                                        'assets/images/202404221103gold.png',
-                                        width: 25.0,
-                                        height: 25.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                            ],
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -432,7 +456,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
         ),
         Container(
           width: MediaQuery.sizeOf(context).width * 1.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xFF2B5EA6),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(25.0),
@@ -446,7 +470,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
             children: [
               Container(
                 width: MediaQuery.sizeOf(context).width * 1.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFF2B5EA6),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(25.0),
@@ -456,7 +480,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 8.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 8.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -470,7 +494,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                       height: 46.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 3.0,
                             color: Color(0x33000000),
@@ -485,27 +509,27 @@ class _TopBarWidgetState extends State<TopBarWidget>
                           color: FlutterFlowTheme.of(context).alternate,
                         ),
                       ),
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.search_rounded,
                               color: Color(0xFF57636C),
                               size: 24.0,
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Pesquisar',
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Readex Pro',
+                                      fontFamily: 'Fira Sans Extra Condensed',
                                       fontSize: 13.0,
                                       letterSpacing: 0.0,
                                     ),

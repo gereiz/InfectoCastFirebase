@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'lista_plataformas_model.dart';
 export 'lista_plataformas_model.dart';
 
@@ -25,7 +22,7 @@ class _ListaPlataformasWidgetState extends State<ListaPlataformasWidget> {
     super.initState();
     _model = createModel(context, () => ListaPlataformasModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -38,12 +35,10 @@ class _ListaPlataformasWidgetState extends State<ListaPlataformasWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
@@ -63,11 +58,11 @@ class _ListaPlataformasWidgetState extends State<ListaPlataformasWidget> {
           title: Text(
             'Suporte',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Roboto',
+                  fontFamily: 'Fira Sans Extra Condensed',
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -80,12 +75,12 @@ class _ListaPlataformasWidgetState extends State<ListaPlataformasWidget> {
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                   child: Text(
                     'O  Infectocast está disponível em quais plataformas ?',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Fira Sans Extra Condensed',
                           fontSize: 26.0,
                           letterSpacing: 0.0,
                         ),
@@ -93,12 +88,12 @@ class _ListaPlataformasWidgetState extends State<ListaPlataformasWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                   child: Text(
                     'O aplicativo Infectcast estád disponível nas plataformas Android (Play Store), Apple (Apple Store) e através do site: infectocast.com.br',
                     textAlign: TextAlign.justify,
                     style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Fira Sans Extra Condensed',
                           color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                         ),

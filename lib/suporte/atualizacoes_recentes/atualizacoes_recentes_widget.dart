@@ -1,11 +1,8 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'atualizacoes_recentes_model.dart';
 export 'atualizacoes_recentes_model.dart';
 
@@ -32,7 +29,7 @@ class _AtualizacoesRecentesWidgetState
         ExpandableController(initialExpanded: false);
     _model.expandableExpandableController2 =
         ExpandableController(initialExpanded: false);
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -45,12 +42,10 @@ class _AtualizacoesRecentesWidgetState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
@@ -70,11 +65,11 @@ class _AtualizacoesRecentesWidgetState
           title: Text(
             'Suporte',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Roboto',
+                  fontFamily: 'Fira Sans Extra Condensed',
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -91,13 +86,13 @@ class _AtualizacoesRecentesWidgetState
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                       child: Text(
                         'Atulizações Recentes',
                         textAlign: TextAlign.center,
                         style:
                             FlutterFlowTheme.of(context).headlineLarge.override(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'Fira Sans Extra Condensed',
                                   fontSize: 26.0,
                                   letterSpacing: 0.0,
                                 ),
@@ -107,19 +102,19 @@ class _AtualizacoesRecentesWidgetState
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                   child: Text(
                     'Últimas atualizações do infectocat por  dara de lançamento',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Fira Sans Extra Condensed',
                           color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                         ),
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -141,7 +136,8 @@ class _AtualizacoesRecentesWidgetState
                                     style: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          fontFamily:
+                                              'Fira Sans Extra Condensed',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 28.0,
@@ -158,22 +154,23 @@ class _AtualizacoesRecentesWidgetState
                                           .primaryBackground,
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 8.0, 16.0, 0.0),
                                       child: Text(
                                         'Versão 1.0.3',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
-                                              color: Color(0x8A000000),
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              color: const Color(0x8A000000),
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
                                   ),
                                   expanded: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -182,7 +179,7 @@ class _AtualizacoesRecentesWidgetState
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 16.0),
                                           child: Text(
                                             '- Versão inicial de lançamento.',
@@ -190,14 +187,14 @@ class _AtualizacoesRecentesWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Readex Pro',
-                                                  color: Color(0x8A000000),
+                                                  color: const Color(0x8A000000),
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 16.0),
                                           child: Text(
                                             '- ',
@@ -205,7 +202,7 @@ class _AtualizacoesRecentesWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Readex Pro',
-                                                  color: Color(0x8A000000),
+                                                  color: const Color(0x8A000000),
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),
@@ -213,7 +210,7 @@ class _AtualizacoesRecentesWidgetState
                                       ],
                                     ),
                                   ),
-                                  theme: ExpandableThemeData(
+                                  theme: const ExpandableThemeData(
                                     tapHeaderToExpand: true,
                                     tapBodyToExpand: false,
                                     tapBodyToCollapse: false,
@@ -245,7 +242,8 @@ class _AtualizacoesRecentesWidgetState
                                     style: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          fontFamily:
+                                              'Fira Sans Extra Condensed',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 28.0,
@@ -262,22 +260,23 @@ class _AtualizacoesRecentesWidgetState
                                           .primaryBackground,
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 8.0, 16.0, 0.0),
                                       child: Text(
                                         'Versão 1.0.4',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Readex Pro',
-                                              color: Color(0x8A000000),
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              color: const Color(0x8A000000),
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
                                   ),
                                   expanded: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -289,7 +288,7 @@ class _AtualizacoesRecentesWidgetState
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 16.0, 0.0, 16.0),
                                                 child: Text(
@@ -301,7 +300,7 @@ class _AtualizacoesRecentesWidgetState
                                                         fontFamily:
                                                             'Readex Pro',
                                                         color:
-                                                            Color(0x8A000000),
+                                                            const Color(0x8A000000),
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -314,7 +313,7 @@ class _AtualizacoesRecentesWidgetState
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 16.0, 0.0, 16.0),
                                                 child: Text(
@@ -326,7 +325,7 @@ class _AtualizacoesRecentesWidgetState
                                                         fontFamily:
                                                             'Readex Pro',
                                                         color:
-                                                            Color(0x8A000000),
+                                                            const Color(0x8A000000),
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -337,7 +336,7 @@ class _AtualizacoesRecentesWidgetState
                                       ],
                                     ),
                                   ),
-                                  theme: ExpandableThemeData(
+                                  theme: const ExpandableThemeData(
                                     tapHeaderToExpand: true,
                                     tapBodyToExpand: false,
                                     tapBodyToCollapse: false,

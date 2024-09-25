@@ -1,11 +1,8 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'termos_model.dart';
 export 'termos_model.dart';
 
@@ -26,7 +23,7 @@ class _TermosWidgetState extends State<TermosWidget> {
     super.initState();
     _model = createModel(context, () => TermosModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -39,12 +36,10 @@ class _TermosWidgetState extends State<TermosWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
@@ -65,39 +60,44 @@ class _TermosWidgetState extends State<TermosWidget> {
           title: Text(
             'Termos',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Roboto',
+                  fontFamily: 'Fira Sans Extra Condensed',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 20.0,
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 2.0,
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
-                child: Text(
-                  'Termos de Serviço',
-                  style: FlutterFlowTheme.of(context).headlineLarge.override(
-                        fontFamily: 'Roboto',
-                        letterSpacing: 0.0,
-                      ),
+        body: SafeArea(
+          top: true,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                  child: Text(
+                    'Termos de Serviço',
+                    style: FlutterFlowTheme.of(context).headlineLarge.override(
+                          fontFamily: 'Fira Sans Extra Condensed',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 64.0),
-                child: Html(
-                  data: '<h3>H3 Header</h3> <p>Sample paragraph</p>',
-                  onLinkTap: (url, _, __) => launchURL(url!),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 64.0),
+                  child: Html(
+                    data: '<h3>H3 Header</h3> <p>Sample paragraph</p>',
+                    onLinkTap: (url, _, __) => launchURL(url!),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

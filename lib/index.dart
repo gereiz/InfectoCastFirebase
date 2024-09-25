@@ -9,7 +9,6 @@ export '/categorias/topicos/topicos_widget.dart' show TopicosWidget;
 export '/categorias/topico/topico_widget.dart' show TopicoWidget;
 export '/blog/post_blog/post_blog_widget.dart' show PostBlogWidget;
 export '/podcasts/podcasts/podcasts_widget.dart' show PodcastsWidget;
-export '/podcasts/podcast/podcast_widget.dart' show PodcastWidget;
 export '/calculadoras/calculadoras/calculadoras_widget.dart'
     show CalculadorasWidget;
 export '/calculadoras/clearance_de_creatinina/clearance_de_creatinina_widget.dart'
@@ -38,5 +37,6 @@ export '/chat_groupwbubbles/chat_2_invite_users/chat2_invite_users_widget.dart'
     show Chat2InviteUsersWidget;
 export '/chat_groupwbubbles/image_details/image_details_widget.dart'
     show ImageDetailsWidget;
-export '/busca/busca_global_copy/busca_global_copy_widget.dart'
-    show BuscaGlobalCopyWidget;
+export '/planos/dashboard_plano/dashboard_plano_widget.dart'
+    show DashboardPlanoWidget;
+export '/home/nova_versao/nova_versao_widget.dart' show NovaVersaoWidget;

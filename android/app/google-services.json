@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "546042396081",
-    "project_id": "infecto-firebase-eciz28",
-    "storage_bucket": "infecto-firebase-eciz28.appspot.com"
+    "project_number": "1071627617219",
+    "project_id": "infectocast-40420",
+    "storage_bucket": "infectocast-40420.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:546042396081:android:afe981d210f01db764d190",
+        "mobilesdk_app_id": "1:1071627617219:android:1b34798e2c15a280793376",
         "android_client_info": {
           "package_name": "com.br.ibitweb.infectocast"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCAndsylp1OeoLimMssPOINGppNtaWVzK4"
+          "current_key": "AIzaSyA1wKthJSIW1riyPBgF_IQPKzKSDQ3c7Aw"
         }
       ],
       "services": {

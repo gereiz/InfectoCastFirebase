@@ -8,7 +8,7 @@ const firestore = admin.firestore();
 
 const kPushNotificationRuntimeOpts = {
   timeoutSeconds: 540,
-  memory: "2GB"
+  memory: "2GB",
 };
 
 exports.addFcmToken = functions.https.onCall(async (data, context) => {
@@ -74,7 +74,6 @@ exports.sendPushNotificationsTrigger = functions
     }
   });
 
-
 async function sendPushNotifications(snapshot) {
   const notificationData = snapshot.data();
   const title = notificationData.notification_title || "";
@@ -128,7 +127,7 @@ async function sendPushNotifications(snapshot) {
       const data = token.data();
       const audienceMatches =
         targetAudience === "All" || data.device_type === targetAudience;
-      if (audienceMatches || typeof data.fcm_token !== undefined) {
+      if (audienceMatches && typeof data.fcm_token !== undefined) {
         tokens.add(data.fcm_token);
       }
     });
@@ -146,7 +145,7 @@ async function sendPushNotifications(snapshot) {
       },
       data: {
         initialPageName,
-        parameterData
+        parameterData,
       },
       android: {
         notification: {
@@ -168,9 +167,9 @@ async function sendPushNotifications(snapshot) {
   var numSent = 0;
   await Promise.all(
     messageBatches.map(async (messages) => {
-      const response = await admin.messaging().sendMulticast(messages);
+      const response = await admin.messaging().sendEachForMulticast(messages);
       numSent += response.successCount;
-    })
+    }),
   );
 
   await snapshot.ref.update({ status: "succeeded", num_sent: numSent });
@@ -210,8 +209,10 @@ function getCharForIndex(charIdx) {
 const stripeModule = require("stripe");
 
 // Credentials
-const kStripeProdSecretKey = "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";
-const kStripeTestSecretKey = "sk_test_51PMvzdBvY39fA9jG0j9xlnqnyOH1mSSYuKFRcP5EA7MuFNYkNpBtPfBIg1GdywuSA0sSNoTRHRD5Q5KNhu9Nc23H00tq9ATdSD";
+const kStripeProdSecretKey =
+  "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";
+const kStripeTestSecretKey =
+  "sk_test_51PQBEHP1Xnjwtxz7zC8QkyEHiiyy99SNQtJsTrb578N7PmHlAGGBXPZJyMowjynDj358vneGS7wZYimGsAPUmNki00IWNN2qzc";
 
 const secretKey = (isProd) =>
   isProd ? kStripeProdSecretKey : kStripeTestSecretKey;
@@ -235,7 +236,7 @@ exports.initStripeTestPayment = functions.https.onCall(
       return "Unauthenticated calls are not allowed.";
     }
     return await initPayment(data, false);
-  }
+  },
 );
 
 async function initPayment(data, isProd) {
@@ -258,7 +259,7 @@ async function initPayment(data, isProd) {
 
     const ephemeralKey = await stripe.ephemeralKeys.create(
       { customer: customer.id },
-      { apiVersion: "2020-08-27" }
+      { apiVersion: "2020-08-27" },
     );
     const paymentIntent = await stripe.paymentIntents.create({
       amount: data.amount,
@@ -290,6 +291,6 @@ function userFacingMessage(error) {
 }
 exports.onUserDeleted = functions.auth.user().onDelete(async (user) => {
   let firestore = admin.firestore();
-  let userRef = firestore.doc('users/' + user.uid);
+  let userRef = firestore.doc("users/" + user.uid);
   await firestore.collection("users").doc(user.uid).delete();
 });

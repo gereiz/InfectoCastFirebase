@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBIh7UVweojYw_a7O6T3EsrwztJwAWsqlk</string>
+	<string>AIzaSyCKbT3RLx2h7ysO5gM1V0Zoxb1UA3LCJOU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>546042396081</string>
+	<string>1071627617219</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.br.ibitweb.infectocast</string>
 	<key>PROJECT_ID</key>
-	<string>infecto-firebase-eciz28</string>
+	<string>infectocast-40420</string>
 	<key>STORAGE_BUCKET</key>
-	<string>infecto-firebase-eciz28.appspot.com</string>
+	<string>infectocast-40420.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:546042396081:ios:dbf6d9632eae4fbb64d190</string>
+	<string>1:1071627617219:ios:7b37bc2a80e9f1b3793376</string>
 </dict>
 </plist>

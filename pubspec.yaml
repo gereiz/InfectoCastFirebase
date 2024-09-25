@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+3
+version: 1.2.4+1
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -55,6 +55,9 @@ dependencies:
   firebase_performance: 0.9.4+5
   firebase_performance_platform_interface: 0.1.4+33
   firebase_performance_web: 0.1.6+5
+  firebase_remote_config: 4.4.5
+  firebase_remote_config_platform_interface: 1.4.33
+  firebase_remote_config_web: 1.6.5
   firebase_storage: 11.7.5
   firebase_storage_platform_interface: 5.1.20
   firebase_storage_web: 3.9.5
@@ -70,15 +73,16 @@ dependencies:
   flutter_secure_storage_platform_interface: 1.1.2
   flutter_secure_storage_web: 1.2.1
   flutter_secure_storage_windows: 3.1.2
+  flutter_spinkit: 5.2.0
   flutter_stripe: 10.1.1
   flutter_stripe_web: 5.1.0
-  font_awesome_flutter: 10.6.0
+  font_awesome_flutter: 10.7.0
   from_css_color: 2.0.0
   go_router: 12.1.3
   google_fonts: 6.1.0
   google_sign_in: 6.1.5
   google_sign_in_android: 6.1.20
-  google_sign_in_ios: 5.6.4
+  google_sign_in_ios: 5.7.6
   google_sign_in_platform_interface: 2.4.2
   google_sign_in_web: 0.12.1
   http: 1.2.1
@@ -101,6 +105,7 @@ dependencies:
   plugin_platform_interface: 2.1.8
   pointer_interceptor: 0.10.1
   provider: 6.1.2
+  purchases_flutter: 6.0.0
   rxdart: 0.27.7
   shared_preferences: 2.2.2
   shared_preferences_android: 2.2.1
@@ -119,9 +124,9 @@ dependencies:
   synchronized: 3.1.0
   timeago: 3.6.1
   universal_io: 2.2.2
-  url_launcher: 6.2.5
-  url_launcher_android: 6.3.0
-  url_launcher_ios: 6.2.5
+  url_launcher: 6.3.0
+  url_launcher_android: 6.3.4
+  url_launcher_ios: 6.3.1
   url_launcher_platform_interface: 2.3.2
   uuid: ^4.0.0
   video_player: 2.8.6
@@ -140,7 +145,6 @@ dependencies:
       url: https://github.com/FlutterFlow/youtube_player_flutter.git
       path: packages/youtube_player_iframe
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
@@ -156,18 +160,18 @@ dev_dependencies:
   flutter_lints: 4.0.0
   image: 4.0.17
   lints: 4.0.0
-
   flutter_test:
     sdk: flutter
 
 
 flutter_launcher_icons:
-  android: true
+  android: 'launcher_icon'
   ios: true
-  remove_alpha_ios: true
   web:
     generate: true
   image_path: 'assets/images/app_launcher_icon.png'
+  adaptive_icon_background: '#f1f4f8'
+  adaptive_icon_foreground: 'assets/images/adaptive_foreground_icon.png'
 
 
 # For information on the generic Dart part of this file, see the
@@ -190,6 +194,8 @@ flutter:
     - assets/lottie_animations/
     - assets/rive_animations/
     - assets/pdfs/
+
+    - assets/sqlite_db_files/
 
   
   # An image asset can refer to one or more resolution-specific "variants", see

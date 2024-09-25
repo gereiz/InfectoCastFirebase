@@ -1,13 +1,11 @@
-import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/flutter_flow_youtube_player.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'podcasts_model.dart';
 export 'podcasts_model.dart';
 
@@ -28,7 +26,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
     super.initState();
     _model = createModel(context, () => PodcastsModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -40,92 +38,94 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
-    return FutureBuilder<ApiCallResponse>(
-      future: InfectoCastGroup.listaPodCastsCall.call(
-        authToken: FFAppState().authtoken,
-      ),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
+    return YoutubeFullScreenWrapper(
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: const Color(0xFF2B5EA6),
+          body: SafeArea(
+            top: true,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                wrapWithModel(
+                  model: _model.topBarModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: const TopBarWidget(),
                 ),
-              ),
-            ),
-          );
-        }
-        final podcastsListaPodCastsResponse = snapshot.data!;
-
-        return YoutubeFullScreenWrapper(
-          child: GestureDetector(
-            onTap: () => _model.unfocusNode.canRequestFocus
-                ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                : FocusScope.of(context).unfocus(),
-            child: Scaffold(
-              key: scaffoldKey,
-              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-              body: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  wrapWithModel(
-                    model: _model.topBarModel,
-                    updateCallback: () => setState(() {}),
-                    child: TopBarWidget(),
+                Container(
+                  width: double.infinity,
+                  height: MediaQuery.sizeOf(context).height * 0.68,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
-                  Expanded(
-                    child: Container(
-                      width: double.infinity,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Column(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 8.0),
-                                  child: Text(
-                                    'Podcasts  Adicionados recentemente',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ),
-                              ],
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 8.0),
+                              child: Text(
+                                'Podcasts  Adicionados recentemente',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Fira Sans Extra Condensed',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
                             ),
-                            Flexible(
-                              child: ListView(
+                          ],
+                        ),
+                        Flexible(
+                          child: StreamBuilder<List<PodcastsRecord>>(
+                            stream: queryPodcastsRecord(
+                              queryBuilder: (podcastsRecord) =>
+                                  podcastsRecord.orderBy('titulo'),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitFadingFour(
+                                      color: Color(0xFFFCAF23),
+                                      size: 50.0,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<PodcastsRecord> listViewPodcastsRecordList =
+                                  snapshot.data!;
+
+                              return ListView.separated(
                                 padding: EdgeInsets.zero,
                                 primary: false,
                                 scrollDirection: Axis.vertical,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                itemCount: listViewPodcastsRecordList.length,
+                                separatorBuilder: (_, __) =>
+                                    const SizedBox(height: 6.0),
+                                itemBuilder: (context, listViewIndex) {
+                                  final listViewPodcastsRecord =
+                                      listViewPodcastsRecordList[listViewIndex];
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Container(
                                       width: 100.0,
-                                      height: 241.0,
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.29,
                                       decoration: BoxDecoration(
-                                        color: Color(0xFFF4F4F4),
-                                        boxShadow: [
+                                        color: const Color(0xFFF4F4F4),
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x6E74746C),
@@ -142,7 +142,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 10.0),
                                         child: SingleChildScrollView(
                                           child: Column(
@@ -151,7 +151,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                 MainAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 4.0, 4.0, 4.0),
                                                 child: Row(
@@ -159,15 +159,8 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                       MainAxisSize.max,
                                                   children: [
                                                     AutoSizeText(
-                                                      valueOrDefault<String>(
-                                                        InfectoCastGroup
-                                                            .listaPodCastsCall
-                                                            .podcastTitle(
-                                                          podcastsListaPodCastsResponse
-                                                              .jsonBody,
-                                                        ),
-                                                        'title',
-                                                      ),
+                                                      listViewPodcastsRecord
+                                                          .titulo,
                                                       maxLines: 2,
                                                       minFontSize: 14.0,
                                                       style: FlutterFlowTheme
@@ -175,7 +168,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Fira Sans Extra Condensed',
                                                             fontSize: 18.0,
                                                             letterSpacing: 0.0,
                                                           ),
@@ -184,15 +177,12 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 10.0),
                                                 child: FlutterFlowYoutubePlayer(
                                                   url:
-                                                      '${InfectoCastGroup.listaPodCastsCall.podcastLink(
-                                                    podcastsListaPodCastsResponse
-                                                        .jsonBody,
-                                                  )}',
+                                                      listViewPodcastsRecord.link,
                                                   autoPlay: false,
                                                   looping: true,
                                                   mute: false,
@@ -201,26 +191,26 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                   strictRelatedVideos: false,
                                                 ),
                                               ),
-                                            ].divide(SizedBox(height: 6.0)),
+                                            ].divide(const SizedBox(height: 6.0)),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ].divide(SizedBox(height: 6.0)),
-                              ),
-                            ),
-                          ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

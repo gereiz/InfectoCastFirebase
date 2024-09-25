@@ -1,15 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
+import '/backend/backend.dart';
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/backend/schema/structs/index.dart';
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'topicos_model.dart';
 export 'topicos_model.dart';
 
@@ -21,7 +17,7 @@ class TopicosWidget extends StatefulWidget {
   });
 
   final String? title;
-  final int? idSubCategoria;
+  final DocumentReference? idSubCategoria;
 
   @override
   State<TopicosWidget> createState() => _TopicosWidgetState();
@@ -37,7 +33,7 @@ class _TopicosWidgetState extends State<TopicosWidget> {
     super.initState();
     _model = createModel(context, () => TopicosModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -49,250 +45,260 @@ class _TopicosWidgetState extends State<TopicosWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            wrapWithModel(
-              model: _model.topBarModel,
-              updateCallback: () => setState(() {}),
-              child: TopBarWidget(),
-            ),
-            Expanded(
-              child: Container(
+        backgroundColor: const Color(0xFF2B5EA6),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              wrapWithModel(
+                model: _model.topBarModel,
+                updateCallback: () => safeSetState(() {}),
+                child: const TopBarWidget(),
+              ),
+              Container(
                 width: double.infinity,
-                height: 71.0,
+                height: MediaQuery.sizeOf(context).height * 0.68,
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
-                          child: FutureBuilder<ApiCallResponse>(
-                            future: InfectoCastGroup.listaTopicosCall.call(
-                              idSubcategory: widget!.idSubCategoria,
-                              authToken: FFAppState().authtoken,
+                          child: StreamBuilder<List<TopicsRecord>>(
+                            stream: queryTopicsRecord(
+                              queryBuilder: (topicsRecord) => topicsRecord
+                                  .where(
+                                    'id_subcategory',
+                                    isEqualTo: widget.idSubCategoria,
+                                  )
+                                  .orderBy('title'),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return Center(
+                                return const Center(
                                   child: SizedBox(
                                     width: 50.0,
                                     height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
+                                    child: SpinKitFadingFour(
+                                      color: Color(0xFFFCAF23),
+                                      size: 50.0,
                                     ),
                                   ),
                                 );
                               }
-                              final listViewListaTopicosResponse =
+                              List<TopicsRecord> listViewTopicsRecordList =
                                   snapshot.data!;
 
-                              return Builder(
-                                builder: (context) {
-                                  final topicos = (listViewListaTopicosResponse
-                                                  .jsonBody
-                                                  .toList()
-                                                  .map<TopicsStruct?>(
-                                                      TopicsStruct.maybeFromMap)
-                                                  .toList()
-                                              as Iterable<TopicsStruct?>)
-                                          .withoutNulls
-                                          ?.toList() ??
-                                      [];
+                              return ListView.builder(
+                                padding: const EdgeInsets.fromLTRB(
+                                  0,
+                                  2.0,
+                                  0,
+                                  20.0,
+                                ),
+                                primary: false,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: listViewTopicsRecordList.length,
+                                itemBuilder: (context, listViewIndex) {
+                                  final listViewTopicsRecord =
+                                      listViewTopicsRecordList[listViewIndex];
+                                  return Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 16.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        if ((listViewTopicsRecord.premium ==
+                                                0) &&
+                                            (listViewTopicsRecord.gold == 0)) {
+                                          context.pushNamed(
+                                            'topico',
+                                            queryParameters: {
+                                              'idTopico': serializeParam(
+                                                listViewTopicsRecord.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                              'title': serializeParam(
+                                                listViewTopicsRecord.title,
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        } else {
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false) ==
+                                              true) {
+                                            context.pushNamed(
+                                              'topico',
+                                              queryParameters: {
+                                                'idTopico': serializeParam(
+                                                  listViewTopicsRecord
+                                                      .reference,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                                'title': serializeParam(
+                                                  listViewTopicsRecord.title,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          } else {
+                                            final isEntitled =
+                                                await revenue_cat.isEntitled(
+                                                        'usuarioPremium') ??
+                                                    false;
+                                            if (!isEntitled) {
+                                              await revenue_cat.loadOfferings();
+                                            }
 
-                                  return ListView.builder(
-                                    padding: EdgeInsets.fromLTRB(
-                                      0,
-                                      2.0,
-                                      0,
-                                      20.0,
-                                    ),
-                                    primary: false,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: topicos.length,
-                                    itemBuilder: (context, topicosIndex) {
-                                      final topicosItem = topicos[topicosIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 16.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            if (topicosItem.premium ==
-                                                valueOrDefault(
-                                                    currentUserDocument
-                                                        ?.premium,
-                                                    0)) {
+                                            if (isEntitled) {
                                               context.pushNamed(
                                                 'topico',
                                                 queryParameters: {
                                                   'idTopico': serializeParam(
-                                                    topicosItem.id,
-                                                    ParamType.int,
+                                                    listViewTopicsRecord
+                                                        .reference,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                  'title': serializeParam(
+                                                    listViewTopicsRecord.title,
+                                                    ParamType.String,
                                                   ),
                                                 }.withoutNulls,
                                               );
                                             } else {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return WebViewAware(
-                                                    child: AlertDialog(
-                                                      title: Text('Erro.'),
-                                                      content: Text(
-                                                          'Este conteúdo é exclusivo para usuários Premium.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  );
-                                                },
-                                              );
+                                              context.pushNamed('planos');
                                             }
-                                          },
-                                          child: Material(
-                                            color: Colors.transparent,
-                                            elevation: 0.0,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(6.0),
-                                            ),
-                                            child: Container(
-                                              width: 100.0,
-                                              height: 30.0,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xFFF4F4F4),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    blurRadius: 4.0,
-                                                    color: Color(0x33000000),
-                                                    offset: Offset(
-                                                      0.0,
-                                                      2.0,
-                                                    ),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(6.0),
+                                          }
+                                        }
+                                      },
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 0.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(6.0),
+                                        ),
+                                        child: Container(
+                                          width: 100.0,
+                                          height: 30.0,
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFFF4F4F4),
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(6.0),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  listViewTopicsRecord.title,
+                                                  maxLines: 1,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Fira Sans Extra Condensed',
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
                                               ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      topicosItem.title,
-                                                      maxLines: 1,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .titleLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Roboto',
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                8.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        if ((topicosItem.gold ==
-                                                                0) &&
-                                                            (topicosItem
-                                                                    .premium ==
-                                                                0))
-                                                          ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            child: Image.asset(
-                                                              'assets/images/202404221054free.png',
-                                                              width: 20.0,
-                                                              height: 20.0,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
-                                                        if (topicosItem
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 8.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    if ((listViewTopicsRecord
                                                                 .premium ==
-                                                            1)
-                                                          ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            child: Image.asset(
-                                                              'assets/images/premium.png',
-                                                              width: 20.0,
-                                                              height: 20.0,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
-                                                        if (topicosItem.gold ==
-                                                            1)
-                                                          ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            child: Image.asset(
-                                                              'assets/images/202404221103gold.png',
-                                                              width: 20.0,
-                                                              height: 20.0,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
-                                                      ].divide(
-                                                          SizedBox(width: 4.0)),
-                                                    ),
-                                                  ),
-                                                ],
+                                                            0) &&
+                                                        (listViewTopicsRecord
+                                                                .gold ==
+                                                            0))
+                                                      ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.asset(
+                                                          'assets/images/202404221054free.png',
+                                                          width: 20.0,
+                                                          height: 20.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    if (listViewTopicsRecord
+                                                            .premium ==
+                                                        1)
+                                                      ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.asset(
+                                                          'assets/images/premium.png',
+                                                          width: 20.0,
+                                                          height: 20.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    if (listViewTopicsRecord
+                                                            .gold ==
+                                                        1)
+                                                      ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.asset(
+                                                          'assets/images/202404221103gold.png',
+                                                          width: 20.0,
+                                                          height: 20.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                  ].divide(
+                                                      const SizedBox(width: 4.0)),
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
                                         ),
-                                      );
-                                    },
+                                      ),
+                                    ),
                                   );
                                 },
                               );
@@ -304,8 +310,8 @@ class _TopicosWidgetState extends State<TopicosWidget> {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

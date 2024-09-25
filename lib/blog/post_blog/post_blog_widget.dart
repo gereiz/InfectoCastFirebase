@@ -1,12 +1,9 @@
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'post_blog_model.dart';
 export 'post_blog_model.dart';
 
@@ -36,7 +33,7 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
     super.initState();
     _model = createModel(context, () => PostBlogModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -49,12 +46,10 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: const Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -62,80 +57,98 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
             children: [
               wrapWithModel(
                 model: _model.topBarModel,
-                updateCallback: () => setState(() {}),
-                child: TopBarWidget(),
+                updateCallback: () => safeSetState(() {}),
+                child: const TopBarWidget(),
               ),
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 20.0),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 20.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                widget!.image!,
-                                width: MediaQuery.sizeOf(context).width * 0.98,
-                                height: 200.0,
-                                fit: BoxFit.cover,
-                              ),
+              Container(
+                width: double.infinity,
+                height: MediaQuery.sizeOf(context).height * 0.68,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                ),
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 20.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 20.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.network(
+                              'https://infectoadm.ibitweb.com.br/storage/imgpost/${widget.image}',
+                              width: MediaQuery.sizeOf(context).width * 0.98,
+                              height: 200.0,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Flexible(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          2.0, 0.0, 2.0, 0.0),
-                                      child: AutoSizeText(
-                                        valueOrDefault<String>(
-                                          widget!.title,
-                                          'titulo',
-                                        ),
-                                        textAlign: TextAlign.justify,
-                                        maxLines: 3,
-                                        minFontSize: 12.0,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              fontSize: 18.0,
-                                              letterSpacing: 0.0,
-                                            ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        2.0, 0.0, 2.0, 0.0),
+                                    child: AutoSizeText(
+                                      valueOrDefault<String>(
+                                        widget.title,
+                                        'titulo',
                                       ),
+                                      textAlign: TextAlign.justify,
+                                      maxLines: 3,
+                                      minFontSize: 12.0,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                'Fira Sans Extra Condensed',
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        2.0, 0.0, 2.0, 0.0),
+                                    child: AutoSizeText(
+                                      valueOrDefault<String>(
+                                        widget.image,
+                                        'ss',
+                                      ),
+                                      textAlign: TextAlign.justify,
+                                      maxLines: 3,
+                                      minFontSize: 12.0,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                'Fira Sans Extra Condensed',
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
-                                  ].divide(SizedBox(height: 12.0)),
-                                ),
+                                  ),
+                                ].divide(const SizedBox(height: 12.0)),
                               ),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 40.0),
-                            child: Html(
-                              data: widget!.content!,
-                              onLinkTap: (url, _, __) => launchURL(url!),
                             ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 40.0),
+                          child: Html(
+                            data: widget.content!,
+                            onLinkTap: (url, _, __) => launchURL(url!),
                           ),
-                        ].divide(SizedBox(height: 12.0)),
-                      ),
+                        ),
+                      ].divide(const SizedBox(height: 12.0)),
                     ),
                   ),
                 ),

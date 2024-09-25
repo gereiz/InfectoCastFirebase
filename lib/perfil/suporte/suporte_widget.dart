@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'suporte_model.dart';
@@ -27,7 +24,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
     super.initState();
     _model = createModel(context, () => SuporteModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -40,15 +37,14 @@ class _SuporteWidgetState extends State<SuporteWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
-      child: WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          appBar: AppBar(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        appBar: PreferredSize(
+          preferredSize:
+              Size.fromHeight(MediaQuery.sizeOf(context).height * 0.05),
+          child: AppBar(
             backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
@@ -68,134 +64,58 @@ class _SuporteWidgetState extends State<SuporteWidget> {
             title: Text(
               'Suporte',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Roboto',
+                    fontFamily: 'Fira Sans Extra Condensed',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 20.0,
                     letterSpacing: 0.0,
                   ),
             ),
-            actions: [],
+            actions: const [],
             centerTitle: true,
+            toolbarHeight: MediaQuery.sizeOf(context).height * 0.05,
             elevation: 2.0,
           ),
-          body: SingleChildScrollView(
+        ),
+        body: SafeArea(
+          top: true,
+          child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                   child: Text(
                     'Suporte',
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Fira Sans Extra Condensed',
                           letterSpacing: 0.0,
                         ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
                   child: Text(
                     'Perguntas Frequentes',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Fira Sans Extra Condensed',
                           color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                         ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 0.0, 12.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('alteraSenha');
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 60.0,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 3.0,
-                                        color: Color(0x6E74746C),
-                                        offset: Offset(
-                                          0.0,
-                                          1.0,
-                                        ),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    shape: BoxShape.rectangle,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(12.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Icon(
-                                          Icons.help_outline,
-                                          color: Color(0xFFFCAF23),
-                                          size: 24.0,
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Como alterar minha senha ?',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelLarge
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF57636C),
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(0.9, 0.0),
-                                            child: Icon(
-                                              Icons.arrow_forward_ios,
-                                              color: Color(0xFF57636C),
-                                              size: 18.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                       Divider(
                         thickness: 1.0,
                         color: FlutterFlowTheme.of(context).alternate,
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -214,7 +134,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -228,33 +148,34 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.help_outline,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Como excluir minha conta ?',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
                                                 .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF57636C),
+                                                  fontFamily:
+                                                      'Fira Sans Extra Condensed',
+                                                  color: const Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        Expanded(
+                                        const Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -279,7 +200,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                         color: FlutterFlowTheme.of(context).alternate,
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -298,7 +219,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -312,33 +233,34 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.smartphone_rounded,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   4.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'O Infectocast está  em quais plataformas ?',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
                                                 .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF57636C),
+                                                  fontFamily:
+                                                      'Fira Sans Extra Condensed',
+                                                  color: const Color(0xFF57636C),
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        Expanded(
+                                        const Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -366,23 +288,23 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
                   child: Text(
                     'Tire suas dúvidas',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Fira Sans Extra Condensed',
                           color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                         ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -399,13 +321,13 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: Text('Chat ao vivo'),
-                                          content: Text('Em  breve !'),
+                                          title: const Text('Chat ao vivo'),
+                                          content: const Text('Em  breve !'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: Text('Ok'),
+                                              child: const Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -418,7 +340,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -432,33 +354,34 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.chat_bubble_outline,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Chat ao vivo',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
                                                 .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF57636C),
+                                                  fontFamily:
+                                                      'Fira Sans Extra Condensed',
+                                                  color: const Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        Expanded(
+                                        const Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -483,7 +406,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                         color: FlutterFlowTheme.of(context).alternate,
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -512,7 +435,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -526,33 +449,34 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.email,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Envie um e-mail',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
                                                 .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF57636C),
+                                                  fontFamily:
+                                                      'Fira Sans Extra Condensed',
+                                                  color: const Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        Expanded(
+                                        const Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -580,23 +504,23 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 2.0),
                   child: Text(
                     'Sobre o aplicativo',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Fira Sans Extra Condensed',
                           color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                         ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -615,7 +539,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -629,33 +553,34 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.update,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Atualizações recentes',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
                                                 .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF57636C),
+                                                  fontFamily:
+                                                      'Fira Sans Extra Condensed',
+                                                  color: const Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        Expanded(
+                                        const Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),
@@ -680,7 +605,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                         color: FlutterFlowTheme.of(context).alternate,
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -697,13 +622,13 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: Text('Avalie o Aplicativo'),
-                                          content: Text('Em  breve !'),
+                                          title: const Text('Avalie o Aplicativo'),
+                                          content: const Text('Em  breve !'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: Text('Ok'),
+                                              child: const Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -716,7 +641,7 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -730,33 +655,34 @@ class _SuporteWidgetState extends State<SuporteWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.star_border,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Avalie o Aplicativo',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
                                                 .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0xFF57636C),
+                                                  fontFamily:
+                                                      'Fira Sans Extra Condensed',
+                                                  color: const Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        Expanded(
+                                        const Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),

@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
-import '../schema/structs/index.dart';
 
 import 'package:flutter/foundation.dart';
 
@@ -24,11 +22,11 @@ class InfectoCastGroup {
   static ListaSubCategoriasCall listaSubCategoriasCall =
       ListaSubCategoriasCall();
   static ListaTopicosCall listaTopicosCall = ListaTopicosCall();
-  static GetTopicoCall getTopicoCall = GetTopicoCall();
   static BlogPostsCall blogPostsCall = BlogPostsCall();
   static ListaPodCastsCall listaPodCastsCall = ListaPodCastsCall();
   static ListaPlanosCall listaPlanosCall = ListaPlanosCall();
   static RegisterCall registerCall = RegisterCall();
+  static ListTopicoCall listTopicoCall = ListTopicoCall();
 }
 
 class BuscaCall {
@@ -40,11 +38,11 @@ class BuscaCall {
 
     final ffApiRequestBody = '''
 {
-  "search": "${search}"
+  "search": "$search"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'busca',
-      apiUrl: '${baseUrl}/search',
+      apiUrl: '$baseUrl/search',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -114,12 +112,12 @@ class LoginCall {
 
     final ffApiRequestBody = '''
 {
-  "email": "${email}",
-  "password": "${password}"
+  "email": "$email",
+  "password": "$password"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Login',
-      apiUrl: '${baseUrl}/login',
+      apiUrl: '$baseUrl/login',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -147,11 +145,11 @@ class ListaCategoriasCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'ListaCategorias',
-      apiUrl: '${baseUrl}/listCategories',
+      apiUrl: '$baseUrl/listCategories',
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${authToken}',
+        'Authorization': 'Bearer $authToken',
       },
       params: {},
       returnBody: true,
@@ -205,15 +203,15 @@ class ListaSubCategoriasCall {
 
     final ffApiRequestBody = '''
 {
-  "id_category": ${idCategory}
+  "id_category": $idCategory
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'ListaSubCategorias',
-      apiUrl: '${baseUrl}/listSubCategories',
+      apiUrl: '$baseUrl/listSubCategories',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${authToken}',
+        'Authorization': 'Bearer $authToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -243,15 +241,15 @@ class ListaTopicosCall {
 
     final ffApiRequestBody = '''
 {
-  "id_subcategory": ${idSubcategory}
+  "id_subcategory": $idSubcategory
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'ListaTopicos',
-      apiUrl: '${baseUrl}/listTopics',
+      apiUrl: '$baseUrl/listTopics',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${authToken}',
+        'Authorization': 'Bearer $authToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -340,57 +338,6 @@ class ListaTopicosCall {
           .toList();
 }
 
-class GetTopicoCall {
-  Future<ApiCallResponse> call({
-    int? idTopic,
-    String? authToken = '',
-  }) async {
-    final baseUrl = InfectoCastGroup.getBaseUrl();
-
-    final ffApiRequestBody = '''
-{
-  "id_topic": ${idTopic},
-  "auth_token": "${authToken}"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'GetTopico',
-      apiUrl: '${baseUrl}/listTopic',
-      callType: ApiCallType.POST,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${authToken}',
-      },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
-    );
-  }
-
-  List? singleTopic(dynamic response) => getJsonField(
-        response,
-        r'''$''',
-        true,
-      ) as List?;
-  String? topicContent(dynamic response) => castToType<String>(getJsonField(
-        response,
-        r'''$[:].content''',
-      ));
-  int? topicId(dynamic response) => castToType<int>(getJsonField(
-        response,
-        r'''$[:].id''',
-      ));
-  String? topicTitle(dynamic response) => castToType<String>(getJsonField(
-        response,
-        r'''$[:].title''',
-      ));
-}
-
 class BlogPostsCall {
   Future<ApiCallResponse> call({
     String? authToken = '',
@@ -399,11 +346,11 @@ class BlogPostsCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'BlogPosts',
-      apiUrl: '${baseUrl}/listPosts',
+      apiUrl: '$baseUrl/listPosts',
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${authToken}',
+        'Authorization': 'Bearer $authToken',
       },
       params: {},
       returnBody: true,
@@ -446,11 +393,11 @@ class ListaPodCastsCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'ListaPodCasts',
-      apiUrl: '${baseUrl}/listPodcasts',
+      apiUrl: '$baseUrl/listPodcasts',
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${authToken}',
+        'Authorization': 'Bearer $authToken',
       },
       params: {},
       returnBody: true,
@@ -488,11 +435,11 @@ class ListaPlanosCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'ListaPlanos',
-      apiUrl: '${baseUrl}/listPlans',
+      apiUrl: '$baseUrl/listPlans',
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${authToken}',
+        'Authorization': 'Bearer $authToken',
       },
       params: {},
       returnBody: true,
@@ -593,17 +540,47 @@ class RegisterCall {
 
     final ffApiRequestBody = '''
 {
-  "name": "${name}",
-  "email": "${email}",
-  "password": "${password}",
-  "country_id": ${countryId},
-  "phone": "${phone}",
-  "plan": ${plan},
-  "is_admin": ${isAdmin}
+  "name": "$name",
+  "email": "$email",
+  "password": "$password",
+  "country_id": $countryId,
+  "phone": "$phone",
+  "plan": $plan,
+  "is_admin": $isAdmin
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Register',
-      apiUrl: '${baseUrl}/register',
+      apiUrl: '$baseUrl/register',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class ListTopicoCall {
+  Future<ApiCallResponse> call({
+    String? title = '',
+  }) async {
+    final baseUrl = InfectoCastGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "title": "$title"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ListTopico',
+      apiUrl: '$baseUrl/listTopic',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -632,20 +609,22 @@ class StripeSubscriptionGroup {
     'Authorization':
         'Bearer sk_test_51PQBEHP1Xnjwtxz7zC8QkyEHiiyy99SNQtJsTrb578N7PmHlAGGBXPZJyMowjynDj358vneGS7wZYimGsAPUmNki00IWNN2qzc',
   };
-  static CreateCustomerCall createCustomerCall = CreateCustomerCall();
-  static CreateCheckoutSessionCall createCheckoutSessionCall =
-      CreateCheckoutSessionCall();
+  static CriarCustomerCall criarCustomerCall = CriarCustomerCall();
+  static CriarSessaoCheckoutCall criarSessaoCheckoutCall =
+      CriarSessaoCheckoutCall();
+  static PesquisarAssinaturaCall pesquisarAssinaturaCall =
+      PesquisarAssinaturaCall();
 }
 
-class CreateCustomerCall {
+class CriarCustomerCall {
   Future<ApiCallResponse> call({
     String? email = '',
   }) async {
     final baseUrl = StripeSubscriptionGroup.getBaseUrl();
 
     return ApiManager.instance.makeApiCall(
-      callName: 'createCustomer',
-      apiUrl: '${baseUrl}/customers',
+      callName: 'Criar Customer',
+      apiUrl: '$baseUrl/customers',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -671,7 +650,7 @@ class CreateCustomerCall {
       ));
 }
 
-class CreateCheckoutSessionCall {
+class CriarSessaoCheckoutCall {
   Future<ApiCallResponse> call({
     String? customer = '',
     String? successUrl = '',
@@ -681,8 +660,8 @@ class CreateCheckoutSessionCall {
     final baseUrl = StripeSubscriptionGroup.getBaseUrl();
 
     return ApiManager.instance.makeApiCall(
-      callName: 'createCheckoutSession',
-      apiUrl: '${baseUrl}/checkout/sessions',
+      callName: 'Criar Sessao Checkout',
+      apiUrl: '$baseUrl/checkout/sessions',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -713,29 +692,26 @@ class CreateCheckoutSessionCall {
       ));
 }
 
-/// End StripeSubscription Group Code
-
-class StripeCheckoutLinkCall {
-  static Future<ApiCallResponse> call({
-    String? name = '',
-    String? email = '',
-    String? priceId = '',
+class PesquisarAssinaturaCall {
+  Future<ApiCallResponse> call({
+    String? id = '',
+    String? customer = '',
   }) async {
-    final ffApiRequestBody = '''
-{
-  "name": "${name}",
-  "email": "${email}",
-  "priceId": "${priceId}"
-}''';
+    final baseUrl = StripeSubscriptionGroup.getBaseUrl();
+
     return ApiManager.instance.makeApiCall(
-      callName: 'stripeCheckoutLink',
-      apiUrl:
-          'https://e52w9e.buildship.run/create-subscription-checkout-session',
-      callType: ApiCallType.POST,
-      headers: {},
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
+      callName: 'Pesquisar Assinatura',
+      apiUrl: '$baseUrl/subscriptions',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization':
+            'Bearer sk_test_51PQBEHP1Xnjwtxz7zC8QkyEHiiyy99SNQtJsTrb578N7PmHlAGGBXPZJyMowjynDj358vneGS7wZYimGsAPUmNki00IWNN2qzc',
+      },
+      params: {
+        'id': id,
+        'customer': customer,
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -745,6 +721,8 @@ class StripeCheckoutLinkCall {
     );
   }
 }
+
+/// End StripeSubscription Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;

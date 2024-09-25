@@ -1,13 +1,11 @@
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:from_css_color/from_css_color.dart';
 
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
-import '../../flutter_flow/lat_lng.dart';
+import '/backend/sqlite/queries/sqlite_row.dart';
+import '/backend/sqlite/queries/read.dart';
 import '../../flutter_flow/place.dart';
 import '../../flutter_flow/uploaded_file.dart';
 
@@ -47,6 +45,9 @@ dynamic serializeParameter(dynamic value) {
       return placeToString(value as FFPlace);
     case FFUploadedFile:
       return uploadedFileToString(value as FFUploadedFile);
+
+    case SqliteRow:
+      return json.encode((value as SqliteRow).data);
   }
 
   if (value is DocumentReference) {
@@ -66,7 +67,7 @@ String serializeParameterData(Map<String, dynamic> parameterData) => jsonEncode(
           key,
           serializeParameter(value),
         ),
-      )..removeWhere((k, v) => k == null || v == null),
+      )..removeWhere((k, v) => v == null),
     );
 
 /// END SERIALIZATION HELPERS
@@ -145,6 +146,15 @@ T? getParameter<T>(Map<String, dynamic> data, String paramName) {
         return placeFromString(param) as T;
       case FFUploadedFile:
         return uploadedFileFromString(param) as T;
+
+      case ListaCategoriasRow:
+        return ListaCategoriasRow(json.decode(param) as Map<String, dynamic>)
+            as T;
+      case ListaSubcategoriasRow:
+        return ListaSubcategoriasRow(json.decode(param) as Map<String, dynamic>)
+            as T;
+      case ListaTopicosRow:
+        return ListaTopicosRow(json.decode(param) as Map<String, dynamic>) as T;
     }
     if (param is String) {
       return FirebaseFirestore.instance.doc(param) as T;

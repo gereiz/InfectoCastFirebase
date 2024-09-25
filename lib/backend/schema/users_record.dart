@@ -1,21 +1,19 @@
 import 'dart:async';
 
-import 'package:from_css_color/from_css_color.dart';
 import '/backend/algolia/serialization_util.dart';
 import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -89,6 +87,11 @@ class UsersRecord extends FirestoreRecord {
   int get premium => _premium ?? 0;
   bool hasPremium() => _premium != null;
 
+  // "is_admin" field.
+  bool? _isAdmin;
+  bool get isAdmin => _isAdmin ?? false;
+  bool hasIsAdmin() => _isAdmin != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -104,6 +107,7 @@ class UsersRecord extends FirestoreRecord {
     _free = castToType<int>(snapshotData['Free']);
     _gold = castToType<int>(snapshotData['Gold']);
     _premium = castToType<int>(snapshotData['Premium']);
+    _isAdmin = snapshotData['is_admin'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -163,6 +167,7 @@ class UsersRecord extends FirestoreRecord {
             ParamType.int,
             false,
           ),
+          'is_admin': snapshot.data['is_admin'],
         },
         UsersRecord.collection.doc(snapshot.objectID),
       );
@@ -213,6 +218,7 @@ Map<String, dynamic> createUsersRecordData({
   int? free,
   int? gold,
   int? premium,
+  bool? isAdmin,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -230,6 +236,7 @@ Map<String, dynamic> createUsersRecordData({
       'Free': free,
       'Gold': gold,
       'Premium': premium,
+      'is_admin': isAdmin,
     }.withoutNulls,
   );
 
@@ -254,7 +261,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.paidMember == e2?.paidMember &&
         e1?.free == e2?.free &&
         e1?.gold == e2?.gold &&
-        e1?.premium == e2?.premium;
+        e1?.premium == e2?.premium &&
+        e1?.isAdmin == e2?.isAdmin;
   }
 
   @override
@@ -272,7 +280,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.paidMember,
         e?.free,
         e?.gold,
-        e?.premium
+        e?.premium,
+        e?.isAdmin
       ]);
 
   @override

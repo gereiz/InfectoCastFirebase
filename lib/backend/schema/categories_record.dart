@@ -1,21 +1,19 @@
 import 'dart:async';
 
-import 'package:from_css_color/from_css_color.dart';
 import '/backend/algolia/serialization_util.dart';
 import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class CategoriesRecord extends FirestoreRecord {
   CategoriesRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -44,12 +42,18 @@ class CategoriesRecord extends FirestoreRecord {
   DocumentReference? get idUser => _idUser;
   bool hasIdUser() => _idUser != null;
 
+  // "order" field.
+  int? _order;
+  int get order => _order ?? 0;
+  bool hasOrder() => _order != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _updatedTime = snapshotData['updated_time'] as DateTime?;
     _icon = snapshotData['icon'] as String?;
     _idUser = snapshotData['id_user'] as DocumentReference?;
+    _order = castToType<int>(snapshotData['order']);
   }
 
   static CollectionReference get collection =>
@@ -93,6 +97,11 @@ class CategoriesRecord extends FirestoreRecord {
             ParamType.DocumentReference,
             false,
           ),
+          'order': convertAlgoliaParam(
+            snapshot.data['order'],
+            ParamType.int,
+            false,
+          ),
         },
         CategoriesRecord.collection.doc(snapshot.objectID),
       );
@@ -134,6 +143,7 @@ Map<String, dynamic> createCategoriesRecordData({
   DateTime? updatedTime,
   String? icon,
   DocumentReference? idUser,
+  int? order,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -142,6 +152,7 @@ Map<String, dynamic> createCategoriesRecordData({
       'updated_time': updatedTime,
       'icon': icon,
       'id_user': idUser,
+      'order': order,
     }.withoutNulls,
   );
 
@@ -157,12 +168,13 @@ class CategoriesRecordDocumentEquality implements Equality<CategoriesRecord> {
         e1?.createdTime == e2?.createdTime &&
         e1?.updatedTime == e2?.updatedTime &&
         e1?.icon == e2?.icon &&
-        e1?.idUser == e2?.idUser;
+        e1?.idUser == e2?.idUser &&
+        e1?.order == e2?.order;
   }
 
   @override
-  int hash(CategoriesRecord? e) => const ListEquality()
-      .hash([e?.title, e?.createdTime, e?.updatedTime, e?.icon, e?.idUser]);
+  int hash(CategoriesRecord? e) => const ListEquality().hash(
+      [e?.title, e?.createdTime, e?.updatedTime, e?.icon, e?.idUser, e?.order]);
 
   @override
   bool isValidKey(Object? o) => o is CategoriesRecord;

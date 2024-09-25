@@ -1,21 +1,18 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'serialization_util.dart';
 import '../backend.dart';
-import '../../flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
-import '../../index.dart';
-import '../../main.dart';
 
 final _handledMessageIds = <String?>{};
 
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler({Key? key, required this.child})
-      : super(key: key);
+  const PushNotificationsHandler({super.key, required this.child});
 
   final Widget child;
 
@@ -45,9 +42,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
     }
     _handledMessageIds.add(message.messageId);
 
-    if (mounted) {
-      setState(() => _loading = true);
-    }
+    safeSetState(() => _loading = true);
     try {
       final initialPageName = message.data['initialPageName'] as String;
       final initialParameterData = getInitialParameterData(message.data);
@@ -63,16 +58,16 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
     } catch (e) {
       print('Error: $e');
     } finally {
-      if (mounted) {
-        setState(() => _loading = false);
-      }
+      safeSetState(() => _loading = false);
     }
   }
 
   @override
   void initState() {
     super.initState();
-    handleOpenedPushNotification();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      handleOpenedPushNotification();
+    });
   }
 
   @override
@@ -107,7 +102,7 @@ class ParameterData {
       );
 
   static Future<ParameterData> Function(Map<String, dynamic>) none() =>
-      (data) async => ParameterData();
+      (data) async => const ParameterData();
 }
 
 final parametersBuilderMap =
@@ -118,7 +113,7 @@ final parametersBuilderMap =
   'blog': ParameterData.none(),
   'subCategoria': (data) async => ParameterData(
         allParams: {
-          'idCategoria': getParameter<int>(data, 'idCategoria'),
+          'idCategoria': getParameter<DocumentReference>(data, 'idCategoria'),
           'icon': getParameter<String>(data, 'icon'),
           'title': getParameter<String>(data, 'title'),
         },
@@ -126,12 +121,14 @@ final parametersBuilderMap =
   'topicos': (data) async => ParameterData(
         allParams: {
           'title': getParameter<String>(data, 'title'),
-          'idSubCategoria': getParameter<int>(data, 'idSubCategoria'),
+          'idSubCategoria':
+              getParameter<DocumentReference>(data, 'idSubCategoria'),
         },
       ),
   'topico': (data) async => ParameterData(
         allParams: {
-          'idTopico': getParameter<int>(data, 'idTopico'),
+          'idTopico': getParameter<DocumentReference>(data, 'idTopico'),
+          'title': getParameter<String>(data, 'title'),
         },
       ),
   'postBlog': (data) async => ParameterData(
@@ -142,7 +139,6 @@ final parametersBuilderMap =
         },
       ),
   'podcasts': ParameterData.none(),
-  'podcast': ParameterData.none(),
   'calculadoras': ParameterData.none(),
   'clearanceDeCreatinina': ParameterData.none(),
   'perfil': ParameterData.none(),
@@ -176,7 +172,8 @@ final parametersBuilderMap =
               data, 'chatMessage', ChatMessagesRecord.fromSnapshot),
         },
       ),
-  'buscaGlobalCopy': ParameterData.none(),
+  'dashboardPlano': ParameterData.none(),
+  'novaVersao': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

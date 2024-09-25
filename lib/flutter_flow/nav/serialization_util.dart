@@ -1,12 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:from_css_color/from_css_color.dart';
 
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
-import '../../flutter_flow/lat_lng.dart';
+import '/backend/sqlite/queries/sqlite_row.dart';
+import '/backend/sqlite/queries/read.dart';
 import '../../flutter_flow/place.dart';
 import '../../flutter_flow/uploaded_file.dart';
 
@@ -93,6 +92,9 @@ String? serializeParam(
 
       case ParamType.DataStruct:
         data = param is BaseStruct ? param.serialize() : null;
+
+      case ParamType.SqliteRow:
+        return json.encode((param as SqliteRow).data);
 
       default:
         data = null;
@@ -185,6 +187,8 @@ enum ParamType {
   Document,
   DocumentReference,
   DataStruct,
+
+  SqliteRow,
 }
 
 dynamic deserializeParam<T>(
@@ -204,8 +208,8 @@ dynamic deserializeParam<T>(
         return null;
       }
       return paramValues
-          .where((p) => p is String)
-          .map((p) => p as String)
+          .whereType<String>()
+          .map((p) => p)
           .map((p) => deserializeParam<T>(
                 p,
                 paramType,
@@ -250,6 +254,19 @@ dynamic deserializeParam<T>(
         final data = json.decode(param) as Map<String, dynamic>? ?? {};
         return structBuilder != null ? structBuilder(data) : null;
 
+      case ParamType.SqliteRow:
+        final data = json.decode(param) as Map<String, dynamic>;
+        switch (T) {
+          case ListaCategoriasRow:
+            return ListaCategoriasRow(data);
+          case ListaSubcategoriasRow:
+            return ListaSubcategoriasRow(data);
+          case ListaTopicosRow:
+            return ListaTopicosRow(data);
+          default:
+            return null;
+        }
+
       default:
         return null;
     }
@@ -276,7 +293,7 @@ Future<List<T>> Function(String) getDocList<T>(
     List<String> docIds = [];
     try {
       final ids = json.decode(idsList) as Iterable;
-      docIds = ids.where((d) => d is String).map((d) => d as String).toList();
+      docIds = ids.whereType<String>().map((d) => d).toList();
     } catch (_) {}
     return Future.wait(
       docIds.map(

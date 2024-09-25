@@ -10,11 +10,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'chat_thread_component_model.dart';
 export 'chat_thread_component_model.dart';
 
@@ -48,7 +45,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -76,7 +73,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                 queryBuilder: (chatMessagesRecord) => chatMessagesRecord
                     .where(
                       'chat',
-                      isEqualTo: widget!.chatRef?.reference,
+                      isEqualTo: widget.chatRef?.reference,
                     )
                     .orderBy('timestamp', descending: true),
                 limit: 200,
@@ -88,9 +85,9 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                           .equals(listViewChatMessagesRecordList,
                               _model.listViewPreviousSnapshot)) {
                     () async {
-                      if (!widget!.chatRef!.lastMessageSeenBy
+                      if (!widget.chatRef!.lastMessageSeenBy
                           .contains(currentUserReference)) {
-                        await widget!.chatRef!.reference.update({
+                        await widget.chatRef!.reference.update({
                           ...mapToFirestore(
                             {
                               'last_message_seen_by':
@@ -100,7 +97,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                         });
                       }
 
-                      setState(() {});
+                      safeSetState(() {});
                     }();
                   }
                   _model.listViewPreviousSnapshot = snapshot;
@@ -108,16 +105,15 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
-                  return Center(
+                  return const Center(
                     child: Padding(
                       padding: EdgeInsets.all(16.0),
                       child: SizedBox(
                         width: 50.0,
                         height: 50.0,
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primary,
-                          ),
+                        child: SpinKitFadingFour(
+                          color: Color(0xFFFCAF23),
+                          size: 50.0,
                         ),
                       ),
                     ),
@@ -125,7 +121,6 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                 }
                 List<ChatMessagesRecord> listViewChatMessagesRecordList =
                     snapshot.data!;
-
                 if (listViewChatMessagesRecordList.isEmpty) {
                   return EmptyStateSimpleWidget(
                     icon: Icon(
@@ -137,8 +132,9 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                     body: 'You have not sent any messages in this chat yet.',
                   );
                 }
+
                 return ListView.builder(
-                  padding: EdgeInsets.fromLTRB(
+                  padding: const EdgeInsets.fromLTRB(
                     0,
                     12.0,
                     0,
@@ -151,13 +147,13 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                     final listViewChatMessagesRecord =
                         listViewChatMessagesRecordList[listViewIndex];
                     return Container(
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: wrapWithModel(
                         model: _model.chatThreadUpdateModels.getModel(
                           listViewChatMessagesRecord.reference.id,
                           listViewIndex,
                         ),
-                        updateCallback: () => setState(() {}),
+                        updateCallback: () => safeSetState(() {}),
                         updateOnChange: true,
                         child: ChatThreadUpdateWidget(
                           key: Key(
@@ -176,7 +172,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
             width: double.infinity,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   blurRadius: 3.0,
                   color: Color(0x33000000),
@@ -190,14 +186,13 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                if (_model.uploadedFileUrl != null &&
-                    _model.uploadedFileUrl != '')
+                if (_model.uploadedFileUrl != '')
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
@@ -211,9 +206,9 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: CachedNetworkImage(
                                       fadeInDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       fadeOutDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       imageUrl: path,
                                       width: 120.0,
                                       height: 100.0,
@@ -232,7 +227,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(-1.0, -1.0),
+                                  alignment: const AlignmentDirectional(-1.0, -1.0),
                                   child: FlutterFlowIconButton(
                                     borderColor:
                                         FlutterFlowTheme.of(context).error,
@@ -247,7 +242,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      setState(() {
+                                      safeSetState(() {
                                         _model.isDataUploading = false;
                                         _model.uploadedLocalFile =
                                             FFUploadedFile(
@@ -258,9 +253,9 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                   ),
                                 ),
                               ]
-                                  .divide(SizedBox(width: 8.0))
-                                  .addToStart(SizedBox(width: 16.0))
-                                  .addToEnd(SizedBox(width: 16.0)),
+                                  .divide(const SizedBox(width: 8.0))
+                                  .addToStart(const SizedBox(width: 16.0))
+                                  .addToEnd(const SizedBox(width: 16.0)),
                             ),
                           ),
                         ),
@@ -271,7 +266,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                   key: _model.formKey,
                   autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
-                    padding: EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -304,7 +299,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
                                     m.storagePath, context))) {
-                              setState(() => _model.isDataUploading = true);
+                              safeSetState(() => _model.isDataUploading = true);
                               var selectedUploadedFiles = <FFUploadedFile>[];
 
                               var downloadUrls = <String>[];
@@ -341,25 +336,24 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                               if (selectedUploadedFiles.length ==
                                       selectedMedia.length &&
                                   downloadUrls.length == selectedMedia.length) {
-                                setState(() {
+                                safeSetState(() {
                                   _model.uploadedLocalFile =
                                       selectedUploadedFiles.first;
                                   _model.uploadedFileUrl = downloadUrls.first;
                                 });
                                 showUploadMessage(context, 'Success!');
                               } else {
-                                setState(() {});
+                                safeSetState(() {});
                                 showUploadMessage(
                                     context, 'Failed to upload data');
                                 return;
                               }
                             }
 
-                            if (_model.uploadedFileUrl != null &&
-                                _model.uploadedFileUrl != '') {
+                            if (_model.uploadedFileUrl != '') {
                               _model
                                   .addToImagesUploaded(_model.uploadedFileUrl);
-                              setState(() {});
+                              safeSetState(() {});
                             }
                           },
                         ),
@@ -367,9 +361,9 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                           child: Stack(
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
-                                child: Container(
+                                child: SizedBox(
                                   width: double.infinity,
                                   child: TextFormField(
                                     controller: _model.textController,
@@ -387,7 +381,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                       await chatMessagesRecordReference
                                           .set(createChatMessagesRecordData(
                                         user: currentUserReference,
-                                        chat: widget!.chatRef?.reference,
+                                        chat: widget.chatRef?.reference,
                                         text: _model.textController.text,
                                         timestamp: getCurrentTimestamp,
                                         image: _model.uploadedFileUrl,
@@ -397,7 +391,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                               createChatMessagesRecordData(
                                                 user: currentUserReference,
                                                 chat:
-                                                    widget!.chatRef?.reference,
+                                                    widget.chatRef?.reference,
                                                 text:
                                                     _model.textController.text,
                                                 timestamp: getCurrentTimestamp,
@@ -414,7 +408,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                           currentUserReference!);
                                       // updateChatDocument
 
-                                      await widget!.chatRef!.reference.update({
+                                      await widget.chatRef!.reference.update({
                                         ...createChatsRecordData(
                                           lastMessageTime: getCurrentTimestamp,
                                           lastMessageSentBy:
@@ -431,10 +425,10 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                       });
                                       // clearUsers
                                       _model.lastSeenBy = [];
-                                      setState(() {
+                                      safeSetState(() {
                                         _model.textController?.clear();
                                       });
-                                      setState(() {
+                                      safeSetState(() {
                                         _model.isDataUploading = false;
                                         _model.uploadedLocalFile =
                                             FFUploadedFile(
@@ -443,9 +437,9 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                       });
 
                                       _model.imagesUploaded = [];
-                                      setState(() {});
+                                      safeSetState(() {});
 
-                                      setState(() {});
+                                      safeSetState(() {});
                                     },
                                     autofocus: true,
                                     textCapitalization:
@@ -512,7 +506,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                             BorderRadius.circular(24.0),
                                       ),
                                       contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               16.0, 16.0, 56.0, 16.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -531,9 +525,9 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(1.0, 0.0),
+                                alignment: const AlignmentDirectional(1.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 6.0, 4.0),
                                   child: FlutterFlowIconButton(
                                     borderColor: FlutterFlowTheme.of(context)
@@ -541,8 +535,8 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                     borderRadius: 20.0,
                                     borderWidth: 1.0,
                                     buttonSize: 40.0,
-                                    fillColor: Color(0xD52B5EA6),
-                                    icon: Icon(
+                                    fillColor: const Color(0xD52B5EA6),
+                                    icon: const Icon(
                                       Icons.send_rounded,
                                       color: Colors.white,
                                       size: 20.0,
@@ -565,7 +559,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                             chatMessagesRecordReference,
                                             createChatMessagesRecordData(
                                               user: currentUserReference,
-                                              chat: widget!.chatRef?.reference,
+                                              chat: widget.chatRef?.reference,
                                               text: _model.textController.text,
                                               timestamp: getCurrentTimestamp,
                                               image: _model.uploadedFileUrl,
@@ -574,7 +568,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                             .getDocumentFromData(
                                                 createChatMessagesRecordData(
                                                   user: currentUserReference,
-                                                  chat: widget!
+                                                  chat: widget
                                                       .chatRef?.reference,
                                                   text: _model
                                                       .textController.text,
@@ -594,7 +588,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                         // updateChatDocument
 
                                         firestoreBatch.update(
-                                            widget!.chatRef!.reference, {
+                                            widget.chatRef!.reference, {
                                           ...createChatsRecordData(
                                             lastMessageTime:
                                                 getCurrentTimestamp,
@@ -612,10 +606,10 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                         });
                                         // clearUsers
                                         _model.lastSeenBy = [];
-                                        setState(() {
+                                        safeSetState(() {
                                           _model.textController?.clear();
                                         });
-                                        setState(() {
+                                        safeSetState(() {
                                           _model.isDataUploading = false;
                                           _model.uploadedLocalFile =
                                               FFUploadedFile(
@@ -625,15 +619,15 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                         });
 
                                         _model.imagesUploaded = [];
-                                        setState(() {});
+                                        safeSetState(() {});
                                         FFAppState().addToMsgNotification(
-                                            widget!.chatRef!.userB!.id);
-                                        setState(() {});
+                                            widget.chatRef!.userB!.id);
+                                        safeSetState(() {});
                                       } finally {
                                         await firestoreBatch.commit();
                                       }
 
-                                      setState(() {});
+                                      safeSetState(() {});
                                     },
                                   ),
                                 ),

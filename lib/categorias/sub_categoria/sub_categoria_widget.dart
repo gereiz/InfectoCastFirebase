@@ -1,11 +1,9 @@
-import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'sub_categoria_model.dart';
 export 'sub_categoria_model.dart';
 
@@ -17,7 +15,7 @@ class SubCategoriaWidget extends StatefulWidget {
     required this.title,
   });
 
-  final int? idCategoria;
+  final DocumentReference? idCategoria;
   final String? icon;
   final String? title;
 
@@ -35,7 +33,7 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
     super.initState();
     _model = createModel(context, () => SubCategoriaModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -47,168 +45,154 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            wrapWithModel(
-              model: _model.topBarModel,
-              updateCallback: () => setState(() {}),
-              child: TopBarWidget(),
-            ),
-            Expanded(
-              child: Container(
+        backgroundColor: const Color(0xFF2B5EA6),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              wrapWithModel(
+                model: _model.topBarModel,
+                updateCallback: () => safeSetState(() {}),
+                child: const TopBarWidget(),
+              ),
+              Container(
                 width: double.infinity,
-                height: 100.0,
+                height: MediaQuery.sizeOf(context).height * 0.68,
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        FutureBuilder<ApiCallResponse>(
-                          future: InfectoCastGroup.listaSubCategoriasCall.call(
-                            idCategory: widget!.idCategoria,
-                            authToken: FFAppState().authtoken,
+                        StreamBuilder<List<SubcategoriesRecord>>(
+                          stream: querySubcategoriesRecord(
+                            queryBuilder: (subcategoriesRecord) =>
+                                subcategoriesRecord
+                                    .where(
+                                      'id_category',
+                                      isEqualTo: widget.idCategoria,
+                                    )
+                                    .orderBy('title'),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
-                              return Center(
+                              return const Center(
                                 child: SizedBox(
                                   width: 50.0,
                                   height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
-                                    ),
+                                  child: SpinKitFadingFour(
+                                    color: Color(0xFFFCAF23),
+                                    size: 50.0,
                                   ),
                                 ),
                               );
                             }
-                            final gridViewListaSubCategoriasResponse =
+                            List<SubcategoriesRecord>
+                                gridViewSubcategoriesRecordList =
                                 snapshot.data!;
 
-                            return Builder(
-                              builder: (context) {
-                                final subCatList = getJsonField(
-                                  gridViewListaSubCategoriasResponse.jsonBody,
-                                  r'''$''',
-                                ).toList();
-
-                                return GridView.builder(
-                                  padding: EdgeInsets.zero,
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    crossAxisSpacing: 5.0,
-                                    mainAxisSpacing: 6.0,
-                                    childAspectRatio: 1.8,
-                                  ),
-                                  primary: false,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: subCatList.length,
-                                  itemBuilder: (context, subCatListIndex) {
-                                    final subCatListItem =
-                                        subCatList[subCatListIndex];
-                                    return InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'topicos',
-                                          queryParameters: {
-                                            'title': serializeParam(
-                                              '',
-                                              ParamType.String,
-                                            ),
-                                            'idSubCategoria': serializeParam(
-                                              getJsonField(
-                                                subCatListItem,
-                                                r'''$.id''',
-                                              ),
-                                              ParamType.int,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
-                                      child: Container(
-                                        width: 100.0,
-                                        height: 10.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFF4F4F4),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x6E74746C),
-                                              offset: Offset(
-                                                0.0,
-                                                2.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          border: Border.all(
-                                            color: Colors.transparent,
-                                          ),
+                            return GridView.builder(
+                              padding: EdgeInsets.zero,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 5.0,
+                                mainAxisSpacing: 6.0,
+                                childAspectRatio: 1.8,
+                              ),
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: gridViewSubcategoriesRecordList.length,
+                              itemBuilder: (context, gridViewIndex) {
+                                final gridViewSubcategoriesRecord =
+                                    gridViewSubcategoriesRecordList[
+                                        gridViewIndex];
+                                return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'topicos',
+                                      queryParameters: {
+                                        'title': serializeParam(
+                                          widget.title,
+                                          ParamType.String,
                                         ),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.network(
-                                                  'https://infectoadm.ibitweb.com.br/storage/imgcat/${widget!.icon}',
-                                                  width: 30.0,
-                                                  height: 30.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                              Text(
-                                                getJsonField(
-                                                  subCatListItem,
-                                                  r'''$.title''',
-                                                ).toString(),
-                                                maxLines: 3,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF1D1D1B),
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                              ),
-                                            ].divide(SizedBox(height: 8.0)),
-                                          ),
+                                        'idSubCategoria': serializeParam(
+                                          gridViewSubcategoriesRecord.reference,
+                                          ParamType.DocumentReference,
                                         ),
-                                      ),
+                                      }.withoutNulls,
                                     );
                                   },
+                                  child: Container(
+                                    width: 100.0,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 0.1,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFF4F4F4),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x6E74746C),
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
+                                          ),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      border: Border.all(
+                                        color: Colors.transparent,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.network(
+                                              widget.icon!,
+                                              width: 30.0,
+                                              height: 30.0,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                          Text(
+                                            gridViewSubcategoriesRecord.title,
+                                            maxLines: 3,
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge
+                                                .override(
+                                                  fontFamily:
+                                                      'Fira Sans Extra Condensed',
+                                                  color: const Color(0xFF1D1D1B),
+                                                  fontSize: 14.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                          ),
+                                        ].divide(const SizedBox(height: 8.0)),
+                                      ),
+                                    ),
+                                  ),
                                 );
                               },
                             );
@@ -219,8 +203,8 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,21 +1,7 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/chat_groupwbubbles/chat_details_overlay/chat_details_overlay_widget.dart';
 import '/chat_groupwbubbles/chat_thread_component/chat_thread_component_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:async';
 import 'chat2_details_widget.dart' show Chat2DetailsWidget;
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
 class Chat2DetailsModel extends FlutterFlowModel<Chat2DetailsWidget> {
   ///  Local state fields for this page.
@@ -45,7 +31,6 @@ class Chat2DetailsModel extends FlutterFlowModel<Chat2DetailsWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for chat_ThreadComponent component.
   late ChatThreadComponentModel chatThreadComponentModel;
 
@@ -57,7 +42,6 @@ class Chat2DetailsModel extends FlutterFlowModel<Chat2DetailsWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     chatThreadComponentModel.dispose();
   }
 }
