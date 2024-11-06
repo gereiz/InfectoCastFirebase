@@ -10,6 +10,8 @@ import 'backend/push_notifications/push_notifications_util.dart';
 import '/backend/sqlite/sqlite_manager.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'package:flutter/foundation.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'index.dart';
 import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
@@ -19,6 +21,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
+
   await initFirebase();
 
   await SQLiteManager.initialize();
@@ -33,7 +36,9 @@ void main() async {
     loadDataAfterLaunch: true,
   );
   await initializeStripe();
-
+  if (!kIsWeb) {
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  }
   await initializeFirebaseRemoteConfig();
 
   runApp(ChangeNotifierProvider(

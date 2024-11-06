@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import '/backend/algolia/serialization_util.dart';
-import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -129,66 +127,6 @@ class UsersRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       UsersRecord._(reference, mapFromFirestore(data));
-
-  static UsersRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
-      UsersRecord.getDocumentFromData(
-        {
-          'email': snapshot.data['email'],
-          'display_name': snapshot.data['display_name'],
-          'photo_url': snapshot.data['photo_url'],
-          'uid': snapshot.data['uid'],
-          'created_time': convertAlgoliaParam(
-            snapshot.data['created_time'],
-            ParamType.DateTime,
-            false,
-          ),
-          'phone_number': snapshot.data['phone_number'],
-          'shortDescription': snapshot.data['shortDescription'],
-          'last_active_time': convertAlgoliaParam(
-            snapshot.data['last_active_time'],
-            ParamType.DateTime,
-            false,
-          ),
-          'is_support': snapshot.data['is_support'],
-          'stripe_cust_id': snapshot.data['stripe_cust_id'],
-          'paidMember': snapshot.data['paidMember'],
-          'Free': convertAlgoliaParam(
-            snapshot.data['Free'],
-            ParamType.int,
-            false,
-          ),
-          'Gold': convertAlgoliaParam(
-            snapshot.data['Gold'],
-            ParamType.int,
-            false,
-          ),
-          'Premium': convertAlgoliaParam(
-            snapshot.data['Premium'],
-            ParamType.int,
-            false,
-          ),
-          'is_admin': snapshot.data['is_admin'],
-        },
-        UsersRecord.collection.doc(snapshot.objectID),
-      );
-
-  static Future<List<UsersRecord>> search({
-    String? term,
-    FutureOr<LatLng>? location,
-    int? maxResults,
-    double? searchRadiusMeters,
-    bool useCache = false,
-  }) =>
-      FFAlgoliaManager.instance
-          .algoliaQuery(
-            index: 'users',
-            term: term,
-            maxResults: maxResults,
-            location: location,
-            searchRadiusMeters: searchRadiusMeters,
-            useCache: useCache,
-          )
-          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

@@ -1,11 +1,10 @@
-import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:provider/provider.dart';
 import 'blog_model.dart';
 export 'blog_model.dart';
 
@@ -38,8 +37,6 @@ class _BlogWidgetState extends State<BlogWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -86,10 +83,8 @@ class _BlogWidgetState extends State<BlogWidget> {
                         ],
                       ),
                       Expanded(
-                        child: FutureBuilder<ApiCallResponse>(
-                          future: InfectoCastGroup.blogPostsCall.call(
-                            authToken: FFAppState().authtoken,
-                          ),
+                        child: StreamBuilder<List<BlogPostsRecord>>(
+                          stream: queryBlogPostsRecord(),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -104,127 +99,106 @@ class _BlogWidgetState extends State<BlogWidget> {
                                 ),
                               );
                             }
-                            final listViewBlogPostsResponse = snapshot.data!;
+                            List<BlogPostsRecord> listViewBlogPostsRecordList =
+                                snapshot.data!;
 
-                            return Builder(
-                              builder: (context) {
-                                final posts = InfectoCastGroup.blogPostsCall
-                                        .blogPoats(
-                                          listViewBlogPostsResponse.jsonBody,
-                                        )
-                                        ?.toList() ??
-                                    [];
-
-                                return ListView.separated(
-                                  padding: EdgeInsets.zero,
-                                  primary: false,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: posts.length,
-                                  separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 6.0),
-                                  itemBuilder: (context, postsIndex) {
-                                    final postsItem = posts[postsIndex];
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'postBlog',
-                                            queryParameters: {
-                                              'title': serializeParam(
-                                                getJsonField(
-                                                  postsItem,
-                                                  r'''$.title''',
-                                                ).toString(),
-                                                ParamType.String,
-                                              ),
-                                              'image': serializeParam(
-                                                getJsonField(
-                                                  postsItem,
-                                                  r'''$.image''',
-                                                ).toString(),
-                                                ParamType.String,
-                                              ),
-                                              'content': serializeParam(
-                                                getJsonField(
-                                                  postsItem,
-                                                  r'''$.content''',
-                                                ).toString(),
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          elevation: 6.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(6.0),
+                            return ListView.separated(
+                              padding: EdgeInsets.zero,
+                              primary: false,
+                              scrollDirection: Axis.vertical,
+                              itemCount: listViewBlogPostsRecordList.length,
+                              separatorBuilder: (_, __) =>
+                                  const SizedBox(height: 6.0),
+                              itemBuilder: (context, listViewIndex) {
+                                final listViewBlogPostsRecord =
+                                    listViewBlogPostsRecordList[listViewIndex];
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'postBlog',
+                                        queryParameters: {
+                                          'title': serializeParam(
+                                            listViewBlogPostsRecord.title,
+                                            ParamType.String,
                                           ),
-                                          child: Container(
-                                            width: 100.0,
-                                            height: 200.0,
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xFFF4F4F4),
-                                              boxShadow: const [
-                                                BoxShadow(
-                                                  blurRadius: 4.0,
-                                                  color: Color(0x6E74746C),
-                                                  offset: Offset(
-                                                    0.0,
-                                                    2.0,
-                                                  ),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(6.0),
-                                              border: Border.all(
-                                                color: Colors.transparent,
+                                          'content': serializeParam(
+                                            listViewBlogPostsRecord.content,
+                                            ParamType.String,
+                                          ),
+                                          'image': serializeParam(
+                                            listViewBlogPostsRecord.image,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      elevation: 6.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                      child: Container(
+                                        width: 100.0,
+                                        height: 200.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0x6E74746C),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
                                               ),
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Align(
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(6.0),
+                                          border: Border.all(
+                                            color: Colors.transparent,
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.network(
+                                                    listViewBlogPostsRecord
+                                                        .image,
+                                                    width: 400.0,
+                                                    height: 112.0,
+                                                    fit: BoxFit.contain,
                                                     alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      child: Image.network(
-                                                        'https://infectoadm.ibitweb.com.br/storage/imgpost/${getJsonField(
-                                                          postsItem,
-                                                          r'''$.image''',
-                                                        ).toString()}',
-                                                        width: 400.0,
-                                                        height: 112.0,
-                                                        fit: BoxFit.fitWidth,
-                                                        alignment:
-                                                            const Alignment(0.0, 0.0),
-                                                      ),
-                                                    ),
+                                                        const Alignment(0.0, 0.0),
                                                   ),
-                                                  AutoSizeText(
-                                                    getJsonField(
-                                                      postsItem,
-                                                      r'''$.title''',
-                                                    ).toString(),
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 3,
-                                                    minFontSize: 15.0,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                                ),
+                                              ),
+                                              AutoSizeText(
+                                                listViewBlogPostsRecord.title,
+                                                textAlign: TextAlign.center,
+                                                maxLines: 3,
+                                                minFontSize: 15.0,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .titleLarge
                                                         .override(
                                                           fontFamily:
@@ -234,15 +208,13 @@ class _BlogWidgetState extends State<BlogWidget> {
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
-                                                  ),
-                                                ].divide(const SizedBox(height: 6.0)),
                                               ),
-                                            ),
+                                            ].divide(const SizedBox(height: 6.0)),
                                           ),
                                         ),
                                       ),
-                                    );
-                                  },
+                                    ),
+                                  ),
                                 );
                               },
                             );

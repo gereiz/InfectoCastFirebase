@@ -20,3 +20,35 @@ String? virgulaPorPonto(String entradaValor) {
   String output = input.replaceAll(',', '.');
   return output;
 }
+
+String? setHtmlWithFiraSans(String? htmlContent) {
+  // Adiciona a fonte Fira Sans Extra Condensed ao estilo inline do HTML
+  String styledHtml = '''
+    <html>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@400;500&display=swap" rel="stylesheet">
+        <style>
+          body {
+            font-family: 'Fira Sans Extra Condensed', sans-serif;
+            overflow: auto;
+          }
+          .scrollable {
+            // word-wrap: break-word; 
+            // white-space: normal;
+
+          }
+          body::-webkit-scrollbar { 
+            display: none;
+          }
+        </style>
+      </head>
+      <body style="">
+        <div class="scrollable">
+          $htmlContent
+        </div>
+      </body>
+    </html>
+  ''';
+
+  return styledHtml;
+}

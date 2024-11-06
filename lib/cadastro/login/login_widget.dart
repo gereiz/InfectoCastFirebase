@@ -219,8 +219,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         ),
                                       ),
                                     ),
-
-                                    // You will have to add an action on this rich text to go to your login page.
                                     Align(
                                       alignment: const AlignmentDirectional(1.0, 0.0),
                                       child: Padding(
@@ -392,12 +390,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             return;
                                           }
 
-                                          if (FFAppState().localAppVersion >=
-                                              getRemoteConfigInt(
-                                                  'currentAppVersion')) {
-                                            context.pushNamedAuth(
-                                                'inicio', context.mounted);
-                                          } else {
+                                          if (getRemoteConfigInt(
+                                                  'currentAppVersion') >
+                                              FFAppState().localAppVersion) {
                                             context.pushNamedAuth(
                                                 'novaVersao', context.mounted);
 
@@ -406,6 +401,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             await authManager.signOut();
                                             GoRouter.of(context)
                                                 .clearRedirectLocation();
+                                          } else {
+                                            context.pushNamedAuth(
+                                                'inicio', context.mounted);
                                           }
                                         },
                                         text: 'Login',
@@ -498,6 +496,70 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                 ),
                                               ),
                                             ),
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Container(
+                                                width: 70.0,
+                                                height: 32.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 8.0),
+                                                  child: Text(
+                                                    'OU',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Fira Sans Extra Condensed',
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Container(
+                                                width: 70.0,
+                                                height: 32.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 8.0),
+                                                  child: Text(
+                                                    'OU',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Fira Sans Extra Condensed',
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -521,7 +583,51 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
-                                                  text: 'Crie sue conta',
+                                                  text: 'Crie sue conta ',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Fira Sans Extra Condensed',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                )
+                                              ],
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Fira Sans Extra Condensed',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed('cadastro');
+                                          },
+                                          child: RichText(
+                                            textScaler: MediaQuery.of(context)
+                                                .textScaler,
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: getRemoteConfigInt(
+                                                          'currentAppVersion')
+                                                      .toString(),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

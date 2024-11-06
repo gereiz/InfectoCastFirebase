@@ -303,7 +303,8 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                           .displayName,
                                                       'A',
                                                     ).maybeHandleOverflow(
-                                                        maxChars: 1),
+                                                      maxChars: 1,
+                                                    ),
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -387,7 +388,8 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                       .displayName,
                                                   'A',
                                                 ).maybeHandleOverflow(
-                                                    maxChars: 1),
+                                                  maxChars: 1,
+                                                ),
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)

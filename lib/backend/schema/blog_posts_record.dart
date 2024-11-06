@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import '/backend/algolia/serialization_util.dart';
-import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -94,64 +92,6 @@ class BlogPostsRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       BlogPostsRecord._(reference, mapFromFirestore(data));
-
-  static BlogPostsRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
-      BlogPostsRecord.getDocumentFromData(
-        {
-          'author': convertAlgoliaParam(
-            snapshot.data['author'],
-            ParamType.DocumentReference,
-            false,
-          ),
-          'title': snapshot.data['title'],
-          'image': snapshot.data['image'],
-          'date': convertAlgoliaParam(
-            snapshot.data['date'],
-            ParamType.DateTime,
-            false,
-          ),
-          'content': snapshot.data['content'],
-          'status': convertAlgoliaParam(
-            snapshot.data['status'],
-            ParamType.int,
-            false,
-          ),
-          'post_order': convertAlgoliaParam(
-            snapshot.data['post_order'],
-            ParamType.int,
-            false,
-          ),
-          'created_time': convertAlgoliaParam(
-            snapshot.data['created_time'],
-            ParamType.DateTime,
-            false,
-          ),
-          'updated_time': convertAlgoliaParam(
-            snapshot.data['updated_time'],
-            ParamType.DateTime,
-            false,
-          ),
-        },
-        BlogPostsRecord.collection.doc(snapshot.objectID),
-      );
-
-  static Future<List<BlogPostsRecord>> search({
-    String? term,
-    FutureOr<LatLng>? location,
-    int? maxResults,
-    double? searchRadiusMeters,
-    bool useCache = false,
-  }) =>
-      FFAlgoliaManager.instance
-          .algoliaQuery(
-            index: 'blog_posts',
-            term: term,
-            maxResults: maxResults,
-            location: location,
-            searchRadiusMeters: searchRadiusMeters,
-            useCache: useCache,
-          )
-          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

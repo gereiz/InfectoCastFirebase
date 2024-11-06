@@ -1,11 +1,12 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/components/top_bar_g_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'busca_global_model.dart';
 export 'busca_global_model.dart';
 
@@ -41,8 +42,6 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: WillPopScope(
@@ -119,7 +118,101 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.textController',
                                       const Duration(milliseconds: 500),
-                                      () => safeSetState(() {}),
+                                      () async {
+                                        _model.categoryResults =
+                                            await AlgoliaGroup.categoriesCall
+                                                .call(
+                                          titulo: _model.textController.text,
+                                        );
+
+                                        if ((_model
+                                                .categoryResults?.succeeded ??
+                                            true)) {
+                                          _model.subcatResults =
+                                              await AlgoliaGroup
+                                                  .subcategoriesCall
+                                                  .call(
+                                            titulo: _model.textController.text,
+                                          );
+
+                                          if ((_model.topicResults?.succeeded ??
+                                              true)) {
+                                            _model.topicResults =
+                                                await AlgoliaGroup.topicsCall
+                                                    .call(
+                                              titulo:
+                                                  _model.textController.text,
+                                            );
+
+                                            if (!(_model
+                                                    .topicResults?.succeeded ??
+                                                true)) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Erro ao realizar consulta.',
+                                                    style: GoogleFonts.getFont(
+                                                      'Fira Sans Extra Condensed',
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                  ),
+                                                  duration: const Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .warning,
+                                                ),
+                                              );
+                                            }
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Erro ao realizar consulta.',
+                                                  style: GoogleFonts.getFont(
+                                                    'Fira Sans Extra Condensed',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                ),
+                                                duration: const Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .warning,
+                                              ),
+                                            );
+                                          }
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Erro ao realizar consulta.',
+                                                style: GoogleFonts.getFont(
+                                                  'Fira Sans Extra Condensed',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                              ),
+                                              duration:
+                                                  const Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .warning,
+                                            ),
+                                          );
+                                        }
+
+                                        safeSetState(() {});
+                                      },
                                     ),
                                     autofocus: true,
                                     obscureText: false,
@@ -156,6 +249,112 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                           ? InkWell(
                                               onTap: () async {
                                                 _model.textController?.clear();
+                                                _model.categoryResults =
+                                                    await AlgoliaGroup
+                                                        .categoriesCall
+                                                        .call(
+                                                  titulo: _model
+                                                      .textController.text,
+                                                );
+
+                                                if ((_model.categoryResults
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  _model.subcatResults =
+                                                      await AlgoliaGroup
+                                                          .subcategoriesCall
+                                                          .call(
+                                                    titulo: _model
+                                                        .textController.text,
+                                                  );
+
+                                                  if ((_model.topicResults
+                                                          ?.succeeded ??
+                                                      true)) {
+                                                    _model.topicResults =
+                                                        await AlgoliaGroup
+                                                            .topicsCall
+                                                            .call(
+                                                      titulo: _model
+                                                          .textController.text,
+                                                    );
+
+                                                    if (!(_model.topicResults
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text(
+                                                            'Erro ao realizar consulta.',
+                                                            style: GoogleFonts
+                                                                .getFont(
+                                                              'Fira Sans Extra Condensed',
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                          ),
+                                                          duration: const Duration(
+                                                              milliseconds:
+                                                                  4000),
+                                                          backgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .warning,
+                                                        ),
+                                                      );
+                                                    }
+                                                  } else {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'Erro ao realizar consulta.',
+                                                          style: GoogleFonts
+                                                              .getFont(
+                                                            'Fira Sans Extra Condensed',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                          ),
+                                                        ),
+                                                        duration: const Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .warning,
+                                                      ),
+                                                    );
+                                                  }
+                                                } else {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'Erro ao realizar consulta.',
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          'Fira Sans Extra Condensed',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                      ),
+                                                      duration: const Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .warning,
+                                                    ),
+                                                  );
+                                                }
+
+                                                safeSetState(() {});
                                                 safeSetState(() {});
                                               },
                                               child: Icon(
@@ -194,167 +393,582 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: MediaQuery.sizeOf(context).height * 0.68,
+                  height: MediaQuery.sizeOf(context).height * 0.67,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 12.0, 0.0, 0.0),
-                          child: FutureBuilder<ApiCallResponse>(
-                            future: InfectoCastGroup.buscaCall.call(
-                              search: _model.textController.text,
-                              authToken: FFAppState().authtoken,
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return const Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: SpinKitFadingFour(
-                                      color: Color(0xFFFCAF23),
-                                      size: 50.0,
-                                    ),
-                                  ),
-                                );
-                              }
-                              final listViewBuscaResponse = snapshot.data!;
-
-                              return Builder(
-                                builder: (context) {
-                                  final buscaResultados =
-                                      listViewBuscaResponse.jsonBody.toList();
-
-                                  return ListView.builder(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      0,
-                                      2.0,
-                                      0,
-                                      0,
-                                    ),
-                                    primary: false,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: buscaResultados.length,
-                                    itemBuilder:
-                                        (context, buscaResultadosIndex) {
-                                      final buscaResultadosItem =
-                                          buscaResultados[buscaResultadosIndex];
-                                      return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            8.0, 0.0, 8.0, 16.0),
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          elevation: 0.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(6.0),
-                                          ),
-                                          child: Container(
-                                            width: 100.0,
-                                            height: 30.0,
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xFFF4F4F4),
-                                              boxShadow: const [
-                                                BoxShadow(
-                                                  blurRadius: 4.0,
-                                                  color: Color(0x33000000),
-                                                  offset: Offset(
-                                                    0.0,
-                                                    2.0,
-                                                  ),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(6.0),
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    getJsonField(
-                                                      buscaResultadosItem,
-                                                      r'''$.title''',
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            decoration: const BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                if (_model.textController.text != '')
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 12.0, 0.0, 0.0),
+                                    child: Builder(
+                                      builder: (context) {
+                                        final categoriesList =
+                                            AlgoliaGroup.categoriesCall
+                                                    .hits(
+                                                      (_model.categoryResults
+                                                              ?.jsonBody ??
+                                                          ''),
                                                     )
-                                                        .toString()
-                                                        .maybeHandleOverflow(
-                                                          maxChars: 45,
-                                                          replacement: '…',
-                                                        ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Fira Sans Extra Condensed',
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                    ?.toList() ??
+                                                [];
+
+                                        return ListView.builder(
+                                          padding: const EdgeInsets.fromLTRB(
+                                            0,
+                                            2.0,
+                                            0,
+                                            0,
+                                          ),
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: categoriesList.length,
+                                          itemBuilder:
+                                              (context, categoriesListIndex) {
+                                            final categoriesListItem =
+                                                categoriesList[
+                                                    categoriesListIndex];
+                                            return Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(8.0, 0.0, 8.0, 8.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  _model.categoriaAtual =
+                                                      await queryCategoriesRecordOnce(
+                                                    queryBuilder:
+                                                        (categoriesRecord) =>
+                                                            categoriesRecord
+                                                                .where(
+                                                      'title',
+                                                      isEqualTo: getJsonField(
+                                                        categoriesListItem,
+                                                        r'''$.title''',
+                                                      ).toString(),
+                                                    ),
+                                                    singleRecord: true,
+                                                  ).then((s) => s.firstOrNull);
+
+                                                  context.pushNamed(
+                                                    'subCategoria',
+                                                    queryParameters: {
+                                                      'idCategoria':
+                                                          serializeParam(
+                                                        _model.categoriaAtual
+                                                            ?.reference,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                      'icon': serializeParam(
+                                                        _model.categoriaAtual
+                                                            ?.icon,
+                                                        ParamType.String,
+                                                      ),
+                                                      'title': serializeParam(
+                                                        _model.categoriaAtual
+                                                            ?.title,
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+
+                                                  safeSetState(() {});
+                                                },
+                                                child: Material(
+                                                  color: Colors.transparent,
+                                                  elevation: 0.0,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6.0),
                                                   ),
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  8.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        getJsonField(
-                                                          buscaResultadosItem,
-                                                          r'''$.table_name''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
+                                                  child: Container(
+                                                    width: 100.0,
+                                                    height: 30.0,
+                                                    decoration: BoxDecoration(
+                                                      color: const Color(0xFFF4F4F4),
+                                                      boxShadow: const [
+                                                        BoxShadow(
+                                                          blurRadius: 4.0,
+                                                          color:
+                                                              Color(0x33000000),
+                                                          offset: Offset(
+                                                            0.0,
+                                                            2.0,
+                                                          ),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              6.0),
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            getJsonField(
+                                                              categoriesListItem,
+                                                              r'''$.title''',
+                                                            )
+                                                                .toString()
+                                                                .maybeHandleOverflow(
+                                                                  maxChars: 45,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleLarge
                                                                 .override(
                                                                   fontFamily:
                                                                       'Fira Sans Extra Condensed',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
                                                                   fontSize:
                                                                       14.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                      ),
+                                                          ),
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                'Categoria',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Fira Sans Extra Condensed',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      fontSize:
+                                                                          14.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ].divide(const SizedBox(
+                                                              width: 4.0)),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ].divide(
-                                                      const SizedBox(width: 4.0)),
+                                                  ),
                                                 ),
-                                              ],
-                                            ),
-                                          ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                if (_model.textController.text != '')
+                                  Builder(
+                                    builder: (context) {
+                                      final subcategoriesList =
+                                          AlgoliaGroup.subcategoriesCall
+                                                  .hits(
+                                                    (_model.subcatResults
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )
+                                                  ?.toList() ??
+                                              [];
+
+                                      return ListView.builder(
+                                        padding: const EdgeInsets.fromLTRB(
+                                          0,
+                                          2.0,
+                                          0,
+                                          0,
                                         ),
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: subcategoriesList.length,
+                                        itemBuilder:
+                                            (context, subcategoriesListIndex) {
+                                          final subcategoriesListItem =
+                                              subcategoriesList[
+                                                  subcategoriesListIndex];
+                                          return Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 8.0, 8.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                _model.subcategoriaAtual =
+                                                    await querySubcategoriesRecordOnce(
+                                                  queryBuilder:
+                                                      (subcategoriesRecord) =>
+                                                          subcategoriesRecord
+                                                              .where(
+                                                    'title',
+                                                    isEqualTo: getJsonField(
+                                                      subcategoriesListItem,
+                                                      r'''$.title''',
+                                                    ).toString(),
+                                                  ),
+                                                  singleRecord: true,
+                                                ).then((s) => s.firstOrNull);
+
+                                                context.pushNamed(
+                                                  'topicos',
+                                                  queryParameters: {
+                                                    'title': serializeParam(
+                                                      _model.subcategoriaAtual
+                                                          ?.title,
+                                                      ParamType.String,
+                                                    ),
+                                                    'idSubCategoria':
+                                                        serializeParam(
+                                                      _model.subcategoriaAtual
+                                                          ?.reference,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+
+                                                safeSetState(() {});
+                                              },
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                elevation: 0.0,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          6.0),
+                                                ),
+                                                child: Container(
+                                                  width: 100.0,
+                                                  height: 30.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0xFFF4F4F4),
+                                                    boxShadow: const [
+                                                      BoxShadow(
+                                                        blurRadius: 4.0,
+                                                        color:
+                                                            Color(0x33000000),
+                                                        offset: Offset(
+                                                          0.0,
+                                                          2.0,
+                                                        ),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6.0),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          getJsonField(
+                                                            subcategoriesListItem,
+                                                            r'''$.title''',
+                                                          )
+                                                              .toString()
+                                                              .maybeHandleOverflow(
+                                                                maxChars: 45,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Fira Sans Extra Condensed',
+                                                                fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        8.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Subategoria',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Fira Sans Extra Condensed',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    fontSize:
+                                                                        14.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ].divide(const SizedBox(
+                                                            width: 4.0)),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
                                       );
                                     },
-                                  );
-                                },
-                              );
-                            },
+                                  ),
+                                if (_model.textController.text != '')
+                                  Builder(
+                                    builder: (context) {
+                                      final topicsList = AlgoliaGroup.topicsCall
+                                              .hits(
+                                                (_model.topicResults
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )
+                                              ?.toList() ??
+                                          [];
+
+                                      return ListView.builder(
+                                        padding: const EdgeInsets.fromLTRB(
+                                          0,
+                                          2.0,
+                                          0,
+                                          0,
+                                        ),
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: topicsList.length,
+                                        itemBuilder:
+                                            (context, topicsListIndex) {
+                                          final topicsListItem =
+                                              topicsList[topicsListIndex];
+                                          return Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 8.0, 8.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                _model.topicoAtual =
+                                                    await queryTopicsRecordOnce(
+                                                  queryBuilder:
+                                                      (topicsRecord) =>
+                                                          topicsRecord.where(
+                                                    'title',
+                                                    isEqualTo: getJsonField(
+                                                      topicsListItem,
+                                                      r'''$.title''',
+                                                    ).toString(),
+                                                  ),
+                                                  singleRecord: true,
+                                                ).then((s) => s.firstOrNull);
+
+                                                context.pushNamed(
+                                                  'topico',
+                                                  queryParameters: {
+                                                    'idTopico': serializeParam(
+                                                      _model.topicoAtual
+                                                          ?.reference,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                    'title': serializeParam(
+                                                      _model.topicoAtual?.title,
+                                                      ParamType.String,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+
+                                                safeSetState(() {});
+                                              },
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                elevation: 0.0,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          6.0),
+                                                ),
+                                                child: Container(
+                                                  width: 100.0,
+                                                  height: 30.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0xFFF4F4F4),
+                                                    boxShadow: const [
+                                                      BoxShadow(
+                                                        blurRadius: 4.0,
+                                                        color:
+                                                            Color(0x33000000),
+                                                        offset: Offset(
+                                                          0.0,
+                                                          2.0,
+                                                        ),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6.0),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          getJsonField(
+                                                            topicsListItem,
+                                                            r'''$.title''',
+                                                          )
+                                                              .toString()
+                                                              .maybeHandleOverflow(
+                                                                maxChars: 45,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Fira Sans Extra Condensed',
+                                                                fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        8.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Tópico',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Fira Sans Extra Condensed',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    fontSize:
+                                                                        14.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ].divide(const SizedBox(
+                                                            width: 4.0)),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

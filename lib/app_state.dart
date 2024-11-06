@@ -87,7 +87,7 @@ class FFAppState extends ChangeNotifier {
     secureStorage.delete(key: 'ff_authtoken');
   }
 
-  int _localAppVersion = 1;
+  int _localAppVersion = 4;
   int get localAppVersion => _localAppVersion;
   set localAppVersion(int value) {
     _localAppVersion = value;

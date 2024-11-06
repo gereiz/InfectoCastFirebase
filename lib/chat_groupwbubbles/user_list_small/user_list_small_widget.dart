@@ -118,7 +118,9 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                             valueOrDefault<String>(
                               widget.userRef?.displayName,
                               'A',
-                            ).maybeHandleOverflow(maxChars: 1),
+                            ).maybeHandleOverflow(
+                              maxChars: 1,
+                            ),
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyLarge.override(

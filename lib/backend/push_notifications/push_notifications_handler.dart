@@ -174,6 +174,8 @@ final parametersBuilderMap =
       ),
   'dashboardPlano': ParameterData.none(),
   'novaVersao': ParameterData.none(),
+  'admin': ParameterData.none(),
+  'buscaGlobalCopy': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

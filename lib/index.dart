@@ -40,3 +40,6 @@ export '/chat_groupwbubbles/image_details/image_details_widget.dart'
 export '/planos/dashboard_plano/dashboard_plano_widget.dart'
     show DashboardPlanoWidget;
 export '/home/nova_versao/nova_versao_widget.dart' show NovaVersaoWidget;
+export '/perfil/admin/admin_widget.dart' show AdminWidget;
+export '/busca/busca_global_copy/busca_global_copy_widget.dart'
+    show BuscaGlobalCopyWidget;

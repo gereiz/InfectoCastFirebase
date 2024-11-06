@@ -1,6 +1,7 @@
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -49,7 +50,7 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: FlutterFlowTheme.of(context).warning,
         body: SafeArea(
           top: true,
           child: Column(
@@ -62,33 +63,29 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 0.68,
+                height: MediaQuery.sizeOf(context).height * 0.66,
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 20.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.network(
-                              'https://infectoadm.ibitweb.com.br/storage/imgpost/${widget.image}',
-                              width: MediaQuery.sizeOf(context).width * 0.98,
-                              height: 200.0,
-                              fit: BoxFit.cover,
-                            ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            widget.image!,
+                            width: MediaQuery.sizeOf(context).width * 0.98,
+                            height: 150.0,
+                            fit: BoxFit.none,
                           ),
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Expanded(
+                            Flexible(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,26 +111,9 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
                                           ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        2.0, 0.0, 2.0, 0.0),
-                                    child: AutoSizeText(
-                                      valueOrDefault<String>(
-                                        widget.image,
-                                        'ss',
-                                      ),
-                                      textAlign: TextAlign.justify,
-                                      maxLines: 3,
-                                      minFontSize: 12.0,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily:
-                                                'Fira Sans Extra Condensed',
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
+                                  const Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [],
                                   ),
                                 ].divide(const SizedBox(height: 12.0)),
                               ),
@@ -142,9 +122,10 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 40.0),
+                              0.0, 0.0, 0.0, 20.0),
                           child: Html(
-                            data: widget.content!,
+                            data:
+                                functions.setHtmlWithFiraSans(widget.content)!,
                             onLinkTap: (url, _, __) => launchURL(url!),
                           ),
                         ),

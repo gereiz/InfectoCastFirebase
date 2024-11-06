@@ -350,6 +350,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'versao',
               requireAuth: true,
               builder: (context, params) => const NovaVersaoWidget(),
+            ),
+            FFRoute(
+              name: 'admin',
+              path: 'admin',
+              builder: (context, params) => const AdminWidget(),
+            ),
+            FFRoute(
+              name: 'buscaGlobalCopy',
+              path: 'buscaGlobalCopy',
+              builder: (context, params) => const NavBarPage(
+                initialPage: '',
+                page: BuscaGlobalCopyWidget(),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

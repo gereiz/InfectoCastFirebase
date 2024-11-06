@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import '/backend/algolia/serialization_util.dart';
-import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -87,55 +85,6 @@ class PlansRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       PlansRecord._(reference, mapFromFirestore(data));
-
-  static PlansRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
-      PlansRecord.getDocumentFromData(
-        {
-          'name': snapshot.data['name'],
-          'icon': snapshot.data['icon'],
-          'price': convertAlgoliaParam(
-            snapshot.data['price'],
-            ParamType.double,
-            false,
-          ),
-          'description': snapshot.data['description'],
-          'id_user': convertAlgoliaParam(
-            snapshot.data['id_user'],
-            ParamType.DocumentReference,
-            false,
-          ),
-          'is_active': convertAlgoliaParam(
-            snapshot.data['is_active'],
-            ParamType.int,
-            false,
-          ),
-          'priceId': snapshot.data['priceId'],
-          'planId': convertAlgoliaParam(
-            snapshot.data['planId'],
-            ParamType.int,
-            false,
-          ),
-        },
-        PlansRecord.collection.doc(snapshot.objectID),
-      );
-
-  static Future<List<PlansRecord>> search({
-    String? term,
-    FutureOr<LatLng>? location,
-    int? maxResults,
-    double? searchRadiusMeters,
-    bool useCache = false,
-  }) =>
-      FFAlgoliaManager.instance
-          .algoliaQuery(
-            index: 'plans',
-            term: term,
-            maxResults: maxResults,
-            location: location,
-            searchRadiusMeters: searchRadiusMeters,
-            useCache: useCache,
-          )
-          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

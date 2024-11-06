@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1071627617219:android:ebf3f286d38c63b8793376",
+        "android_client_info": {
+          "package_name": "com.br.ibitweb.infectoadm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1wKthJSIW1riyPBgF_IQPKzKSDQ3c7Aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1071627617219:android:1b34798e2c15a280793376",
         "android_client_info": {
           "package_name": "com.br.ibitweb.infectocast"

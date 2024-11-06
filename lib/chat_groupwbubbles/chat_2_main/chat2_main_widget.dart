@@ -616,7 +616,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                             valueOrDefault<String>(
                                                                               containerUsersRecord.displayName,
                                                                               'A',
-                                                                            ).maybeHandleOverflow(maxChars: 1),
+                                                                            ).maybeHandleOverflow(
+                                                                              maxChars: 1,
+                                                                            ),
                                                                             textAlign:
                                                                                 TextAlign.center,
                                                                             style: FlutterFlowTheme.of(context).bodyLarge.override(
@@ -724,8 +726,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                               .displayName,
                                                                           'A',
                                                                         ).maybeHandleOverflow(
-                                                                            maxChars:
-                                                                                1),
+                                                                          maxChars:
+                                                                              1,
+                                                                        ),
                                                                         textAlign:
                                                                             TextAlign.center,
                                                                         style: FlutterFlowTheme.of(context)

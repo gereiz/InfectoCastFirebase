@@ -11,52 +11,55 @@ const kPushNotificationRuntimeOpts = {
   memory: "2GB",
 };
 
-exports.addFcmToken = functions.https.onCall(async (data, context) => {
-  if (!context.auth) {
-    return "Failed: Unauthenticated calls are not allowed.";
-  }
-  const userDocPath = data.userDocPath;
-  const fcmToken = data.fcmToken;
-  const deviceType = data.deviceType;
-  if (
-    typeof userDocPath === "undefined" ||
-    typeof fcmToken === "undefined" ||
-    typeof deviceType === "undefined" ||
-    userDocPath.split("/").length <= 1 ||
-    fcmToken.length === 0 ||
-    deviceType.length === 0
-  ) {
-    return "Invalid arguments encoutered when adding FCM token.";
-  }
-  if (context.auth.uid != userDocPath.split("/")[1]) {
-    return "Failed: Authenticated user doesn't match user provided.";
-  }
-  const existingTokens = await firestore
-    .collectionGroup(kFcmTokensCollection)
-    .where("fcm_token", "==", fcmToken)
-    .get();
-  var userAlreadyHasToken = false;
-  for (var doc of existingTokens.docs) {
-    const user = doc.ref.parent.parent;
-    if (user.path != userDocPath) {
-      // Should never have the same FCM token associated with multiple users.
-      await doc.ref.delete();
-    } else {
-      userAlreadyHasToken = true;
+exports.addFcmToken = functions
+  .region("southamerica-east1")
+  .https.onCall(async (data, context) => {
+    if (!context.auth) {
+      return "Failed: Unauthenticated calls are not allowed.";
     }
-  }
-  if (userAlreadyHasToken) {
-    return "FCM token already exists for this user. Ignoring...";
-  }
-  await getUserFcmTokensCollection(userDocPath).doc().set({
-    fcm_token: fcmToken,
-    device_type: deviceType,
-    created_at: admin.firestore.FieldValue.serverTimestamp(),
+    const userDocPath = data.userDocPath;
+    const fcmToken = data.fcmToken;
+    const deviceType = data.deviceType;
+    if (
+      typeof userDocPath === "undefined" ||
+      typeof fcmToken === "undefined" ||
+      typeof deviceType === "undefined" ||
+      userDocPath.split("/").length <= 1 ||
+      fcmToken.length === 0 ||
+      deviceType.length === 0
+    ) {
+      return "Invalid arguments encoutered when adding FCM token.";
+    }
+    if (context.auth.uid != userDocPath.split("/")[1]) {
+      return "Failed: Authenticated user doesn't match user provided.";
+    }
+    const existingTokens = await firestore
+      .collectionGroup(kFcmTokensCollection)
+      .where("fcm_token", "==", fcmToken)
+      .get();
+    var userAlreadyHasToken = false;
+    for (var doc of existingTokens.docs) {
+      const user = doc.ref.parent.parent;
+      if (user.path != userDocPath) {
+        // Should never have the same FCM token associated with multiple users.
+        await doc.ref.delete();
+      } else {
+        userAlreadyHasToken = true;
+      }
+    }
+    if (userAlreadyHasToken) {
+      return "FCM token already exists for this user. Ignoring...";
+    }
+    await getUserFcmTokensCollection(userDocPath).doc().set({
+      fcm_token: fcmToken,
+      device_type: deviceType,
+      created_at: admin.firestore.FieldValue.serverTimestamp(),
+    });
+    return "Successfully added FCM token!";
   });
-  return "Successfully added FCM token!";
-});
 
 exports.sendPushNotificationsTrigger = functions
+  .region("southamerica-east1")
   .runWith(kPushNotificationRuntimeOpts)
   .firestore.document(`${kPushNotificationsCollection}/{id}`)
   .onCreate(async (snapshot, _) => {
@@ -220,24 +223,26 @@ const secretKey = (isProd) =>
 /**
  *
  */
-exports.initStripePayment = functions.https.onCall(async (data, context) => {
-  if (!context.auth) {
-    return "Unauthenticated calls are not allowed.";
-  }
-  return await initPayment(data, true);
-});
+exports.initStripePayment = functions
+  .region("southamerica-east1")
+  .https.onCall(async (data, context) => {
+    if (!context.auth) {
+      return "Unauthenticated calls are not allowed.";
+    }
+    return await initPayment(data, true);
+  });
 
 /**
  *
  */
-exports.initStripeTestPayment = functions.https.onCall(
-  async (data, context) => {
+exports.initStripeTestPayment = functions
+  .region("southamerica-east1")
+  .https.onCall(async (data, context) => {
     if (!context.auth) {
       return "Unauthenticated calls are not allowed.";
     }
     return await initPayment(data, false);
-  },
-);
+  });
 
 async function initPayment(data, isProd) {
   try {
@@ -289,8 +294,11 @@ function userFacingMessage(error) {
     ? error.message
     : "An error occurred, developers have been alerted";
 }
-exports.onUserDeleted = functions.auth.user().onDelete(async (user) => {
-  let firestore = admin.firestore();
-  let userRef = firestore.doc("users/" + user.uid);
-  await firestore.collection("users").doc(user.uid).delete();
-});
+exports.onUserDeleted = functions
+  .region("southamerica-east1")
+  .auth.user()
+  .onDelete(async (user) => {
+    let firestore = admin.firestore();
+    let userRef = firestore.doc("users/" + user.uid);
+    await firestore.collection("users").doc(user.uid).delete();
+  });

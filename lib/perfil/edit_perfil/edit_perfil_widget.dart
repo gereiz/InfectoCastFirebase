@@ -659,6 +659,53 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                 ),
                               ),
                             ),
+                            if ((valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false) ==
+                                    true) &&
+                                (currentUserEmail ==
+                                    'georgie.reis@outlook.com'))
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 0.05),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 16.0, 0.0, 0.0),
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) => FFButtonWidget(
+                                      onPressed: () async {
+                                        context.pushNamed('admin');
+                                      },
+                                      text: 'Admin',
+                                      options: FFButtonOptions(
+                                        width: 270.0,
+                                        height: 50.0,
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            const EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: const Color(0xFFFCAF23),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              color: Colors.white,
+                                              fontSize: 18.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                        elevation: 2.0,
+                                        borderSide: const BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
                       ),

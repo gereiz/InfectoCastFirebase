@@ -1,8 +1,9 @@
-import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/components/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -62,9 +63,13 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                   updateCallback: () => safeSetState(() {}),
                   child: const TopBarWidget(),
                 ),
-                FutureBuilder<ApiCallResponse>(
-                  future: InfectoCastGroup.listTopicoCall.call(
-                    title: widget.title,
+                StreamBuilder<List<TopicsRecord>>(
+                  stream: queryTopicsRecord(
+                    queryBuilder: (topicsRecord) => topicsRecord.where(
+                      'title',
+                      isEqualTo: widget.title,
+                    ),
+                    singleRecord: true,
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
@@ -80,7 +85,16 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                         ),
                       );
                     }
-                    final containerListTopicoResponse = snapshot.data!;
+                    List<TopicsRecord> containerTopicsRecordList =
+                        snapshot.data!;
+                    // Return an empty Container when the item does not exist.
+                    if (snapshot.data!.isEmpty) {
+                      return Container();
+                    }
+                    final containerTopicsRecord =
+                        containerTopicsRecordList.isNotEmpty
+                            ? containerTopicsRecordList.first
+                            : null;
 
                     return Container(
                       width: double.infinity,
@@ -99,48 +113,57 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  SingleChildScrollView(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            AutoSizeText(
-                                              valueOrDefault<String>(
-                                                widget.title,
-                                                'title',
+                                  Expanded(
+                                    child: SingleChildScrollView(
+                                      primary: false,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              AutoSizeText(
+                                                valueOrDefault<String>(
+                                                  widget.title,
+                                                  'title',
+                                                ),
+                                                minFontSize: 14.0,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Fira Sans Extra Condensed',
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
-                                              minFontSize: 14.0,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Fira Sans Extra Condensed',
-                                                        fontSize: 20.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                      ].divide(const SizedBox(height: 12.0)),
+                                            ],
+                                          ),
+                                          FlutterFlowWebView(
+                                            content:
+                                                functions.setHtmlWithFiraSans(
+                                                    containerTopicsRecord
+                                                        ?.content)!,
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.96,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.61,
+                                            verticalScroll: true,
+                                            horizontalScroll: false,
+                                            html: true,
+                                          ),
+                                        ].divide(const SizedBox(height: 12.0)),
+                                      ),
                                     ),
                                   ),
                                 ],
-                              ),
-                              FlutterFlowWebView(
-                                content:
-                                    'https://infectoadm.ibitweb.com.br/public/api/v1/topicPage/${widget.title}',
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.62,
-                                verticalScroll: true,
-                                horizontalScroll: false,
                               ),
                             ].addToEnd(const SizedBox(height: 20.0)),
                           ),
