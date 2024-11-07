@@ -23,12 +23,6 @@
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-	<dict>
-	        <key>CFBundleURLSchemes</key>
-	        <array>
-	            <string>fb1728312261314688</string>
-	        </array>
-	</dict>
         <dict>
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
@@ -50,12 +44,6 @@
         </array>
         </dict>
     </array>
-    <key>FacebookAppID</key>
-    <string>1728312261314688</string>
-    <key>FacebookClientToken</key>
-    <string>5fdc0ccf28f53cfe9d9eb25905122a83</string>
-    <key>FacebookDisplayName</key>
-    <string>InfectoCast</string>
     <key>FlutterDeepLinkingEnabled</key>
     <true/>
 
