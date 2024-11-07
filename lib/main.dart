@@ -16,6 +16,7 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'index.dart';
 import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'backend/stripe/payment_manager.dart';
+import 'package:flutter_meta_sdk/flutter_meta_sdk.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
