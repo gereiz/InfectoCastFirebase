@@ -2,6 +2,8 @@ import UIKit
 
 import Flutter
 
+import FBSDKCoreKit
+
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
   override func application(
