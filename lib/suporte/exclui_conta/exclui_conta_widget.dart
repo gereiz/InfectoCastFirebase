@@ -1,9 +1,10 @@
+import '/components/exclusao_conta_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'exclui_conta_model.dart';
 export 'exclui_conta_model.dart';
 
@@ -108,16 +109,24 @@ class _ExcluiContaWidgetState extends State<ExcluiContaWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await launchUrl(Uri(
-                            scheme: 'mailto',
-                            path: 'contato@infectocast.com.br',
-                            query: {
-                              'subject': 'Exclusão de conta',
-                            }
-                                .entries
-                                .map((MapEntry<String, String> e) =>
-                                    '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                                .join('&')));
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          isDismissible: false,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return WebViewAware(
+                              child: GestureDetector(
+                                onTap: () => FocusScope.of(context).unfocus(),
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: const ExclusaoContaWidget(),
+                                ),
+                              ),
+                            );
+                          },
+                        ).then((value) => safeSetState(() {}));
                       },
                       text: 'Quero excluir minha conta',
                       options: FFButtonOptions(
