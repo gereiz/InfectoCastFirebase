@@ -71,7 +71,7 @@
 	<key>NSMicrophoneUsageDescription</key>
     <string>O infectocast gostaria de acessar o microfone do seu dispositivo para o correto funcionamento do chat de voz, e somente para este fim, não guardando estes áudios ou capturando em demais momentos o som captado. </string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>O infectocast gostaria de acessar a galeria de imagens do seu dispsitivo,  exclusivamente para adicionar a foto de perfil em sua conta de usuário no aplicativo. Nenhuma outra ação é tomada com este acesso, assim como sua foto não será usada para nenhuma outra finalidade.</string>
+    <string>O infectocast gostaria de acessar a galeria de imagens do seu dispositivo,  exclusivamente para adicionar a foto de perfil em sua conta de usuário no aplicativo. Nenhuma outra ação é tomada com este acesso, assim como sua foto não será usada para nenhuma outra finalidade.</string>
 	<key>PermissionGroupNotification</key>
     <string>O infectocast gostaria de acessar enviar notificações sobre novos conteúdos e avisos sobre promoções.</string>
     <key>UIBackgroundModes</key>
