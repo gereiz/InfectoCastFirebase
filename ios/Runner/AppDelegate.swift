@@ -19,11 +19,16 @@ import JivoSDK
       application,
       didFinishLaunchingWithOptions: launchOptions
     )
+
+    // Configuração do JivoSDK
+            let jivoSDK = Jivo()
+            jivoSDK.launch()
+
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
 
-override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Jivo.notifications.setPushToken(data: deviceToken)
     }
 
