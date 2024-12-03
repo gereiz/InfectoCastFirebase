@@ -49,8 +49,8 @@ post_install do |installer|
     flutter_additional_ios_build_settings(target)
 #     target.build_configurations.each do |config|
 #       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
-        target.resources_build_phase.clear
-      
+
+    target.resources_build_phase.clear
     end
   end
 end
@@ -60,9 +60,3 @@ target 'ImageNotification' do
   pod 'Firebase/Messaging'
 #   pod 'GoogleUtilities'
 end
-
-# post_install do |installer|
-#   installer.pods_project.targets.each do |target|
-#     target.resources_build_phase.clear
-#   end
-# end
