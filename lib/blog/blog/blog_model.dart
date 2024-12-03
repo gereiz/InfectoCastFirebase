@@ -1,4 +1,4 @@
-import '/components/top_bar_widget.dart';
+import '/componentes/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'blog_widget.dart' show BlogWidget;
 import 'package:flutter/material.dart';
