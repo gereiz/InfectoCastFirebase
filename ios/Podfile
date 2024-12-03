@@ -1,9 +1,9 @@
-source 'https://cdn.cocoapods.org/'
 source 'https://github.com/cocoapods/specs'
 source 'https://github.com/jivochat/cocoapods-repo'
 
 # Uncomment this line to define a global platform for your project
 platform :ios, '14.0.0'
+
 
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
@@ -43,38 +43,18 @@ target 'Runner' do
   pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '11.2.0'
 end
 
-# post_install do |installer|
-#   installer.pods_project.targets.each do |target|
-#     flutter_additional_ios_build_settings(target)
-#     target.build_configurations.each do |config|
-#       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
-#
-#     target.resources_build_phase.clear
-#     end
-#   end
-# end
-
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    # Adiciona configurações adicionais do Flutter para iOS
     flutter_additional_ios_build_settings(target)
-
-    # Remove a configuração de 'IPHONEOS_DEPLOYMENT_TARGET'
     target.build_configurations.each do |config|
       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
-    end
 
-    # Verifica se o target é do tipo PBXNativeTarget antes de tentar acessar o resources_build_phase
-    if target.is_a?(Xcodeproj::Project::Object::PBXNativeTarget)
-      target.resources_build_phase.clear
     end
   end
 end
-
 
 target 'ImageNotification' do
   use_frameworks! :linkage => :static
   pod 'Firebase/Messaging'
   pod 'GoogleUtilities'
 end
-
