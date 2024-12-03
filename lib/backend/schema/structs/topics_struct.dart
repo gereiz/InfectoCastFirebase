@@ -3,7 +3,9 @@ import '/backend/algolia/serialization_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
+import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class TopicsStruct extends FFFirebaseStruct {
@@ -16,6 +18,7 @@ class TopicsStruct extends FFFirebaseStruct {
     int? free,
     int? gold,
     int? premium,
+    List<String>? videos,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _title = title,
@@ -25,6 +28,7 @@ class TopicsStruct extends FFFirebaseStruct {
         _free = free,
         _gold = gold,
         _premium = premium,
+        _videos = videos,
         super(firestoreUtilData);
 
   // "id" field.
@@ -96,6 +100,17 @@ class TopicsStruct extends FFFirebaseStruct {
 
   bool hasPremium() => _premium != null;
 
+  // "Videos" field.
+  List<String>? _videos;
+  List<String> get videos => _videos ?? const [];
+  set videos(List<String>? val) => _videos = val;
+
+  void updateVideos(Function(List<String>) updateFn) {
+    updateFn(_videos ??= []);
+  }
+
+  bool hasVideos() => _videos != null;
+
   static TopicsStruct fromMap(Map<String, dynamic> data) => TopicsStruct(
         id: castToType<int>(data['id']),
         title: data['title'] as String?,
@@ -105,6 +120,7 @@ class TopicsStruct extends FFFirebaseStruct {
         free: castToType<int>(data['Free']),
         gold: castToType<int>(data['Gold']),
         premium: castToType<int>(data['Premium']),
+        videos: getDataList(data['Videos']),
       );
 
   static TopicsStruct? maybeFromMap(dynamic data) =>
@@ -119,6 +135,7 @@ class TopicsStruct extends FFFirebaseStruct {
         'Free': _free,
         'Gold': _gold,
         'Premium': _premium,
+        'Videos': _videos,
       }.withoutNulls;
 
   @override
@@ -154,6 +171,11 @@ class TopicsStruct extends FFFirebaseStruct {
         'Premium': serializeParam(
           _premium,
           ParamType.int,
+        ),
+        'Videos': serializeParam(
+          _videos,
+          ParamType.String,
+          isList: true,
         ),
       }.withoutNulls;
 
@@ -199,6 +221,11 @@ class TopicsStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        videos: deserializeParam<String>(
+          data['Videos'],
+          ParamType.String,
+          true,
+        ),
       );
 
   static TopicsStruct fromAlgoliaData(Map<String, dynamic> data) =>
@@ -243,6 +270,11 @@ class TopicsStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        videos: convertAlgoliaParam<String>(
+          data['Videos'],
+          ParamType.String,
+          true,
+        ),
         firestoreUtilData: const FirestoreUtilData(
           clearUnsetFields: false,
           create: true,
@@ -254,6 +286,7 @@ class TopicsStruct extends FFFirebaseStruct {
 
   @override
   bool operator ==(Object other) {
+    const listEquality = ListEquality();
     return other is TopicsStruct &&
         id == other.id &&
         title == other.title &&
@@ -262,12 +295,13 @@ class TopicsStruct extends FFFirebaseStruct {
         idUser == other.idUser &&
         free == other.free &&
         gold == other.gold &&
-        premium == other.premium;
+        premium == other.premium &&
+        listEquality.equals(videos, other.videos);
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([id, title, content, idSubcategory, idUser, free, gold, premium]);
+  int get hashCode => const ListEquality().hash(
+      [id, title, content, idSubcategory, idUser, free, gold, premium, videos]);
 }
 
 TopicsStruct createTopicsStruct({

@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/top_bar_g_widget.dart';
+import '/componentes/top_bar_g/top_bar_g_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';

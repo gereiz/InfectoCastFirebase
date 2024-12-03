@@ -93,6 +93,12 @@ class FFAppState extends ChangeNotifier {
     _localAppVersion = value;
   }
 
+  bool _Premium = false;
+  bool get Premium => _Premium;
+  set Premium(bool value) {
+    _Premium = value;
+  }
+
   final _userDocQueryManager = FutureRequestManager<UsersRecord>();
   Future<UsersRecord> userDocQuery({
     String? uniqueQueryKey,

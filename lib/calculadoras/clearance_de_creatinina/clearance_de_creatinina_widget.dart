@@ -1,4 +1,4 @@
-import '/components/top_bar_widget.dart';
+import '/componentes/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -390,26 +390,38 @@ class _ClearanceDeCreatininaWidgetState
                                                   functions.virgulaPorPonto(_model
                                                       .creatininaTextController
                                                       .text)!;
-                                              _model.creatininaTextController
-                                                      ?.selection =
-                                                  TextSelection.collapsed(
-                                                      offset: _model
-                                                          .creatininaTextController!
-                                                          .text
-                                                          .length);
+                                              _model.creatininaFocusNode
+                                                  ?.requestFocus();
+                                              WidgetsBinding.instance
+                                                  .addPostFrameCallback((_) {
+                                                _model.creatininaTextController
+                                                        ?.selection =
+                                                    TextSelection.collapsed(
+                                                  offset: _model
+                                                      .creatininaTextController!
+                                                      .text
+                                                      .length,
+                                                );
+                                              });
                                             });
                                             safeSetState(() {
                                               _model.pesoTextController?.text =
                                                   functions.virgulaPorPonto(
                                                       _model.pesoTextController
                                                           .text)!;
-                                              _model.pesoTextController
-                                                      ?.selection =
-                                                  TextSelection.collapsed(
-                                                      offset: _model
-                                                          .pesoTextController!
-                                                          .text
-                                                          .length);
+                                              _model.pesoFocusNode
+                                                  ?.requestFocus();
+                                              WidgetsBinding.instance
+                                                  .addPostFrameCallback((_) {
+                                                _model.pesoTextController
+                                                        ?.selection =
+                                                    TextSelection.collapsed(
+                                                  offset: _model
+                                                      .pesoTextController!
+                                                      .text
+                                                      .length,
+                                                );
+                                              });
                                             });
                                           },
                                           width:

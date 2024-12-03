@@ -1,4 +1,4 @@
-import '/components/top_bar_widget.dart';
+import '/componentes/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'podcasts_widget.dart' show PodcastsWidget;
 import 'package:flutter/material.dart';

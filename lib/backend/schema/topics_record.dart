@@ -62,6 +62,11 @@ class TopicsRecord extends FirestoreRecord {
   int get gold => _gold ?? 0;
   bool hasGold() => _gold != null;
 
+  // "Videos" field.
+  List<String>? _videos;
+  List<String> get videos => _videos ?? const [];
+  bool hasVideos() => _videos != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _content = snapshotData['content'] as String?;
@@ -72,6 +77,7 @@ class TopicsRecord extends FirestoreRecord {
     _free = castToType<int>(snapshotData['Free']);
     _premium = castToType<int>(snapshotData['Premium']);
     _gold = castToType<int>(snapshotData['Gold']);
+    _videos = getDataList(snapshotData['Videos']);
   }
 
   static CollectionReference get collection =>
@@ -133,6 +139,9 @@ class TopicsRecord extends FirestoreRecord {
             snapshot.data['Gold'],
             ParamType.int,
             false,
+          ),
+          'Videos': safeGet(
+            () => snapshot.data['Videos'].toList(),
           ),
         },
         TopicsRecord.collection.doc(snapshot.objectID),
@@ -202,6 +211,7 @@ class TopicsRecordDocumentEquality implements Equality<TopicsRecord> {
 
   @override
   bool equals(TopicsRecord? e1, TopicsRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.title == e2?.title &&
         e1?.content == e2?.content &&
         e1?.createdTime == e2?.createdTime &&
@@ -210,7 +220,8 @@ class TopicsRecordDocumentEquality implements Equality<TopicsRecord> {
         e1?.idSubcategory == e2?.idSubcategory &&
         e1?.free == e2?.free &&
         e1?.premium == e2?.premium &&
-        e1?.gold == e2?.gold;
+        e1?.gold == e2?.gold &&
+        listEquality.equals(e1?.videos, e2?.videos);
   }
 
   @override
@@ -223,7 +234,8 @@ class TopicsRecordDocumentEquality implements Equality<TopicsRecord> {
         e?.idSubcategory,
         e?.free,
         e?.premium,
-        e?.gold
+        e?.gold,
+        e?.videos
       ]);
 
   @override
