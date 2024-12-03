@@ -1,3 +1,4 @@
+source 'https://cdn.cocoapods.org/'
 # source 'https://github.com/cocoapods/specs'
 source 'https://github.com/jivochat/cocoapods-repo'
 
