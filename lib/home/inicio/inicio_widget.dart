@@ -1,10 +1,14 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/top_bar_widget.dart';
+import '/componentes/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 import 'inicio_model.dart';
 export 'inicio_model.dart';
 
@@ -25,6 +29,28 @@ class _InicioWidgetState extends State<InicioWidget> {
     super.initState();
     _model = createModel(context, () => InicioModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (valueOrDefault<bool>(currentUserDocument?.isAdmin, false) == true) {
+        FFAppState().Premium = true;
+        safeSetState(() {});
+      } else {
+        final isEntitled =
+            await revenue_cat.isEntitled('usuarioPremium') ?? false;
+        if (!isEntitled) {
+          await revenue_cat.loadOfferings();
+        }
+
+        if (isEntitled) {
+          FFAppState().Premium = true;
+          safeSetState(() {});
+        } else {
+          FFAppState().Premium = false;
+          FFAppState().update(() {});
+        }
+      }
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -37,6 +63,8 @@ class _InicioWidgetState extends State<InicioWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: WillPopScope(

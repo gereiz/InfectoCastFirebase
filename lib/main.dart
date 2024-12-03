@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,8 @@ import 'index.dart';
 import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'backend/stripe/payment_manager.dart';
 import 'package:flutter_meta_sdk/flutter_meta_sdk.dart';
+import 'package:jivosdk_plugin/bridge.dart';
+import 'package:jivosdk_plugin/plugin.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +29,9 @@ void main() async {
   await initFirebase();
 
   await SQLiteManager.initialize();
+
+  await Firebase.initializeApp();
+  Jivo.session.setup(channelId: 'vjrJVxvm1Z', userToken: 'userToken');
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
@@ -55,12 +61,13 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 
-  static _MyAppState of(BuildContext context) =>
+    static _MyAppState of(BuildContext context) =>
       context.findAncestorStateOfType<_MyAppState>()!;
 }
 
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
+
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
@@ -161,6 +168,12 @@ class _NavBarPageState extends State<NavBarPage> {
               .removeViewPadding(removeBottom: true),
           child: _currentPage ?? tabs[_currentPageName]!),
       extendBody: true,
+      floatingActionButton: FloatingActionButton(
+        onPressed: _openJivoSDK,
+        tooltip: 'Open chat JivoSDK',
+        child: const Icon(Icons.chat_bubble),
+        backgroundColor: const Color(0xFFFCAF23),
+      ),
       bottomNavigationBar: FloatingNavbar(
         currentIndex: currentIndex,
         onTap: (i) => safeSetState(() {
@@ -274,4 +287,9 @@ class _NavBarPageState extends State<NavBarPage> {
       ),
     );
   }
+
+  void _openJivoSDK() {
+    Jivo.display.present();
+  }
 }
+

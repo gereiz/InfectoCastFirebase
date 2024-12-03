@@ -1,6 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/components/top_bar_g_widget.dart';
+import '/componentes/top_bar_g/top_bar_g_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'busca_global_widget.dart' show BuscaGlobalWidget;
 import 'package:flutter/material.dart';

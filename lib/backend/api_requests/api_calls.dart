@@ -241,6 +241,82 @@ class SubcategoriesCall {
 
 /// End Algolia Group Code
 
+/// Start LinksInfecto Group Code
+
+class LinksInfectoGroup {
+  static String getBaseUrl() => 'https://linksinfecto.ibitweb.com.br/api/v1';
+  static Map<String, String> headers = {};
+  static TopicoCall topicoCall = TopicoCall();
+  static TopicosCall topicosCall = TopicosCall();
+}
+
+class TopicoCall {
+  Future<ApiCallResponse> call({
+    String? id = '',
+  }) async {
+    final baseUrl = LinksInfectoGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "id": "${escapeStringForJson(id)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Topico',
+      apiUrl: '$baseUrl/topico',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? titulo(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.title''',
+      ));
+  String? topicoId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.id''',
+      ));
+  String? subcatId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.id_subcategory''',
+      ));
+  String? conteudo(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.content''',
+      ));
+}
+
+class TopicosCall {
+  Future<ApiCallResponse> call() async {
+    final baseUrl = LinksInfectoGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Topicos',
+      apiUrl: '$baseUrl/topicos',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End LinksInfecto Group Code
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
@@ -286,4 +362,15 @@ String _serializeJson(dynamic jsonVar, [bool isList = false]) {
     }
     return isList ? '[]' : '{}';
   }
+}
+
+String? escapeStringForJson(String? input) {
+  if (input == null) {
+    return null;
+  }
+  return input
+      .replaceAll('\\', '\\\\')
+      .replaceAll('"', '\\"')
+      .replaceAll('\n', '\\n')
+      .replaceAll('\t', '\\t');
 }
