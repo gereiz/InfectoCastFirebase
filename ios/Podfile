@@ -58,8 +58,8 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.resources_build_phase.files.each do |file|
-      # Verificar se o caminho do arquivo inclui "Assets.car" ou "PrivacyInfo.xcprivacy"
-      if file.ref && (file.ref.path.include?("Assets.car") || file.ref.path.include?("PrivacyInfo.xcprivacy"))
+      # Acessar fileRef e verificar o caminho do arquivo
+      if file.file_ref && (file.file_ref.path.include?("Assets.car") || file.file_ref.path.include?("PrivacyInfo.xcprivacy"))
         file.remove_from_build_phases
       end
     end
@@ -71,6 +71,7 @@ post_install do |installer|
     end
   end
 end
+
 
 
 
