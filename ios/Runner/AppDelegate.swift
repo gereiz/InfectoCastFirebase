@@ -4,7 +4,7 @@ import Flutter
 
 import FBSDKCoreKit
 
-import UserNotifications
+// import UserNotifications
 
 import JivoSDK
 
