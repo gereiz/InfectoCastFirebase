@@ -168,12 +168,15 @@ class _NavBarPageState extends State<NavBarPage> {
               .removeViewPadding(removeBottom: true),
           child: _currentPage ?? tabs[_currentPageName]!),
       extendBody: true,
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: valueOrDefault(currentUserDocument?.gold, 0) == 1
+          ? FloatingActionButton(
         onPressed: _openJivoSDK,
         tooltip: 'Open chat JivoSDK',
         child: const Icon(Icons.chat_bubble),
         backgroundColor: const Color(0xFFFCAF23),
-      ),
+      )
+          : null,
+
       bottomNavigationBar: FloatingNavbar(
         currentIndex: currentIndex,
         onTap: (i) => safeSetState(() {
