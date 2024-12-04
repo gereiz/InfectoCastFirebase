@@ -57,22 +57,21 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    # Iterar sobre os arquivos na fase de recursos
     target.resources_build_phase.files.each do |file|
-      if file.name.include?("Assets.car") || file.name.include?("PrivacyInfo.xcprivacy")
+      # Verificar se o caminho do arquivo inclui "Assets.car" ou "PrivacyInfo.xcprivacy"
+      if file.ref && (file.ref.path.include?("Assets.car") || file.ref.path.include?("PrivacyInfo.xcprivacy"))
         file.remove_from_build_phases
       end
     end
 
-    # Aplicar as configurações adicionais do Flutter
     flutter_additional_ios_build_settings(target)
 
-    # Limpar o 'IPHONEOS_DEPLOYMENT_TARGET' de todas as configurações de build
     target.build_configurations.each do |config|
       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
     end
   end
 end
+
 
 
 target 'ImageNotification' do
