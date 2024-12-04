@@ -57,10 +57,9 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    if target.is_a?(Xcodeproj::Project::Object::PBXNativeTarget)
+    if target.name == 'jivosdk_plugin'
       target.resources_build_phase.files.each do |file|
         if file.file_ref && (file.file_ref.path.include?("Assets.car") || file.file_ref.path.include?("PrivacyInfo.xcprivacy"))
-          puts "Removing duplicate file: #{file.file_ref.path}" # Log para depuração
           file.remove_from_project
         end
       end
