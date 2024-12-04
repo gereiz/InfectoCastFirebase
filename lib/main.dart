@@ -19,7 +19,7 @@ import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'backend/stripe/payment_manager.dart';
 import 'package:flutter_meta_sdk/flutter_meta_sdk.dart';
 import 'package:jivosdk_plugin/bridge.dart';
-import 'package:jivosdk_plugin/plugin.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
