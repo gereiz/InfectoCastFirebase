@@ -57,10 +57,13 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    target.resources_build_phase.files.each do |file|
-      # Verificar se o arquivo é o "Assets.car" ou "PrivacyInfo.xcprivacy"
-      if file.file_ref && (file.file_ref.path.include?("Assets.car") || file.file_ref.path.include?("PrivacyInfo.xcprivacy"))
-        file.remove_from_project # Remover o arquivo do projeto
+    # Verifique se o alvo é um PBXNativeTarget (aplicativo ou framework)
+    if target.is_a?(Xcodeproj::Project::Object::PBXNativeTarget)
+      target.resources_build_phase.files.each do |file|
+        # Verificar se o arquivo é o "Assets.car" ou "PrivacyInfo.xcprivacy"
+        if file.file_ref && (file.file_ref.path.include?("Assets.car") || file.file_ref.path.include?("PrivacyInfo.xcprivacy"))
+          file.remove_from_project # Remover o arquivo do projeto
+        end
       end
     end
 
@@ -71,6 +74,7 @@ post_install do |installer|
     end
   end
 end
+
 
 
 
