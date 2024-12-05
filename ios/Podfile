@@ -41,26 +41,10 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    flutter_additional_swift_libraries = [
-      '__swift_FORCE_LOAD_$_swift_Builtin_float',
-      '__swift_FORCE_LOAD_$_swift_errno',
-      '__swift_FORCE_LOAD_$_swift_math',
-      '__swift_FORCE_LOAD_$_swift_signal',
-      '__swift_FORCE_LOAD_$_swift_stdio',
-      '__swift_FORCE_LOAD_$_swift_time',
-      '__swift_FORCE_LOAD_$_swiftsys_time',
-      '__swift_FORCE_LOAD_$_swiftunistd'
-    ]
-    target.build_configurations.each do |config|
-      flutter_additional_swift_libraries.each do |library|
-        config.build_settings['OTHER_LDFLAGS'] ||= ['$(inherited)']
-        config.build_settings['OTHER_LDFLAGS'] << "-force_load #{library}"
-      end
-    end
+    flutter_additional_ios_build_settings(target)
   end
+  
 end
-
-
 target 'ImageNotification' do
   use_frameworks!
   pod 'GoogleUtilities'
