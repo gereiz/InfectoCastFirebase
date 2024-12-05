@@ -41,10 +41,25 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    flutter_additional_ios_build_settings(target)
+    flutter_additional_swift_libraries = [
+      'swift_Builtin_float',
+      'swift_errno',
+      'swift_math',
+      'swift_signal',
+      'swift_stdio',
+      'swift_time',
+      'swiftunistd',
+    ]
+    target.build_configurations.each do |config|
+      flutter_additional_swift_libraries.each do |library|
+        config.build_settings['OTHER_LDFLAGS'] ||= ['$(inherited)']
+        config.build_settings['OTHER_LDFLAGS'] << "-weak_framework #{library}"
+      end
+    end
   end
-  
 end
+
+
 target 'ImageNotification' do
   use_frameworks!
   pod 'GoogleUtilities'
