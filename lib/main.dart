@@ -17,6 +17,9 @@ import 'index.dart';
 import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'backend/stripe/payment_manager.dart';
 
+import 'package:flutter_meta_sdk/flutter_meta_sdk.dart';
+import 'package:jivosdk_plugin/bridge.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
@@ -160,6 +163,16 @@ class _NavBarPageState extends State<NavBarPage> {
               .removeViewPadding(removeBottom: true),
           child: _currentPage ?? tabs[_currentPageName]!),
       extendBody: true,
+
+      floatingActionButton: valueOrDefault(currentUserDocument?.gold, 0) == 1
+          ? FloatingActionButton(
+        onPressed: _openJivoSDK,
+        tooltip: 'Open chat JivoSDK',
+        child: const Icon(Icons.chat_bubble),
+        backgroundColor: const Color(0xFFFCAF23),
+      )
+          : null,
+
       bottomNavigationBar: FloatingNavbar(
         currentIndex: currentIndex,
         onTap: (i) => safeSetState(() {
