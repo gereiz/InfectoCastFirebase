@@ -1,9 +1,5 @@
-source 'https://github.com/cocoapods/specs'
-source 'https://github.com/jivochat/cocoapods-repo'
-
 # Uncomment this line to define a global platform for your project
-# Uncomment this line to define a global platform for your project
-platform :ios, '14.0'
+platform :ios, '14.0.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -33,37 +29,25 @@ flutter_ios_podfile_setup
 
 target 'Runner' do
   pod 'GoogleUtilities'
-  use_frameworks!
+  use_frameworks! :linkage => :static
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '11.4.0'
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    flutter_additional_swift_libraries = [
-      '__swift_FORCE_LOAD_$_swift_Builtin_float',
-      '__swift_FORCE_LOAD_$_swift_errno',
-      '__swift_FORCE_LOAD_$_swift_math',
-      '__swift_FORCE_LOAD_$_swift_signal',
-      '__swift_FORCE_LOAD_$_swift_stdio',
-      '__swift_FORCE_LOAD_$_swift_time',
-      '__swift_FORCE_LOAD_$_swiftsys_time',
-      '__swift_FORCE_LOAD_$_swiftunistd'
-    ]
+    flutter_additional_ios_build_settings(target)
     target.build_configurations.each do |config|
-      flutter_additional_swift_libraries.each do |library|
-        config.build_settings['OTHER_LDFLAGS'] ||= ['$(inherited)']
-        config.build_settings['OTHER_LDFLAGS'] << "-force_load #{library}"
-        config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-      end
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+
     end
   end
 end
 
-
 target 'ImageNotification' do
-  use_frameworks!
-  pod 'GoogleUtilities'
+  use_frameworks! :linkage => :static
   pod 'Firebase/Messaging'
+  pod 'GoogleUtilities'
 end
