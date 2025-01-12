@@ -1,18 +1,16 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
+import '/componentes/lista_videos/lista_videos_widget.dart';
 import '/componentes/top_bar/top_bar_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/flutter_flow_youtube_player.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:provider/provider.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'topico_model.dart';
 export 'topico_model.dart';
 
@@ -30,89 +28,15 @@ class TopicoWidget extends StatefulWidget {
   State<TopicoWidget> createState() => _TopicoWidgetState();
 }
 
-class _TopicoWidgetState extends State<TopicoWidget>
-    with TickerProviderStateMixin {
+class _TopicoWidgetState extends State<TopicoWidget> {
   late TopicoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => TopicoModel());
-
-    animationsMap.addAll({
-      'textOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 100.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 100.0.ms,
-            duration: 300.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 100.0.ms,
-            duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
-          ),
-          TiltEffect(
-            curve: Curves.easeInOut,
-            delay: 100.0.ms,
-            duration: 300.0.ms,
-            begin: const Offset(0, 1.396),
-            end: const Offset(0, 0),
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 100.0.ms,
-            duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'buttonOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 350.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 350.0.ms,
-            duration: 300.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 350.0.ms,
-            duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
-          ),
-          TiltEffect(
-            curve: Curves.easeInOut,
-            delay: 350.0.ms,
-            duration: 300.0.ms,
-            begin: const Offset(1.222, 0),
-            end: const Offset(0, 0),
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 350.0.ms,
-            duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -126,311 +50,209 @@ class _TopicoWidgetState extends State<TopicoWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
-    return YoutubeFullScreenWrapper(
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: WillPopScope(
-          onWillPop: () async => false,
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: const Color(0xFF2B5EA6),
-            body: SafeArea(
-              top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  wrapWithModel(
-                    model: _model.topBarModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: const TopBarWidget(),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: const Color(0xFF2B5EA6),
+          body: SafeArea(
+            top: true,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                wrapWithModel(
+                  model: _model.topBarModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: const TopBarWidget(),
+                ),
+                FutureBuilder<ApiCallResponse>(
+                  future: LinksInfectoGroup.topicoCall.call(
+                    id: widget.idTopico?.id,
                   ),
-                  FutureBuilder<ApiCallResponse>(
-                    future: LinksInfectoGroup.topicoCall.call(
-                      id: widget.idTopico?.id,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return const Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: SpinKitFadingFour(
-                              color: Color(0xFFFCAF23),
-                              size: 50.0,
-                            ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: SpinKitFadingFour(
+                            color: Color(0xFFFCAF23),
+                            size: 50.0,
                           ),
-                        );
-                      }
-                      final containerTopicoResponse = snapshot.data!;
-
-                      return Container(
-                        width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.67,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              5.0, 10.0, 5.0, 10.0),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                      );
+                    }
+                    final containerTopicoResponse = snapshot.data!;
+
+                    return Container(
+                      width: double.infinity,
+                      height: MediaQuery.sizeOf(context).height * 0.66,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 0.0),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.sizeOf(context).width * 0.98,
+                                height:
+                                    MediaQuery.sizeOf(context).height * 0.64,
+                                child: Stack(
                                   children: [
-                                    Expanded(
-                                      child: SingleChildScrollView(
-                                        primary: false,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Row(
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: SingleChildScrollView(
+                                            primary: false,
+                                            child: Column(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
                                               children: [
-                                                AutoSizeText(
-                                                  valueOrDefault<String>(
-                                                    widget.title,
-                                                    'title',
-                                                  ),
-                                                  minFontSize: 14.0,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Fira Sans Extra Condensed',
-                                                        fontSize: 20.0,
-                                                        letterSpacing: 0.0,
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    AutoSizeText(
+                                                      valueOrDefault<String>(
+                                                        widget.title,
+                                                        'title',
                                                       ),
+                                                      minFontSize: 14.0,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Fira Sans Extra Condensed',
+                                                            fontSize: 20.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
+                                                FlutterFlowWebView(
+                                                  content: functions
+                                                      .setHtmlWithFiraSans(
+                                                          LinksInfectoGroup
+                                                              .topicoCall
+                                                              .conteudo(
+                                                    containerTopicoResponse
+                                                        .jsonBody,
+                                                  ))!,
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.96,
+                                                  height:
+                                                      MediaQuery.sizeOf(context)
+                                                              .height *
+                                                          0.57,
+                                                  verticalScroll: true,
+                                                  horizontalScroll: false,
+                                                  html: true,
+                                                ),
+                                              ].divide(const SizedBox(height: 12.0)),
                                             ),
-                                            FlutterFlowWebView(
-                                              content:
-                                                  functions.setHtmlWithFiraSans(
-                                                      LinksInfectoGroup
-                                                          .topicoCall
-                                                          .conteudo(
-                                                containerTopicoResponse
-                                                    .jsonBody,
-                                              ))!,
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.96,
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  0.6,
-                                              verticalScroll: true,
-                                              horizontalScroll: false,
-                                              html: true,
-                                            ),
-                                            if (!FFAppState().Premium)
-                                              Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, -1.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Somente usuários Premium podem visualizar os vídeos!',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .displaySmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Fira Sans Extra Condensed',
-                                                              fontSize: 24.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                            ),
-                                                      ).animateOnPageLoad(
-                                                          animationsMap[
-                                                              'textOnPageLoadAnimation']!),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Align(
+                                      alignment:
+                                          const AlignmentDirectional(0.99, 1.01),
+                                      child: Builder(
+                                        builder: (context) =>
+                                            FlutterFlowIconButton(
+                                          borderRadius: 100.0,
+                                          buttonSize: 30.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                          hoverColor: const Color(0xBDDC2732),
+                                          icon: FaIcon(
+                                            FontAwesomeIcons.youtube,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            size: 13.0,
+                                          ),
+                                          onPressed: () async {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                              0.0, 1.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: WebViewAware(
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: SizedBox(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.6,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.98,
+                                                        child:
+                                                            ListaVideosWidget(
+                                                          titulo:
+                                                              widget.title!,
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
-                                                                0.0, 8.0),
-                                                    child: FFButtonWidget(
-                                                      onPressed: () async {
-                                                        context.pushNamed(
-                                                            'planos');
-                                                      },
-                                                      text: 'Seja Premium',
-                                                      options: FFButtonOptions(
-                                                        width: double.infinity,
-                                                        height: 48.0,
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    24.0,
-                                                                    0.0,
-                                                                    24.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            const Color(0xFFFCAF23),
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans Extra Condensed',
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                      20.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                        elevation: 3.0,
-                                                        borderSide: const BorderSide(
-                                                          color: Colors
-                                                              .transparent,
-                                                          width: 1.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                      ),
-                                                    ).animateOnPageLoad(
-                                                        animationsMap[
-                                                            'buttonOnPageLoadAnimation']!),
-                                                  ),
-                                                ],
-                                              ),
-                                            if (FFAppState().Premium)
-                                              StreamBuilder<List<TopicsRecord>>(
-                                                stream: queryTopicsRecord(
-                                                  queryBuilder:
-                                                      (topicsRecord) =>
-                                                          topicsRecord.where(
-                                                    'title',
-                                                    isEqualTo: widget.title,
-                                                  ),
-                                                  singleRecord: true,
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return const Center(
-                                                      child: SizedBox(
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        child:
-                                                            SpinKitFadingFour(
-                                                          color:
-                                                              Color(0xFFFCAF23),
-                                                          size: 50.0,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  List<TopicsRecord>
-                                                      listViewTopicsRecordList =
-                                                      snapshot.data!;
-                                                  // Return an empty Container when the item does not exist.
-                                                  if (snapshot.data!.isEmpty) {
-                                                    return Container();
-                                                  }
-                                                  final listViewTopicsRecord =
-                                                      listViewTopicsRecordList
-                                                              .isNotEmpty
-                                                          ? listViewTopicsRecordList
-                                                              .first
-                                                          : null;
-
-                                                  return Builder(
-                                                    builder: (context) {
-                                                      final topicVideos =
-                                                          listViewTopicsRecord
-                                                                  ?.videos
-                                                                  .toList() ??
-                                                              [];
-
-                                                      return ListView.separated(
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        primary: false,
-                                                        shrinkWrap: true,
-                                                        scrollDirection:
-                                                            Axis.vertical,
-                                                        itemCount:
-                                                            topicVideos.length,
-                                                        separatorBuilder:
-                                                            (_, __) => const SizedBox(
-                                                                height: 8.0),
-                                                        itemBuilder: (context,
-                                                            topicVideosIndex) {
-                                                          final topicVideosItem =
-                                                              topicVideos[
-                                                                  topicVideosIndex];
-                                                          return FlutterFlowYoutubePlayer(
-                                                            url:
-                                                                topicVideosItem,
-                                                            autoPlay: false,
-                                                            looping: true,
-                                                            mute: false,
-                                                            showControls: false,
-                                                            showFullScreen:
-                                                                true,
-                                                            strictRelatedVideos:
-                                                                true,
-                                                          );
-                                                        },
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                          ].divide(const SizedBox(height: 12.0)),
+                                                );
+                                              },
+                                            );
+                                          },
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ].addToEnd(const SizedBox(height: 20.0)),
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      );
-                    },
-                  ),
-                ],
-              ),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ),

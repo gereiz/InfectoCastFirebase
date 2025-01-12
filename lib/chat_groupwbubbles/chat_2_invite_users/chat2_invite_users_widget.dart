@@ -64,7 +64,10 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -426,7 +429,7 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                               await chatsRecordReference.set({
                                 ...createChatsRecordData(
                                   userA: currentUserReference,
-                                  userB: _model.friendsList[1],
+                                  userB: _model.friendsList.elementAtOrNull(1),
                                   lastMessage: '',
                                   lastMessageTime: getCurrentTimestamp,
                                   lastMessageSentBy: currentUserReference,
@@ -443,7 +446,7 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                                   ChatsRecord.getDocumentFromData({
                                 ...createChatsRecordData(
                                   userA: currentUserReference,
-                                  userB: _model.friendsList[1],
+                                  userB: _model.friendsList.elementAtOrNull(1),
                                   lastMessage: '',
                                   lastMessageTime: getCurrentTimestamp,
                                   lastMessageSentBy: currentUserReference,
