@@ -175,7 +175,7 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(0.99, 1.01),
+                                          const AlignmentDirectional(-0.98, 1.01),
                                       child: Builder(
                                         builder: (context) =>
                                             FlutterFlowIconButton(
