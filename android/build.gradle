@@ -2,13 +2,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url "https://www.jitpack.io" }
-    }
-}
-
-buildscript {
-    repositories {
-        maven { url "https://www.jitpack.io" }
     }
 }
 
@@ -30,6 +23,6 @@ subprojects {
     project.evaluationDependsOn(':app')
 }
 
-tasks.register("clean", Delete) {
+task clean(type: Delete) {
     delete rootProject.buildDir
 }
