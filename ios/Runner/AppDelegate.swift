@@ -6,7 +6,6 @@ import FBSDKCoreKit
 
 import UserNotifications
 
-import JivoSDK
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
