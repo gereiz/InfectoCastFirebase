@@ -18,8 +18,6 @@ export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
 
-GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
-
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
 
@@ -77,7 +75,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
           appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
       routes: [
@@ -365,57 +362,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const NavBarPage(
                 initialPage: '',
                 page: BuscaGlobalCopyWidget(),
-              ),
-            ),
-            FFRoute(
-              name: 'equationsGlomecular',
-              path: 'equationsGlomecular',
-              builder: (context, params) => const NavBarPage(
-                initialPage: '',
-                page: EquationsGlomecularWidget(),
-              ),
-            ),
-            FFRoute(
-              name: 'fibrosisIndex',
-              path: 'fibrosisIndex',
-              builder: (context, params) => const NavBarPage(
-                initialPage: '',
-                page: FibrosisIndexWidget(),
-              ),
-            ),
-            FFRoute(
-              name: 'topicoCopy',
-              path: 'topicoCopy',
-              builder: (context, params) => NavBarPage(
-                initialPage: '',
-                page: TopicoCopyWidget(
-                  idTopico: params.getParam(
-                    'idTopico',
-                    ParamType.DocumentReference,
-                    isList: false,
-                    collectionNamePath: ['topics'],
-                  ),
-                  title: params.getParam(
-                    'title',
-                    ParamType.String,
-                  ),
-                ),
-              ),
-            ),
-            FFRoute(
-              name: 'SteroidConversionCalculator',
-              path: 'steroidConversionCalculator',
-              builder: (context, params) => const NavBarPage(
-                initialPage: '',
-                page: SteroidConversionCalculatorWidget(),
-              ),
-            ),
-            FFRoute(
-              name: 'SequentialOrganFailureAssessment',
-              path: 'sequentialOrganFailureAssessment',
-              builder: (context, params) => const NavBarPage(
-                initialPage: '',
-                page: SequentialOrganFailureAssessmentWidget(),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

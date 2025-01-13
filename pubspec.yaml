@@ -42,7 +42,7 @@ dependencies:
   cloud_functions: 5.1.3
   cloud_functions_platform_interface: 5.5.37
   cloud_functions_web: 4.10.2
-  collection: ^1.18.0
+  collection: 1.18.0
   csslib: 0.17.3
   csv: 6.0.0
   dropdown_button2: 2.3.9
@@ -168,7 +168,7 @@ dependencies:
   flutter_meta_sdk: ^1.0.2
   jivosdk_plugin: ^0.9.5
   stream_chat_flutter: 8.1.0
-  youtube_player_iframe:
+  youtube_player_iframe: 
     git:
       url: https://github.com/FlutterFlow/youtube_player_flutter.git
       path: packages/youtube_player_iframe
@@ -254,4 +254,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-  # see https://flutter.dev/custom-fonts/#from-packages
+

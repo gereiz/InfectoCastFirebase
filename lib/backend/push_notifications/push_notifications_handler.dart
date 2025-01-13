@@ -176,16 +176,6 @@ final parametersBuilderMap =
   'novaVersao': ParameterData.none(),
   'admin': ParameterData.none(),
   'buscaGlobalCopy': ParameterData.none(),
-  'equationsGlomecular': ParameterData.none(),
-  'fibrosisIndex': ParameterData.none(),
-  'topicoCopy': (data) async => ParameterData(
-        allParams: {
-          'idTopico': getParameter<DocumentReference>(data, 'idTopico'),
-          'title': getParameter<String>(data, 'title'),
-        },
-      ),
-  'SteroidConversionCalculator': ParameterData.none(),
-  'SequentialOrganFailureAssessment': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

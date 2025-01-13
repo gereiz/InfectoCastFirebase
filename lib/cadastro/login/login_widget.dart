@@ -45,10 +45,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
+      onTap: () => FocusScope.of(context).unfocus(),
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
@@ -419,8 +416,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           iconPadding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
+                                          color: const Color(0xFFFCAF23),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .headlineSmall

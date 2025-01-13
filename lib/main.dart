@@ -61,7 +61,7 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 
-  static _MyAppState of(BuildContext context) =>
+    static _MyAppState of(BuildContext context) =>
       context.findAncestorStateOfType<_MyAppState>()!;
 }
 
@@ -92,7 +92,7 @@ class _MyAppState extends State<MyApp> {
     jwtTokenStream.listen((_) {});
     Future.delayed(
       const Duration(milliseconds: 1000),
-          () => _appStateNotifier.stopShowingSplashImage(),
+      () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
 
@@ -104,8 +104,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {
-    _themeMode = mode;
-  });
+        _themeMode = mode;
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +198,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   Icons.home_outlined,
                   color:
-                  currentIndex == 0 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
+                      currentIndex == 0 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
@@ -221,7 +221,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   Icons.newspaper,
                   color:
-                  currentIndex == 1 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
+                      currentIndex == 1 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
@@ -244,7 +244,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   Icons.queue_music_sharp,
                   color:
-                  currentIndex == 2 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
+                      currentIndex == 2 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
@@ -267,7 +267,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   Icons.calculate_outlined,
                   color:
-                  currentIndex == 3 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
+                      currentIndex == 3 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
@@ -292,3 +292,4 @@ class _NavBarPageState extends State<NavBarPage> {
     Jivo.display.present();
   }
 }
+

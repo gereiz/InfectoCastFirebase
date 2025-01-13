@@ -40,10 +40,7 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -218,7 +215,7 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                             e !=
                                                             currentUserReference)
                                                         .toList()
-                                                        .firstOrNull!),
+                                                        .first),
                                           ),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
@@ -467,7 +464,7 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                             e !=
                                                             currentUserReference)
                                                         .toList()
-                                                        .firstOrNull!),
+                                                        .first),
                                           ),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
@@ -507,14 +504,15 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                   1.0, 1.0),
                                                           child: FutureBuilder<
                                                               UsersRecord>(
-                                                            future: UsersRecord.getDocumentOnce(
-                                                                listViewChatsRecord
-                                                                    .users
-                                                                    .where((e) =>
-                                                                        e !=
-                                                                        currentUserReference)
-                                                                    .toList()
-                                                                    .lastOrNull!),
+                                                            future: UsersRecord
+                                                                .getDocumentOnce(
+                                                                    listViewChatsRecord
+                                                                        .users
+                                                                        .where((e) =>
+                                                                            e !=
+                                                                            currentUserReference)
+                                                                        .toList()
+                                                                        .last),
                                                             builder: (context,
                                                                 snapshot) {
                                                               // Customize what your widget looks like when it's loading.

@@ -6,7 +6,6 @@ import '/backend/backend.dart';
 
 import '/backend/sqlite/queries/sqlite_row.dart';
 import '/backend/sqlite/queries/read.dart';
-
 import '../../flutter_flow/place.dart';
 import '../../flutter_flow/uploaded_file.dart';
 
