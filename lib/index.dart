@@ -43,3 +43,12 @@ export '/home/nova_versao/nova_versao_widget.dart' show NovaVersaoWidget;
 export '/perfil/admin/admin_widget.dart' show AdminWidget;
 export '/busca/busca_global_copy/busca_global_copy_widget.dart'
     show BuscaGlobalCopyWidget;
+export '/calculadoras/equations_glomecular/equations_glomecular_widget.dart'
+    show EquationsGlomecularWidget;
+export '/calculadoras/fibrosis_index/fibrosis_index_widget.dart'
+    show FibrosisIndexWidget;
+export '/categorias/topico_copy/topico_copy_widget.dart' show TopicoCopyWidget;
+export '/calculadoras/steroid_conversion_calculator/steroid_conversion_calculator_widget.dart'
+    show SteroidConversionCalculatorWidget;
+export '/calculadoras/sequential_organ_failure_assessment/sequential_organ_failure_assessment_widget.dart'
+    show SequentialOrganFailureAssessmentWidget;
