@@ -168,6 +168,7 @@ dependencies:
   flutter_meta_sdk: ^1.0.2
   jivosdk_plugin: ^0.9.5
   stream_chat_flutter: 8.1.0
+  media_kit: ^1.1.11
   youtube_player_iframe: 
     git:
       url: https://github.com/FlutterFlow/youtube_player_flutter.git
