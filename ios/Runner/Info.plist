@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
-	<key>CFBundleIconName</key>
+    <key>CFBundleIconName</key>
     <string>AppIcon</string>
 
 	<key>CFBundleShortVersionString</key>
