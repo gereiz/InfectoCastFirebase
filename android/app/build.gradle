@@ -33,10 +33,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     compileSdkVersion 34
-
-    buildFeatures {
-        dataBinding = true
-    }
+    
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -69,8 +66,7 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-//            signingConfig signingConfigs.debug
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
     }
 }
@@ -81,11 +77,4 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10"
-    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
-//    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
-    implementation 'com.github.chrisbanes:PhotoView:latest.release'
-    api platform('com.google.firebase:firebase-bom:32.7.2')
-    api 'com.google.firebase:firebase-messaging'
-
-
 }

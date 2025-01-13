@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
     <string name="app_name">InfectoCast</string>
-    <!-- ... other string resources ... -->
-   <string name="facebook_app_id">1728312261314688</string>
-   <string name="fb_login_protocol_scheme">fb1728312261314688</string>
-   <string name="facebook_client_token">5fdc0ccf28f53cfe9d9eb25905122a83</string> 
+
 </resources>
