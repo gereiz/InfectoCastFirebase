@@ -175,6 +175,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 
+  crypto: any
+  http_parser: any
+  path: any
 dependency_overrides:
   http: 1.2.2
   pointer_interceptor: 0.10.1+2
