@@ -13,6 +13,15 @@ export '/calculadoras/calculadoras/calculadoras_widget.dart'
     show CalculadorasWidget;
 export '/calculadoras/clearance_de_creatinina/clearance_de_creatinina_widget.dart'
     show ClearanceDeCreatininaWidget;
+export '/calculadoras/equations_glomecular/equations_glomecular_widget.dart'
+    show EquationsGlomecularWidget;
+export '/calculadoras/fibrosis_index/fibrosis_index_widget.dart'
+    show FibrosisIndexWidget;
+export '/categorias/topico_copy/topico_copy_widget.dart' show TopicoCopyWidget;
+export '/calculadoras/steroid_conversion_calculator/steroid_conversion_calculator_widget.dart'
+    show SteroidConversionCalculatorWidget;
+export '/calculadoras/sequential_organ_failure_assessment/sequential_organ_failure_assessment_widget.dart'
+    show SequentialOrganFailureAssessmentWidget;
 export '/perfil/perfil/perfil_widget.dart' show PerfilWidget;
 export '/perfil/edit_perfil/edit_perfil_widget.dart' show EditPerfilWidget;
 export '/perfil/suporte/suporte_widget.dart' show SuporteWidget;
@@ -43,12 +52,4 @@ export '/home/nova_versao/nova_versao_widget.dart' show NovaVersaoWidget;
 export '/perfil/admin/admin_widget.dart' show AdminWidget;
 export '/busca/busca_global_copy/busca_global_copy_widget.dart'
     show BuscaGlobalCopyWidget;
-export '/calculadoras/equations_glomecular/equations_glomecular_widget.dart'
-    show EquationsGlomecularWidget;
-export '/calculadoras/fibrosis_index/fibrosis_index_widget.dart'
-    show FibrosisIndexWidget;
-export '/categorias/topico_copy/topico_copy_widget.dart' show TopicoCopyWidget;
-export '/calculadoras/steroid_conversion_calculator/steroid_conversion_calculator_widget.dart'
-    show SteroidConversionCalculatorWidget;
-export '/calculadoras/sequential_organ_failure_assessment/sequential_organ_failure_assessment_widget.dart'
-    show SequentialOrganFailureAssessmentWidget;
+
