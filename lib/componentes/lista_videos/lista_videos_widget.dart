@@ -16,9 +16,11 @@ class ListaVideosWidget extends StatefulWidget {
   const ListaVideosWidget({
     super.key,
     required this.titulo,
+    required this.topicoRef,
   });
 
   final String? titulo;
+  final DocumentReference? topicoRef;
 
   @override
   State<ListaVideosWidget> createState() => _ListaVideosWidgetState();
@@ -276,14 +278,15 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
             if (FFAppState().Premium)
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                  child: StreamBuilder<List<TopicsRecord>>(
-                    stream: queryTopicsRecord(
-                      queryBuilder: (topicsRecord) => topicsRecord.where(
-                        'title',
-                        isEqualTo: widget.titulo,
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                  child: StreamBuilder<List<TopicVIdeosRecord>>(
+                    stream: queryTopicVIdeosRecord(
+                      queryBuilder: (topicVIdeosRecord) =>
+                          topicVIdeosRecord.where(
+                        'Topic',
+                        isEqualTo: widget.topicoRef,
                       ),
-                      singleRecord: true,
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -299,42 +302,27 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
                           ),
                         );
                       }
-                      List<TopicsRecord> listViewTopicsRecordList =
+                      List<TopicVIdeosRecord> listViewTopicVIdeosRecordList =
                           snapshot.data!;
-                      // Return an empty Container when the item does not exist.
-                      if (snapshot.data!.isEmpty) {
-                        return Container();
-                      }
-                      final listViewTopicsRecord =
-                          listViewTopicsRecordList.isNotEmpty
-                              ? listViewTopicsRecordList.first
-                              : null;
 
-                      return Builder(
-                        builder: (context) {
-                          final topicVideos =
-                              listViewTopicsRecord?.videos.toList() ?? [];
-
-                          return ListView.separated(
-                            padding: EdgeInsets.zero,
-                            primary: false,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: topicVideos.length,
-                            separatorBuilder: (_, __) => const SizedBox(height: 20.0),
-                            itemBuilder: (context, topicVideosIndex) {
-                              final topicVideosItem =
-                                  topicVideos[topicVideosIndex];
-                              return FlutterFlowYoutubePlayer(
-                                url: topicVideosItem,
-                                autoPlay: false,
-                                looping: true,
-                                mute: false,
-                                showControls: false,
-                                showFullScreen: true,
-                                strictRelatedVideos: true,
-                              );
-                            },
+                      return ListView.separated(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: listViewTopicVIdeosRecordList.length,
+                        separatorBuilder: (_, __) => const SizedBox(height: 20.0),
+                        itemBuilder: (context, listViewIndex) {
+                          final listViewTopicVIdeosRecord =
+                              listViewTopicVIdeosRecordList[listViewIndex];
+                          return FlutterFlowYoutubePlayer(
+                            url: listViewTopicVIdeosRecord.video,
+                            autoPlay: false,
+                            looping: true,
+                            mute: false,
+                            showControls: false,
+                            showFullScreen: true,
+                            strictRelatedVideos: true,
                           );
                         },
                       );
