@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:algolia/algolia.dart';
 import 'package:equatable/equatable.dart';
 
-import '../backend.dart';
+import '/backend/backend.dart';
 
 export 'package:algolia/algolia.dart';
 

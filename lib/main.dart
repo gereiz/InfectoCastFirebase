@@ -17,8 +17,6 @@ import 'index.dart';
 import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'backend/stripe/payment_manager.dart';
 
-// import 'package:jivosdk_plugin/bridge.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
@@ -65,6 +63,14 @@ class _MyAppState extends State<MyApp> {
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
+  String getRoute([RouteMatch? routeMatch]) {
+    final RouteMatch lastMatch =
+        routeMatch ?? _router.routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : _router.routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 
   late Stream<BaseAuthUser> userStream;
 
@@ -162,15 +168,6 @@ class _NavBarPageState extends State<NavBarPage> {
               .removeViewPadding(removeBottom: true),
           child: _currentPage ?? tabs[_currentPageName]!),
       extendBody: true,
-
-      // floatingActionButton: valueOrDefault(currentUserDocument?.gold, 0) == 1
-      //     ? FloatingActionButton(
-      //   onPressed: _openJivoSDK,
-      //   tooltip: 'Open chat JivoSDK',
-      //   child: const Icon(Icons.chat_bubble),
-      //   backgroundColor: const Color(0xFFFCAF23),
-      // )
-      //     : null,
 
       bottomNavigationBar: FloatingNavbar(
         currentIndex: currentIndex,

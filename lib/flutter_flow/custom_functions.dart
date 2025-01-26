@@ -59,7 +59,9 @@ double? fibrosis4(
   double alt,
   double plaquetas,
 ) {
-  return (idade * ast) / (plaquetas * math.sqrt(alt));
+  double total = (idade * ast) / (plaquetas * math.sqrt(alt));
+
+  return total;
 }
 
 double? equationsforGlomerularFiltration(
@@ -95,5 +97,51 @@ double? equationsforGlomerularFiltration(
     return 142 * raiz * (0.9938 * idade);
   } else {
     return 142 * raiz * (1.012 * idade);
+  }
+}
+
+String? calculoSofaTotal(
+  int resultPao2Fio2,
+  int sofa1,
+  int sofa2,
+  int sofa3,
+  int sofa4,
+  int sofa5,
+) {
+  int total = resultPao2Fio2 + sofa1 + sofa2 + sofa3 + sofa4 + sofa5;
+
+  if (total >= 0 && total <= 1) {
+    return 'SOFA Score inicial ≤ 1 previsão de mortalidade ≤ 0,0%';
+  } else if (total >= 2 && total <= 3) {
+    return 'SOFA Score inicial ≤ 3 previsão de mortalidade ≤ 6,4%';
+  } else if (total >= 4 && total <= 5) {
+    return 'SOFA Score inicial ≤ 5 previsão de mortalidade ≤ 20,2%';
+  } else if (total >= 6 && total <= 7) {
+    return 'SOFA Score inicial ≤ 7 previsão de mortalidade ≤ 21,5%';
+  } else if (total >= 8 && total <= 9) {
+    return 'SOFA Score inicial ≤ 9 previsão de mortalidade ≤ 33,3%';
+  } else if (total >= 10 && total <= 11) {
+    return 'SOFA Score inicial ≤ 11 previsão de mortalidade ≤ 50%';
+  } else if (total >= 12 && total <= 14) {
+    return 'SOFA Score inicial ≤ 14 previsão de mortalidade ≤ 95,2%';
+  } else if (total > 14) {
+    return 'SOFA Score inicial > 14 previsão de mortalidade ≤ 95,2%';
+  }
+}
+
+String? totalFibrosis(
+  int idade,
+  double ast,
+  double alt,
+  double plaquetas,
+) {
+  double total = (idade * ast) / (plaquetas * math.sqrt(alt));
+
+  if (total < 1.45) {
+    return 'Fibrose avançada excluída. Estágio aproximado de fibrose: Ishak 0-1';
+  } else if (total >= 1.45 && total <= 3.25) {
+    return 'Investigação adicional necessária. Estágio aproximado de fibrose: Ishak 2-3.';
+  } else if (total > 3.25) {
+    return 'Fibrose avançada (estágio METAVIR F3-F4) provável (McPherson 2017). Estágio aproximado de fibrose: Ishak 4-6 ';
   }
 }

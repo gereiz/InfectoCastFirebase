@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'steroid_conversion_calculator_model.dart';
 export 'steroid_conversion_calculator_model.dart';
 
@@ -140,11 +141,21 @@ class _SteroidConversionCalculatorWidgetState
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 14.0),
-                                      child: FlutterFlowDropDown<String>(
+                                      child: FlutterFlowDropDown<double>(
                                         controller: _model
                                                 .tipoEsteroide1ValueController ??=
-                                            FormFieldController<String>(null),
-                                        options: const [
+                                            FormFieldController<double>(null),
+                                        options: List<double>.from([
+                                          75.0,
+                                          25.0,
+                                          0.75,
+                                          20.0,
+                                          400.0,
+                                          500.0,
+                                          5.0,
+                                          4.0
+                                        ]),
+                                        optionLabels: const [
                                           'Betametasona (IV)',
                                           'Cortisona (PO)',
                                           'Dexametasona (IV ou VO)',
@@ -154,8 +165,23 @@ class _SteroidConversionCalculatorWidgetState
                                           'PredniSONA (PO)',
                                           'Triancinolona (IV)'
                                         ],
-                                        onChanged: (val) => safeSetState(() =>
-                                            _model.tipoEsteroide1Value = val),
+                                        onChanged: (val) async {
+                                          safeSetState(() =>
+                                              _model.tipoEsteroide1Value = val);
+                                          if ((_model.tipoEsteroide1Value ==
+                                                  75.0) ||
+                                              (_model.tipoEsteroide1Value ==
+                                                  400.0) ||
+                                              (_model.tipoEsteroide1Value ==
+                                                  500.0)) {
+                                            _model.esteroide1 =
+                                                (_model.tipoEsteroide1Value!) /
+                                                    100;
+                                          } else {
+                                            _model.esteroide1 =
+                                                _model.tipoEsteroide1Value;
+                                          }
+                                        },
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.89,
@@ -304,11 +330,21 @@ class _SteroidConversionCalculatorWidgetState
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 14.0),
-                                      child: FlutterFlowDropDown<String>(
+                                      child: FlutterFlowDropDown<double>(
                                         controller: _model
                                                 .tipoEsteroide2ValueController ??=
-                                            FormFieldController<String>(null),
-                                        options: const [
+                                            FormFieldController<double>(null),
+                                        options: List<double>.from([
+                                          75.0,
+                                          25.0,
+                                          0.75,
+                                          20.0,
+                                          400.0,
+                                          500.0,
+                                          5.0,
+                                          4.0
+                                        ]),
+                                        optionLabels: const [
                                           'Betametasona (IV)',
                                           'Cortisona (PO)',
                                           'Dexametasona (IV ou VO)',
@@ -318,8 +354,25 @@ class _SteroidConversionCalculatorWidgetState
                                           'PredniSONA (PO)',
                                           'Triancinolona (IV)'
                                         ],
-                                        onChanged: (val) => safeSetState(() =>
-                                            _model.tipoEsteroide2Value = val),
+                                        onChanged: (val) async {
+                                          safeSetState(() =>
+                                              _model.tipoEsteroide2Value = val);
+                                          if ((_model.tipoEsteroide2Value ==
+                                                  75.0) ||
+                                              (_model.tipoEsteroide2Value ==
+                                                  400.0) ||
+                                              (_model.tipoEsteroide2Value ==
+                                                  500.0)) {
+                                            _model.esteroide2 =
+                                                (_model.tipoEsteroide2Value!) /
+                                                    100;
+                                            safeSetState(() {});
+                                          } else {
+                                            _model.esteroide2 =
+                                                _model.tipoEsteroide2Value;
+                                            safeSetState(() {});
+                                          }
+                                        },
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.89,
@@ -361,10 +414,112 @@ class _SteroidConversionCalculatorWidgetState
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 30.0, 0.0, 30.0),
+                                          0.0, 12.0, 0.0, 12.0),
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('btnCalcula pressed ...');
+                                        onPressed: () async {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return WebViewAware(
+                                                child: AlertDialog(
+                                                  title: Text(
+                                                      'Resultado: ${formatNumber(
+                                                    ((_model.esteroide2!) *
+                                                            double.parse(_model
+                                                                .dosagemTextController
+                                                                .text)) /
+                                                        (_model.esteroide1!),
+                                                    formatType:
+                                                        FormatType.custom,
+                                                    format: '##0.00 mg',
+                                                    locale: '',
+                                                  )}'),
+                                                  content: Text(
+                                                      'Equivalência aproximada de: ${() {
+                                                    if (_model
+                                                            .tipoEsteroide2Value ==
+                                                        75.0) {
+                                                      return 'Betametasona';
+                                                    } else if (_model
+                                                            .tipoEsteroide2Value ==
+                                                        25.0) {
+                                                      return 'Cortisona';
+                                                    } else if (_model
+                                                            .tipoEsteroide2Value ==
+                                                        0.75) {
+                                                      return 'Dexametasona (Decadron)';
+                                                    } else if (_model
+                                                            .tipoEsteroide2Value ==
+                                                        20.0) {
+                                                      return 'Hidrocortisona';
+                                                    } else if (_model
+                                                            .tipoEsteroide2Value ==
+                                                        400.0) {
+                                                      return 'MetilPrednisoLONE';
+                                                    } else if (_model
+                                                            .tipoEsteroide2Value ==
+                                                        500.0) {
+                                                      return 'PrednisonaLONE';
+                                                    } else if (_model
+                                                            .tipoEsteroide2Value ==
+                                                        5.0) {
+                                                      return 'PredniSONE';
+                                                    } else if (_model
+                                                            .tipoEsteroide2Value ==
+                                                        4.0) {
+                                                      return 'Triancinolona';
+                                                    } else {
+                                                      return '';
+                                                    }
+                                                  }()} a: ${_model.dosagemTextController.text}mg de: ${() {
+                                                    if (_model
+                                                            .tipoEsteroide1Value ==
+                                                        75.0) {
+                                                      return 'Betametasona';
+                                                    } else if (_model
+                                                            .tipoEsteroide1Value ==
+                                                        25.0) {
+                                                      return 'Cortisona';
+                                                    } else if (_model
+                                                            .tipoEsteroide1Value ==
+                                                        0.75) {
+                                                      return 'Dexametasona (Decadron)';
+                                                    } else if (_model
+                                                            .tipoEsteroide1Value ==
+                                                        20.0) {
+                                                      return 'Hidrocortisona';
+                                                    } else if (_model
+                                                            .tipoEsteroide1Value ==
+                                                        400.0) {
+                                                      return 'MetilPrednisoLONE';
+                                                    } else if (_model
+                                                            .tipoEsteroide1Value ==
+                                                        500.0) {
+                                                      return 'PrednisonaLONE';
+                                                    } else if (_model
+                                                            .tipoEsteroide1Value ==
+                                                        5.0) {
+                                                      return 'PredniSONE';
+                                                    } else if (_model
+                                                            .tipoEsteroide1Value ==
+                                                        4.0) {
+                                                      return 'Triancinolona';
+                                                    } else {
+                                                      return '';
+                                                    }
+                                                  }()}'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
                                         },
                                         text: 'Calcular',
                                         options: FFButtonOptions(
@@ -405,7 +560,52 @@ class _SteroidConversionCalculatorWidgetState
                             ),
                           ],
                         ),
-                      ].divide(const SizedBox(height: 12.0)),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 40.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await launchURL(
+                                      'https://www.mdcalc.com/calc/2040/steroid-conversion-calculator#evidence');
+                                },
+                                child: RichText(
+                                  textScaler: MediaQuery.of(context).textScaler,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: 'Referência',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .warning,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      )
+                                    ],
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ].divide(const SizedBox(height: 16.0)),
                     ),
                   ),
                 ),

@@ -40,7 +40,7 @@
             <key>CFBundleURLSchemes</key>
             <array>
                 <!--FF_REVERSED_CLIENT_ID-->
-
+                
             </array>
             <key>CFBundleIconName</key>
             <string>AppIcon</string>

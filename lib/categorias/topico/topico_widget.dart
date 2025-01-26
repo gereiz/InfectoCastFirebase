@@ -231,6 +231,8 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                                                             ListaVideosWidget(
                                                           titulo:
                                                               widget.title!,
+                                                          topicoRef:
+                                                              widget.idTopico!,
                                                         ),
                                                       ),
                                                     ),
