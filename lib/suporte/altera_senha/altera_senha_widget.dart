@@ -75,7 +75,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -87,7 +87,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 16.0),
                   child: Text(
                     'Sua senha pode ser alterada através campos abaixo.',
                     textAlign: TextAlign.center,
@@ -99,7 +99,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                   ),
                 ),
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -107,7 +107,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 8.0),
                             child: Text(
                               'Senha atual',
@@ -122,7 +122,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 16.0),
                         child: TextFormField(
                           controller: _model.passwordTextController,
@@ -135,34 +135,34 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
-                                  color: const Color(0xFF57636C),
+                                  color: Color(0xFF57636C),
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFE0E3E7),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFF4B39EF),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFFF5963),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFFF5963),
                                 width: 2.0,
                               ),
@@ -170,7 +170,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                             ),
                             filled: true,
                             fillColor: Colors.white,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 24.0, 0.0, 24.0),
                             suffixIcon: InkWell(
                               onTap: () => safeSetState(
@@ -182,7 +182,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                                 _model.passwordVisibility
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
-                                color: const Color(0xFF757575),
+                                color: Color(0xFF757575),
                                 size: 22.0,
                               ),
                             ),
@@ -190,7 +190,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Roboto',
-                                    color: const Color(0xFF14181B),
+                                    color: Color(0xFF14181B),
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
@@ -203,7 +203,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                   ),
                 ),
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -211,7 +211,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 8.0),
                             child: Text(
                               'Nova senha',
@@ -226,7 +226,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 16.0),
                         child: TextFormField(
                           controller: _model.newPasswordTextController,
@@ -239,34 +239,34 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
-                                  color: const Color(0xFF57636C),
+                                  color: Color(0xFF57636C),
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFE0E3E7),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFF4B39EF),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFFF5963),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFFF5963),
                                 width: 2.0,
                               ),
@@ -274,7 +274,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                             ),
                             filled: true,
                             fillColor: Colors.white,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 24.0, 0.0, 24.0),
                             suffixIcon: InkWell(
                               onTap: () => safeSetState(
@@ -286,7 +286,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                                 _model.newPasswordVisibility
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
-                                color: const Color(0xFF757575),
+                                color: Color(0xFF757575),
                                 size: 22.0,
                               ),
                             ),
@@ -294,7 +294,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Roboto',
-                                    color: const Color(0xFF14181B),
+                                    color: Color(0xFF14181B),
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
@@ -307,7 +307,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                   ),
                 ),
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -315,7 +315,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 8.0),
                             child: Text(
                               'Confirme a nova senha',
@@ -330,7 +330,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 16.0),
                         child: TextFormField(
                           controller: _model.confirmPasswordTextController,
@@ -343,34 +343,34 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Plus Jakarta Sans',
-                                  color: const Color(0xFF57636C),
+                                  color: Color(0xFF57636C),
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFE0E3E7),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFF4B39EF),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFFF5963),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFFF5963),
                                 width: 2.0,
                               ),
@@ -378,7 +378,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                             ),
                             filled: true,
                             fillColor: Colors.white,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 24.0, 0.0, 24.0),
                             suffixIcon: InkWell(
                               onTap: () => safeSetState(
@@ -390,7 +390,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                                 _model.confirmPasswordVisibility
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
-                                color: const Color(0xFF757575),
+                                color: Color(0xFF757575),
                                 size: 22.0,
                               ),
                             ),
@@ -398,7 +398,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Roboto',
-                                    color: const Color(0xFF14181B),
+                                    color: Color(0xFF14181B),
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
@@ -412,7 +412,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                   ),
                 ),
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -421,9 +421,9 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.05),
+                            alignment: AlignmentDirectional(0.0, 0.05),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () {
@@ -433,11 +433,11 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                                 options: FFButtonOptions(
                                   width: 270.0,
                                   height: 50.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0xFFFCAF23),
+                                  color: Color(0xFFFCAF23),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
@@ -448,7 +448,7 @@ class _AlteraSenhaWidgetState extends State<AlteraSenhaWidget> {
                                         fontWeight: FontWeight.normal,
                                       ),
                                   elevation: 2.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),

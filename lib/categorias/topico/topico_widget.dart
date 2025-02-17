@@ -59,7 +59,7 @@ class _TopicoWidgetState extends State<TopicoWidget> {
         onWillPop: () async => false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: const Color(0xFF2B5EA6),
+          backgroundColor: Color(0xFF2B5EA6),
           body: SafeArea(
             top: true,
             child: Column(
@@ -68,7 +68,7 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                 wrapWithModel(
                   model: _model.topBarModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: const TopBarWidget(),
+                  child: TopBarWidget(),
                 ),
                 FutureBuilder<ApiCallResponse>(
                   future: LinksInfectoGroup.topicoCall.call(
@@ -77,7 +77,7 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return const Center(
+                      return Center(
                         child: SizedBox(
                           width: 50.0,
                           height: 50.0,
@@ -98,12 +98,12 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                       ),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 0.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              SizedBox(
+                              Container(
                                 width: MediaQuery.sizeOf(context).width * 0.98,
                                 height:
                                     MediaQuery.sizeOf(context).height * 0.64,
@@ -167,7 +167,7 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                                                   horizontalScroll: false,
                                                   html: true,
                                                 ),
-                                              ].divide(const SizedBox(height: 12.0)),
+                                              ].divide(SizedBox(height: 12.0)),
                                             ),
                                           ),
                                         ),
@@ -175,7 +175,7 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-0.98, 1.01),
+                                          AlignmentDirectional(-0.98, 1.01),
                                       child: Builder(
                                         builder: (context) =>
                                             FlutterFlowIconButton(
@@ -184,7 +184,7 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .error,
-                                          hoverColor: const Color(0xBDDC2732),
+                                          hoverColor: Color(0xBDDC2732),
                                           icon: FaIcon(
                                             FontAwesomeIcons.youtube,
                                             color: FlutterFlowTheme.of(context)
@@ -201,7 +201,7 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                                                   backgroundColor:
                                                       Colors.transparent,
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                               0.0, 1.0)
                                                           .resolve(
                                                               Directionality.of(
@@ -216,7 +216,7 @@ class _TopicoWidgetState extends State<TopicoWidget> {
                                                             .primaryFocus
                                                             ?.unfocus();
                                                       },
-                                                      child: SizedBox(
+                                                      child: Container(
                                                         height:
                                                             MediaQuery.sizeOf(
                                                                         context)

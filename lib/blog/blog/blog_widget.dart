@@ -44,7 +44,7 @@ class _BlogWidgetState extends State<BlogWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -53,7 +53,7 @@ class _BlogWidgetState extends State<BlogWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: double.infinity,
@@ -62,7 +62,7 @@ class _BlogWidgetState extends State<BlogWidget> {
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -70,7 +70,7 @@ class _BlogWidgetState extends State<BlogWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 8.0),
                             child: Text(
                               'Posts Adicionados recentemente',
@@ -91,7 +91,7 @@ class _BlogWidgetState extends State<BlogWidget> {
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
-                              return const Center(
+                              return Center(
                                 child: SizedBox(
                                   width: 50.0,
                                   height: 50.0,
@@ -111,12 +111,12 @@ class _BlogWidgetState extends State<BlogWidget> {
                               scrollDirection: Axis.vertical,
                               itemCount: listViewBlogPostsRecordList.length,
                               separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 6.0),
+                                  SizedBox(height: 6.0),
                               itemBuilder: (context, listViewIndex) {
                                 final listViewBlogPostsRecord =
                                     listViewBlogPostsRecordList[listViewIndex];
                                 return Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -154,7 +154,7 @@ class _BlogWidgetState extends State<BlogWidget> {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0x6E74746C),
@@ -171,14 +171,14 @@ class _BlogWidgetState extends State<BlogWidget> {
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: EdgeInsets.all(8.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -191,7 +191,7 @@ class _BlogWidgetState extends State<BlogWidget> {
                                                     height: 112.0,
                                                     fit: BoxFit.contain,
                                                     alignment:
-                                                        const Alignment(0.0, 0.0),
+                                                        Alignment(0.0, 0.0),
                                                   ),
                                                 ),
                                               ),
@@ -207,12 +207,12 @@ class _BlogWidgetState extends State<BlogWidget> {
                                                           fontFamily:
                                                               'Fira Sans Extra Condensed',
                                                           color:
-                                                              const Color(0xFF1D1D1B),
+                                                              Color(0xFF1D1D1B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
-                                            ].divide(const SizedBox(height: 6.0)),
+                                            ].divide(SizedBox(height: 6.0)),
                                           ),
                                         ),
                                       ),

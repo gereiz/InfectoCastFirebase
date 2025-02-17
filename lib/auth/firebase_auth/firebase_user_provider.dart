@@ -10,7 +10,6 @@ export '../base_auth_user_provider.dart';
 class InfectoCastFirebaseUser extends BaseAuthUser {
   InfectoCastFirebaseUser(this.user);
   User? user;
-  @override
   bool get loggedIn => user != null;
 
   @override

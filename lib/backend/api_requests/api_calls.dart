@@ -35,21 +35,21 @@ class MultiIndexCall {
   "requests": [
     {
       "indexName": "categories",
-      "params": "query=$titulo"
+      "params": "query=${titulo}"
     },
     {
       "indexName": "subcategories",
-      "params": "query=$titulo"
+      "params": "query=${titulo}"
     },
     {
       "indexName": "topics",
-      "params": "query=$titulo"
+      "params": "query=${titulo}"
     }
   ]
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Multi Index',
-      apiUrl: '$baseUrl/indexes/*/queries',
+      apiUrl: '${baseUrl}/indexes/*/queries',
       callType: ApiCallType.POST,
       headers: {
         'X-Algolia-Application-Id': 'SWI9KF2RX5',
@@ -106,11 +106,11 @@ class TopicsCall {
 
     final ffApiRequestBody = '''
 {
-  "params": "query=$titulo"
+  "params": "query=${titulo}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'topics',
-      apiUrl: '$baseUrl/indexes/topics/query',
+      apiUrl: '${baseUrl}/indexes/topics/query',
       callType: ApiCallType.POST,
       headers: {
         'X-Algolia-Application-Id': 'SWI9KF2RX5',
@@ -153,11 +153,11 @@ class CategoriesCall {
 
     final ffApiRequestBody = '''
 {
-  "params": "query=$titulo"
+  "params": "query=${titulo}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'categories',
-      apiUrl: '$baseUrl/indexes/categories/query',
+      apiUrl: '${baseUrl}/indexes/categories/query',
       callType: ApiCallType.POST,
       headers: {
         'X-Algolia-Application-Id': 'SWI9KF2RX5',
@@ -200,11 +200,11 @@ class SubcategoriesCall {
 
     final ffApiRequestBody = '''
 {
-  "params": "query=$titulo"
+  "params": "query=${titulo}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'subcategories',
-      apiUrl: '$baseUrl/indexes/subcategories/query',
+      apiUrl: '${baseUrl}/indexes/subcategories/query',
       callType: ApiCallType.POST,
       headers: {
         'X-Algolia-Application-Id': 'SWI9KF2RX5',
@@ -262,7 +262,7 @@ class TopicoCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Topico',
-      apiUrl: '$baseUrl/topico',
+      apiUrl: '${baseUrl}/topico',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -301,7 +301,7 @@ class TopicosCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Topicos',
-      apiUrl: '$baseUrl/topicos',
+      apiUrl: '${baseUrl}/topicos',
       callType: ApiCallType.GET,
       headers: {},
       params: {},

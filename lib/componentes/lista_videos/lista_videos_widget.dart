@@ -59,22 +59,22 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.8, 0.8),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0, 1.396),
-            end: const Offset(0, 0),
+            begin: Offset(0, 1.396),
+            end: Offset(0, 0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 40.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -93,22 +93,22 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.8, 0.8),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(1.222, 0),
-            end: const Offset(0, 0),
+            begin: Offset(1.222, 0),
+            end: Offset(0, 0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 40.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -131,7 +131,7 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
     return Material(
       color: Colors.transparent,
       elevation: 5.0,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
@@ -143,7 +143,7 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: const BorderRadius.only(
+          borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(16.0),
@@ -154,7 +154,7 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
               child: Container(
                 width: 50.0,
                 height: 4.0,
@@ -165,7 +165,7 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -208,7 +208,7 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
             ),
             Container(
               width: double.infinity,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Visibility(
                 visible: !FFAppState().Premium,
                 child: SingleChildScrollView(
@@ -217,9 +217,9 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Text(
                             'Somente usuários Premium podem visualizar os vídeos!',
@@ -238,7 +238,7 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             context.pushNamed('planos');
@@ -247,11 +247,11 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFFFCAF23),
+                            color: Color(0xFFFCAF23),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -261,7 +261,7 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -279,7 +279,7 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
               Expanded(
                 child: Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                      EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
                   child: StreamBuilder<List<TopicVIdeosRecord>>(
                     stream: queryTopicVIdeosRecord(
                       queryBuilder: (topicVIdeosRecord) =>
@@ -291,7 +291,7 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
-                        return const Center(
+                        return Center(
                           child: SizedBox(
                             width: 50.0,
                             height: 50.0,
@@ -311,12 +311,12 @@ class _ListaVideosWidgetState extends State<ListaVideosWidget>
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: listViewTopicVIdeosRecordList.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: 20.0),
+                        separatorBuilder: (_, __) => SizedBox(height: 20.0),
                         itemBuilder: (context, listViewIndex) {
                           final listViewTopicVIdeosRecord =
                               listViewTopicVIdeosRecordList[listViewIndex];
                           return FlutterFlowYoutubePlayer(
-                            url: listViewTopicVIdeosRecord.video,
+                            url: '${listViewTopicVIdeosRecord.video}',
                             autoPlay: false,
                             looping: true,
                             mute: false,

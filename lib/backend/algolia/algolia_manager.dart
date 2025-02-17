@@ -26,7 +26,7 @@ class AlgoliaQueryParams extends Equatable {
 
 class FFAlgoliaManager {
   FFAlgoliaManager._()
-      : algolia = const Algolia.init(
+      : algolia = Algolia.init(
           applicationId: kAlgoliaApplicationId,
           apiKey: kAlgoliaApiKey,
           extraUserAgents: ['FlutterFlow_3.1.0'],
@@ -37,7 +37,7 @@ class FFAlgoliaManager {
   static FFAlgoliaManager get instance => _instance ??= FFAlgoliaManager._();
 
   // Cache that will ensure identical queries are not repeatedly made.
-  static final Map<AlgoliaQueryParams, List<AlgoliaObjectSnapshot>> _algoliaCache =
+  static Map<AlgoliaQueryParams, List<AlgoliaObjectSnapshot>> _algoliaCache =
       {};
 
   Future<List<AlgoliaObjectSnapshot>> algoliaQuery({

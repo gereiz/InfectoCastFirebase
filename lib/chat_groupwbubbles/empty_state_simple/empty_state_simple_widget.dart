@@ -10,8 +10,8 @@ class EmptyStateSimpleWidget extends StatefulWidget {
     this.icon,
     String? title,
     String? body,
-  })  : title = title ?? 'No Comments',
-        body = body ?? 'There are no comments associated with this post.';
+  })  : this.title = title ?? 'No Comments',
+        this.body = body ?? 'There are no comments associated with this post.';
 
   final Widget? icon;
   final String title;
@@ -48,14 +48,14 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           widget.icon!,
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: Text(
               widget.title,
               textAlign: TextAlign.center,
@@ -67,7 +67,7 @@ class _EmptyStateSimpleWidgetState extends State<EmptyStateSimpleWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
             child: Text(
               widget.body,
               textAlign: TextAlign.center,

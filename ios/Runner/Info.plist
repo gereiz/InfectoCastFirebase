@@ -17,23 +17,12 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
-    <key>CFBundleIconName</key>
-    <string>AppIcon</string>
-
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-	<dict>
-		<key>CFBundleURLSchemes</key>
-		<array>
-			<string>fb1728312261314688</string>
-		</array>
-		<key>CFBundleIconName</key>
-        <string>AppIcon</string>
-	</dict>
         <dict>
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
@@ -42,8 +31,6 @@
                 <!--FF_REVERSED_CLIENT_ID-->
                 
             </array>
-            <key>CFBundleIconName</key>
-            <string>AppIcon</string>
         </dict>
 
         <dict>
@@ -55,19 +42,10 @@
         <array>
         <string>infectocast</string>
         </array>
-        <key>CFBundleIconName</key>
-        <string>AppIcon</string>
         </dict>
     </array>
     <key>FlutterDeepLinkingEnabled</key>
     <true/>
-    <key>FacebookAppID</key>
-    <string>1728312261314688</string>
-    <key>FacebookClientToken</key>
-    <string>5fdc0ccf28f53cfe9d9eb25905122a83</string>
-    <key>FacebookDisplayName</key>
-    <string>Infectocast</string>
-
 
 
 	<key>CFBundleVersion</key>
@@ -80,7 +58,7 @@
 	<key>NSMicrophoneUsageDescription</key>
     <string>O infectocast gostaria de acessar o microfone do seu dispositivo para o correto funcionamento do chat de voz, e somente para este fim, não guardando estes áudios ou capturando em demais momentos o som captado. </string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>O infectocast gostaria de acessar a galeria de imagens do seu dispositivo,  exclusivamente para adicionar a foto de perfil em sua conta de usuário no aplicativo. Nenhuma outra ação é tomada com este acesso, assim como sua foto não será usada para nenhuma outra finalidade.</string>
+    <string>O infectocast gostaria de acessar a galeria de imagens do seu dispsitivo,  exclusivamente para adicionar a foto de perfil em sua conta de usuário no aplicativo. Nenhuma outra ação é tomada com este acesso, assim como sua foto não será usada para nenhuma outra finalidade.</string>
 	<key>PermissionGroupNotification</key>
     <string>O infectocast gostaria de acessar enviar notificações sobre novos conteúdos e avisos sobre promoções.</string>
     <key>UIBackgroundModes</key>

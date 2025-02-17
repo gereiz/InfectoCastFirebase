@@ -70,7 +70,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
         Container(
           width: double.infinity,
           height: 100.0,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0xFF2B5EA6),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -85,7 +85,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(2.0, 8.0, 2.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(2.0, 8.0, 2.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -117,14 +117,14 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                                 builder: (alertDialogContext) {
                                   return WebViewAware(
                                     child: AlertDialog(
-                                      title: const Text('Atenção'),
-                                      content: const Text(
+                                      title: Text('Atenção'),
+                                      content: Text(
                                           'Você já está na página de Home.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -142,11 +142,11 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: const Color(0xFFFCAF23),
+                          color: Color(0xFFFCAF23),
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: EdgeInsets.all(4.0),
                         child: AuthUserStreamWidget(
                           builder: (context) => ClipRRect(
                             borderRadius: BorderRadius.circular(50.0),
@@ -169,7 +169,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                           desktop: false,
                         ))
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: AuthUserStreamWidget(
                               builder: (context) => InkWell(
@@ -203,7 +203,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -231,7 +231,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
-                                    return const Center(
+                                    return Center(
                                       child: SizedBox(
                                         width: 50.0,
                                         height: 50.0,
@@ -262,21 +262,21 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                                     badgeColor:
                                         FlutterFlowTheme.of(context).error,
                                     elevation: 4.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 8.0, 8.0, 8.0),
                                     position: badges.BadgePosition.topEnd(),
                                     animationType:
                                         badges.BadgeAnimationType.scale,
                                     toAnimate: true,
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 5.0, 0.0, 0.0),
                                       child: FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
                                         borderRadius: 20.0,
                                         borderWidth: 1.0,
                                         buttonSize: 40.0,
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.message,
                                           color: Colors.white,
                                           size: 24.0,
@@ -291,7 +291,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                               ),
                             ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 4.0, 0.0, 2.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -301,7 +301,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                               onTap: () async {
                                 context.pushNamed('perfil');
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.engineering_sharp,
                                 color: Colors.white,
                                 size: 24.0,
@@ -309,7 +309,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -323,7 +323,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
 
                                 context.goNamedAuth('login', context.mounted);
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.output_sharp,
                                 color: Colors.white,
                                 size: 24.0,
@@ -337,19 +337,19 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 30.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -365,7 +365,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 6.0, 12.0, 0.0),
                                     child: Text(
                                       'Bem Vindo(a) ao InfectoCast',
@@ -389,7 +389,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                                               0) ==
                                           0))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => ClipRRect(
@@ -408,7 +408,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                                           currentUserDocument?.premium, 0) ==
                                       1)
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => ClipRRect(
@@ -427,7 +427,7 @@ class _TopBarGWidgetState extends State<TopBarGWidget>
                                           currentUserDocument?.gold, 0) ==
                                       1)
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => ClipRRect(

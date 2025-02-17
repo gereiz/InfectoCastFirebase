@@ -6,6 +6,10 @@ import 'package:flutter/material.dart';
 
 class EquationsGlomecularModel
     extends FlutterFlowModel<EquationsGlomecularWidget> {
+  ///  Local state fields for this page.
+
+  double resultValue = 0.0;
+
   ///  State fields for stateful widgets in this page.
 
   // Model for topBar component.
@@ -30,10 +34,9 @@ class EquationsGlomecularModel
   TextEditingController? creatininaCSericaTextController;
   String? Function(BuildContext, String?)?
       creatininaCSericaTextControllerValidator;
-  // State field(s) for corrida widget.
-  FocusNode? corridaFocusNode;
-  TextEditingController? corridaTextController;
-  String? Function(BuildContext, String?)? corridaTextControllerValidator;
+  // State field(s) for etnia widget.
+  String? etniaValue;
+  FormFieldController<String>? etniaValueController;
 
   @override
   void initState(BuildContext context) {
@@ -51,8 +54,5 @@ class EquationsGlomecularModel
 
     creatininaCSericaFocusNode?.dispose();
     creatininaCSericaTextController?.dispose();
-
-    corridaFocusNode?.dispose();
-    corridaTextController?.dispose();
   }
 }

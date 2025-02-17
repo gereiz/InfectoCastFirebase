@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'equations_glomecular_model.dart';
@@ -54,15 +55,6 @@ class _EquationsGlomecularWidgetState extends State<EquationsGlomecularWidget> {
         });
       },
     );
-    _model.corridaTextController ??= TextEditingController();
-    _model.corridaFocusNode ??= FocusNode();
-    _model.corridaFocusNode!.addListener(
-      () async {
-        safeSetState(() {
-          _model.sexoValueController?.value = '0';
-        });
-      },
-    );
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -82,7 +74,7 @@ class _EquationsGlomecularWidgetState extends State<EquationsGlomecularWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -91,7 +83,7 @@ class _EquationsGlomecularWidgetState extends State<EquationsGlomecularWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: double.infinity,
@@ -100,14 +92,14 @@ class _EquationsGlomecularWidgetState extends State<EquationsGlomecularWidget> {
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 20.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -131,7 +123,7 @@ class _EquationsGlomecularWidgetState extends State<EquationsGlomecularWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(height: 12.0)),
+                                  ].divide(SizedBox(height: 12.0)),
                                 ),
                               ),
                             ],
@@ -141,31 +133,371 @@ class _EquationsGlomecularWidgetState extends State<EquationsGlomecularWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 20.0, 0.0, 0.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 8.0, 0.0, 14.0),
+                                    child: FlutterFlowDropDown<String>(
+                                      controller: _model
+                                              .tipoCreatininaValueController ??=
+                                          FormFieldController<String>(
+                                        _model.tipoCreatininaValue ??=
+                                            'Creatinina CKD-EPI 2021',
+                                      ),
+                                      options: [
+                                        'Creatinina CKD-EPI 2021',
+                                        '2021 CKD-EPI Creatinina-Cistatina C',
+                                        'Creatinina CKD-EPI 2009',
+                                        '2012 CKD-EPI Cistatina C',
+                                        '2012 CKD-EPI Creatinina–Cistatina C'
+                                      ],
+                                      onChanged: (val) => safeSetState(() =>
+                                          _model.tipoCreatininaValue = val),
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.89,
+                                      height: 56.0,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                'Fira Sans Extra Condensed',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            fontSize: 15.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                      hintText: 'Selecione',
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        size: 24.0,
+                                      ),
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).warning,
+                                      elevation: 2.0,
+                                      borderColor: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      borderWidth: 2.0,
+                                      borderRadius: 8.0,
+                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 4.0, 16.0, 4.0),
+                                      hidesUnderline: true,
+                                      isOverButton: true,
+                                      isSearchable: false,
+                                      isMultiSelect: false,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 8.0, 0.0, 14.0),
+                                    child: Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.9,
+                                      child: TextFormField(
+                                        controller: _model.idadeTextController,
+                                        focusNode: _model.idadeFocusNode,
+                                        autofocus: true,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: 'Idade: ',
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLarge
+                                                  .override(
+                                                    fontFamily:
+                                                        'Fira Sans Extra Condensed',
+                                                    color: Color(0xFF57636C),
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0xFFFCAF23),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0xFFFF5963),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0xFFFF5963),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          filled: true,
+                                          fillColor: Color(0xFFF1F4F8),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              color: Color(0xFF101213),
+                                              fontSize: 16.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                        keyboardType: const TextInputType
+                                            .numberWithOptions(decimal: true),
+                                        validator: _model
+                                            .idadeTextControllerValidator
+                                            .asValidator(context),
+                                      ),
+                                    ),
+                                  ),
+                                  FlutterFlowDropDown<String>(
+                                    controller: _model.sexoValueController ??=
+                                        FormFieldController<String>(
+                                      _model.sexoValue ??= 'Feminino',
+                                    ),
+                                    options: ['Feminino', 'Masculino'],
+                                    onChanged: (val) => safeSetState(
+                                        () => _model.sexoValue = val),
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.89,
+                                    height: 56.0,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              'Fira Sans Extra Condensed',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          fontSize: 15.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                    hintText: 'Sexo',
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    elevation: 2.0,
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderWidth: 2.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isOverButton: true,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
+                                  ),
+                                  if ((_model.tipoCreatininaValue !=
+                                          '2012 CKD-EPI Cistatina C') &&
+                                      (_model.tipoCreatininaValue !=
+                                          '2012 CKD-EPI Cistatina C'))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 8.0, 0.0, 14.0),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                0.9,
+                                        child: TextFormField(
+                                          controller: _model
+                                              .creatininaSericaTextController,
+                                          focusNode:
+                                              _model.creatininaSericaFocusNode,
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'Creatinina sérica',
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      fontSize: 15.0,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFFFCAF23),
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFFFF5963),
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFFFF5963),
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            filled: true,
+                                            fillColor: Color(0xFFF1F4F8),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color: Color(0xFF101213),
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                          keyboardType: const TextInputType
+                                              .numberWithOptions(decimal: true),
+                                          validator: _model
+                                              .creatininaSericaTextControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                    ),
+                                  if ((_model.tipoCreatininaValue !=
+                                          'Creatinina CKD-EPI 2021') &&
+                                      (_model.tipoCreatininaValue !=
+                                          'Creatinina CKD-EPI 2009'))
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 8.0, 0.0, 14.0),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                0.9,
+                                        child: TextFormField(
+                                          controller: _model
+                                              .creatininaCSericaTextController,
+                                          focusNode:
+                                              _model.creatininaCSericaFocusNode,
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'Creatinina C sérica',
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      fontSize: 15.0,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFFFCAF23),
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFFFF5963),
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFFFF5963),
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            filled: true,
+                                            fillColor: Color(0xFFF1F4F8),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color: Color(0xFF101213),
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                          keyboardType: const TextInputType
+                                              .numberWithOptions(decimal: true),
+                                          validator: _model
+                                              .creatininaCSericaTextControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                    ),
+                                  if ((_model.tipoCreatininaValue !=
+                                          'Creatinina CKD-EPI 2021') &&
+                                      (_model.tipoCreatininaValue !=
+                                          '2021 CKD-EPI Creatinina-Cistatina C') &&
+                                      (_model.tipoCreatininaValue !=
+                                          '2012 CKD-EPI Cistatina C'))
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 14.0),
                                       child: FlutterFlowDropDown<String>(
-                                        controller: _model
-                                                .tipoCreatininaValueController ??=
-                                            FormFieldController<String>(
-                                          _model.tipoCreatininaValue ??=
-                                              'Creatinina CKD-EPI 2021',
+                                        controller:
+                                            _model.etniaValueController ??=
+                                                FormFieldController<String>(
+                                          _model.etniaValue ??= 'Negro',
                                         ),
-                                        options: const [
-                                          'Creatinina CKD-EPI 2021',
-                                          '2021 CKD-EPI Creatinina-Cistatina C',
-                                          'Creatinina CKD-EPI 2009',
-                                          '2012 CKD-EPI Cistatina C',
-                                          '2012 CKD-EPI Creatinina–Cistatina C'
-                                        ],
-                                        onChanged: (val) => safeSetState(() =>
-                                            _model.tipoCreatininaValue = val),
+                                        options: ['Negro', 'Outros'],
+                                        onChanged: (val) => safeSetState(
+                                            () => _model.etniaValue = val),
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.89,
@@ -182,7 +514,7 @@ class _EquationsGlomecularWidgetState extends State<EquationsGlomecularWidget> {
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
-                                        hintText: 'Selecione',
+                                        hintText: 'Etnia',
                                         icon: Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: FlutterFlowTheme.of(context)
@@ -197,7 +529,7 @@ class _EquationsGlomecularWidgetState extends State<EquationsGlomecularWidget> {
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -205,456 +537,191 @@ class _EquationsGlomecularWidgetState extends State<EquationsGlomecularWidget> {
                                         isMultiSelect: false,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 14.0),
-                                      child: SizedBox(
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 12.0, 0.0, 12.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        _model.resultValue = functions.equationsforGlomerularFiltration(
+                                            int.parse(_model
+                                                .idadeTextController.text),
+                                            _model.sexoValue!,
+                                            _model.creatininaSericaTextController.text !=
+                                                        ''
+                                                ? double.parse(_model
+                                                    .creatininaSericaTextController
+                                                    .text)
+                                                : 0.0,
+                                            _model.tipoCreatininaValue,
+                                            _model.creatininaCSericaTextController.text != ''
+                                                ? double.parse(_model.creatininaCSericaTextController.text)
+                                                : 0.0,
+                                            _model.etniaValue != null && _model.etniaValue != '' ? _model.etniaValue! : 'Negro')!;
+                                        safeSetState(() {});
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                              child: AlertDialog(
+                                                title: Text('${formatNumber(
+                                                  functions.equationsforGlomerularFiltration(
+                                                      int.parse(_model
+                                                          .idadeTextController
+                                                          .text),
+                                                      _model.sexoValue!,
+                                                      _model.creatininaSericaTextController.text != ''
+                                                          ? double.parse(_model
+                                                              .creatininaSericaTextController
+                                                              .text)
+                                                          : 0.0,
+                                                      _model
+                                                          .tipoCreatininaValue,
+                                                      _model.creatininaCSericaTextController.text !=
+                                                                  ''
+                                                          ? double.parse(_model
+                                                              .creatininaCSericaTextController
+                                                              .text)
+                                                          : 0.0,
+                                                      _model.etniaValue != null &&
+                                                              _model.etniaValue != ''
+                                                          ? _model.etniaValue!
+                                                          : 'Negro'),
+                                                  formatType: FormatType.custom,
+                                                  format: '##',
+                                                  locale: 'pt_BR',
+                                                )} ml/min/1.73 m²'),
+                                                content: Text(() {
+                                                  if (_model.resultValue >=
+                                                      90.0) {
+                                                    return 'Estágio I ';
+                                                  } else if (_model
+                                                          .resultValue >=
+                                                      60.0) {
+                                                    return 'Estágio II';
+                                                  } else if (_model
+                                                          .resultValue >=
+                                                      45.0) {
+                                                    return 'Estagio III';
+                                                  } else if (_model
+                                                          .resultValue >=
+                                                      30.0) {
+                                                    return 'Estagio IV';
+                                                  } else if (_model
+                                                          .resultValue >=
+                                                      15.0) {
+                                                    return 'Estagio V';
+                                                  } else if (_model
+                                                          .resultValue >=
+                                                      0.0) {
+                                                    return 'Estagio VI';
+                                                  } else {
+                                                    return 'Erro';
+                                                  }
+                                                }()),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                      text: 'Calcular',
+                                      options: FFButtonOptions(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.9,
-                                        child: TextFormField(
-                                          controller:
-                                              _model.idadeTextController,
-                                          focusNode: _model.idadeFocusNode,
-                                          autofocus: true,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            labelText: 'Idade: ',
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLarge
-                                                    .override(
-                                                      fontFamily:
-                                                          'Fira Sans Extra Condensed',
-                                                      color: const Color(0xFF57636C),
-                                                      fontSize: 16.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
+                                        height: 44.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Color(0xFFFCAF23),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              color: Colors.white,
+                                              fontSize: 22.0,
+                                              letterSpacing: 0.0,
                                             ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFFFCAF23),
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFFFF5963),
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFFFF5963),
-                                                width: 2.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
-                                            filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyLarge
-                                              .override(
-                                                fontFamily:
-                                                    'Fira Sans Extra Condensed',
-                                                color: const Color(0xFF101213),
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                          keyboardType: const TextInputType
-                                              .numberWithOptions(decimal: true),
-                                          validator: _model
-                                              .idadeTextControllerValidator
-                                              .asValidator(context),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
                                         ),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                       ),
                                     ),
-                                    FlutterFlowDropDown<String>(
-                                      controller: _model.sexoValueController ??=
-                                          FormFieldController<String>(null),
-                                      options: const ['Feminino', 'Masculino'],
-                                      onChanged: (val) => safeSetState(
-                                          () => _model.sexoValue = val),
-                                      width: MediaQuery.sizeOf(context).width *
-                                          0.89,
-                                      height: 56.0,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily:
-                                                'Fira Sans Extra Condensed',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                      hintText: 'Sexo',
-                                      icon: Icon(
-                                        Icons.keyboard_arrow_down_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 24.0,
-                                      ),
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      elevation: 2.0,
-                                      borderColor: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      borderWidth: 2.0,
-                                      borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 4.0, 16.0, 4.0),
-                                      hidesUnderline: true,
-                                      isOverButton: true,
-                                      isSearchable: false,
-                                      isMultiSelect: false,
-                                    ),
-                                    if ((_model.tipoCreatininaValue !=
-                                            '2012 CKD-EPI Cistatina C') &&
-                                        (_model.tipoCreatininaValue !=
-                                            '2012 CKD-EPI Cistatina C'))
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 14.0),
-                                        child: SizedBox(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          child: TextFormField(
-                                            controller: _model
-                                                .creatininaSericaTextController,
-                                            focusNode: _model
-                                                .creatininaSericaFocusNode,
-                                            autofocus: true,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText: 'Creatinina sérica',
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 40.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await launchURL(
+                                                'https://www.mdcalc.com/calc/3939/ckd-epi-equations-glomerular-filtration-rate-gfr#evidence');
+                                          },
+                                          child: RichText(
+                                            textScaler: MediaQuery.of(context)
+                                                .textScaler,
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: 'Referência',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
-                                                        fontSize: 15.0,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .warning,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
                                                       ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFFFCAF23),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFFFF5963),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFFFF5963),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              filled: true,
-                                              fillColor: const Color(0xFFF1F4F8),
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: const Color(0xFF101213),
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                            keyboardType: const TextInputType
-                                                .numberWithOptions(
-                                                decimal: true),
-                                            validator: _model
-                                                .creatininaSericaTextControllerValidator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                      ),
-                                    if ((_model.tipoCreatininaValue !=
-                                            'Creatinina CKD-EPI 2021') &&
-                                        (_model.tipoCreatininaValue !=
-                                            'Creatinina CKD-EPI 2009'))
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 14.0),
-                                        child: SizedBox(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          child: TextFormField(
-                                            controller: _model
-                                                .creatininaCSericaTextController,
-                                            focusNode: _model
-                                                .creatininaCSericaFocusNode,
-                                            autofocus: true,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText: 'Creatinina C sérica',
-                                              labelStyle:
+                                                )
+                                              ],
+                                              style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelLarge
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
-                                                        fontSize: 15.0,
                                                         letterSpacing: 0.0,
                                                       ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFFFCAF23),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFFFF5963),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFFFF5963),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              filled: true,
-                                              fillColor: const Color(0xFFF1F4F8),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: const Color(0xFF101213),
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                            keyboardType: const TextInputType
-                                                .numberWithOptions(
-                                                decimal: true),
-                                            validator: _model
-                                                .creatininaCSericaTextControllerValidator
-                                                .asValidator(context),
                                           ),
                                         ),
-                                      ),
-                                    if ((_model.tipoCreatininaValue !=
-                                            'Creatinina CKD-EPI 2021') &&
-                                        (_model.tipoCreatininaValue !=
-                                            '2021 CKD-EPI Creatinina-Cistatina C') &&
-                                        (_model.tipoCreatininaValue !=
-                                            '2012 CKD-EPI Cistatina C'))
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 14.0),
-                                        child: SizedBox(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          child: TextFormField(
-                                            controller:
-                                                _model.corridaTextController,
-                                            focusNode: _model.corridaFocusNode,
-                                            autofocus: true,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText: 'Corrida',
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 15.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFFFCAF23),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFFFF5963),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFFFF5963),
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              filled: true,
-                                              fillColor: const Color(0xFFF1F4F8),
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: const Color(0xFF101213),
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                            keyboardType: const TextInputType
-                                                .numberWithOptions(
-                                                decimal: true),
-                                            validator: _model
-                                                .corridaTextControllerValidator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                      ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 30.0, 0.0, 30.0),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          if (_model.tipoCreatininaValue ==
-                                              'Creatinina CKD-EPI 2021') {
-                                            if (_model.sexoValue ==
-                                                'Masculino') {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return WebViewAware(
-                                                    child: AlertDialog(
-                                                      title: const Text('Resultado'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: const Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  );
-                                                },
-                                              );
-                                            }
-                                          }
-                                        },
-                                        text: 'Calcular',
-                                        options: FFButtonOptions(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          height: 44.0,
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: const Color(0xFFFCAF23),
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmall
-                                                  .override(
-                                                    fontFamily:
-                                                        'Fira Sans Extra Condensed',
-                                                    color: Colors.white,
-                                                    fontSize: 22.0,
-                                                    letterSpacing: 0.0,
-                                                  ),
-                                          elevation: 3.0,
-                                          borderSide: const BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
-                      ].divide(const SizedBox(height: 12.0)),
+                      ].divide(SizedBox(height: 12.0)),
                     ),
                   ),
                 ),

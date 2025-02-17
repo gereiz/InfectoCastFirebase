@@ -56,7 +56,7 @@ class _SequentialOrganFailureAssessmentWidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -65,7 +65,7 @@ class _SequentialOrganFailureAssessmentWidgetState
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: double.infinity,
@@ -74,14 +74,14 @@ class _SequentialOrganFailureAssessmentWidgetState
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 20.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 20.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 20.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -105,7 +105,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(height: 12.0)),
+                                  ].divide(SizedBox(height: 12.0)),
                                 ),
                               ),
                             ],
@@ -116,7 +116,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Expanded(
-                              child: SizedBox(
+                              child: Container(
                                 width: 98.0,
                                 child: Form(
                                   key: _model.formKey,
@@ -125,14 +125,14 @@ class _SequentialOrganFailureAssessmentWidgetState
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 20.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            SizedBox(
+                                            Container(
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.4,
@@ -151,7 +151,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                         fontFamily:
                                                             'Fira Sans Extra Condensed',
                                                         color:
-                                                            const Color(0xFF57636C),
+                                                            Color(0xFF57636C),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -172,7 +172,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0xFFFCAF23),
                                                       width: 2.0,
                                                     ),
@@ -182,7 +182,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0xFFFF5963),
                                                       width: 2.0,
                                                     ),
@@ -192,7 +192,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0xFFFF5963),
                                                       width: 2.0,
                                                     ),
@@ -201,7 +201,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                             10.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF1F4F8),
+                                                  fillColor: Color(0xFFF1F4F8),
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -210,7 +210,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                           fontFamily:
                                                               'Fira Sans Extra Condensed',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -225,7 +225,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                     .asValidator(context),
                                               ),
                                             ),
-                                            SizedBox(
+                                            Container(
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.4,
@@ -244,7 +244,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                         fontFamily:
                                                             'Fira Sans Extra Condensed',
                                                         color:
-                                                            const Color(0xFF57636C),
+                                                            Color(0xFF57636C),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -265,7 +265,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0xFFFCAF23),
                                                       width: 2.0,
                                                     ),
@@ -275,7 +275,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0xFFFF5963),
                                                       width: 2.0,
                                                     ),
@@ -285,7 +285,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0xFFFF5963),
                                                       width: 2.0,
                                                     ),
@@ -294,7 +294,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                             10.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF1F4F8),
+                                                  fillColor: Color(0xFFF1F4F8),
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -303,7 +303,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                           fontFamily:
                                                               'Fira Sans Extra Condensed',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -322,7 +322,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 20.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -473,7 +473,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                       ),
                                                     ),
                                                   ),
-                                              ].divide(const SizedBox(width: 4.0)),
+                                              ].divide(SizedBox(width: 4.0)),
                                             ),
                                           ],
                                         ),
@@ -484,7 +484,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 FormFieldController<int>(null),
                                         options:
                                             List<int>.from([0, 1, 2, 3, 4]),
-                                        optionLabels: const [
+                                        optionLabels: [
                                           '≥150',
                                           '100-149',
                                           '50-99',
@@ -524,7 +524,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -537,7 +537,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 FormFieldController<int>(null),
                                         options:
                                             List<int>.from([0, 1, 2, 3, 4]),
-                                        optionLabels: const [
+                                        optionLabels: [
                                           '15',
                                           '13-14',
                                           '10-12',
@@ -577,7 +577,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -590,7 +590,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 FormFieldController<int>(null),
                                         options:
                                             List<int>.from([0, 1, 2, 3, 4]),
-                                        optionLabels: const [
+                                        optionLabels: [
                                           '<1,2 (<20)',
                                           '1,2–1,9 (20-32)',
                                           '2,0–5,9 (33-101)',
@@ -630,7 +630,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -643,7 +643,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 FormFieldController<int>(null),
                                         options:
                                             List<int>.from([0, 1, 2, 3, 4]),
-                                        optionLabels: const [
+                                        optionLabels: [
                                           'Sem hipotensão',
                                           'PAM <70 mmHg',
                                           'DOPamina ≤5 ou DOBUTamina (qualquer dose)',
@@ -684,7 +684,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -697,7 +697,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 FormFieldController<int>(null),
                                         options:
                                             List<int>.from([0, 1, 2, 3, 4]),
-                                        optionLabels: const [
+                                        optionLabels: [
                                           '<1,2 (<110)',
                                           '1,2–1,9 (110-170)',
                                           '2,0–3,4 (171-299)',
@@ -738,7 +738,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -746,7 +746,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                         isMultiSelect: false,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 12.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
@@ -806,16 +806,16 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                               return WebViewAware(
                                                                 child:
                                                                     AlertDialog(
-                                                                  title: const Text(
+                                                                  title: Text(
                                                                       'Resultado:'),
-                                                                  content: const Text(
+                                                                  content: Text(
                                                                       'Erro ao calcular! por favor, tente novamente.'),
                                                                   actions: [
                                                                     TextButton(
                                                                       onPressed:
                                                                           () =>
                                                                               Navigator.pop(alertDialogContext),
-                                                                      child: const Text(
+                                                                      child: Text(
                                                                           'Ok'),
                                                                     ),
                                                                   ],
@@ -856,7 +856,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
@@ -894,16 +894,16 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                             (alertDialogContext) {
                                                           return WebViewAware(
                                                             child: AlertDialog(
-                                                              title: const Text(
+                                                              title: Text(
                                                                   'Resultado:'),
-                                                              content: const Text(
+                                                              content: Text(
                                                                   'Erro ao calcular! por favor, tente novamente.'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
-                                                                  child: const Text(
+                                                                  child: Text(
                                                                       'Ok'),
                                                                 ),
                                                               ],
@@ -942,7 +942,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: const Text('Ok'),
+                                                            child: Text('Ok'),
                                                           ),
                                                         ],
                                                       ),
@@ -956,15 +956,15 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 builder: (alertDialogContext) {
                                                   return WebViewAware(
                                                     child: AlertDialog(
-                                                      title: const Text('Atenção!'),
-                                                      content: const Text(
+                                                      title: Text('Atenção!'),
+                                                      content: Text(
                                                           'Todos os campos são obrigatórios!'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: const Text('Ok'),
+                                                          child: Text('Ok'),
                                                         ),
                                                       ],
                                                     ),
@@ -982,12 +982,12 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                 0.9,
                                             height: 44.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFFFCAF23),
+                                            color: Color(0xFFFCAF23),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .headlineSmall
@@ -999,7 +999,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                                       letterSpacing: 0.0,
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -1008,7 +1008,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(height: 16.0)),
+                                    ].divide(SizedBox(height: 16.0)),
                                   ),
                                 ),
                               ),
@@ -1016,11 +1016,11 @@ class _SequentialOrganFailureAssessmentWidgetState
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 40.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -1061,7 +1061,7 @@ class _SequentialOrganFailureAssessmentWidgetState
                             ],
                           ),
                         ),
-                      ].divide(const SizedBox(height: 12.0)),
+                      ].divide(SizedBox(height: 12.0)),
                     ),
                   ),
                 ),

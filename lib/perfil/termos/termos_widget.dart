@@ -69,7 +69,7 @@ class _TermosWidgetState extends State<TermosWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -82,7 +82,7 @@ class _TermosWidgetState extends State<TermosWidget> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                   child: Text(
                     'Termos de Serviço',
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
@@ -93,7 +93,7 @@ class _TermosWidgetState extends State<TermosWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 64.0),
+                      EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 64.0),
                   child: Html(
                     data: '<h3>H3 Header</h3> <p>Sample paragraph</p>',
                     onLinkTap: (url, _, __) => launchURL(url!),

@@ -56,7 +56,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -65,7 +65,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: double.infinity,
@@ -74,14 +74,14 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 20.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -105,7 +105,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(height: 12.0)),
+                                  ].divide(SizedBox(height: 12.0)),
                                 ),
                               ),
                             ],
@@ -116,12 +116,12 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    SizedBox(
+                                    Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
                                       child: TextFormField(
@@ -137,7 +137,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Fira Sans Extra Condensed',
-                                                    color: const Color(0xFF57636C),
+                                                    color: Color(0xFF57636C),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -153,7 +153,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFCAF23),
                                               width: 2.0,
                                             ),
@@ -161,7 +161,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -170,7 +170,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -178,14 +178,14 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF1F4F8),
+                                          fillColor: Color(0xFFF1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily:
                                                   'Fira Sans Extra Condensed',
-                                              color: const Color(0xFF101213),
+                                              color: Color(0xFF101213),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -197,7 +197,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                             .asValidator(context),
                                       ),
                                     ),
-                                    SizedBox(
+                                    Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
                                       child: TextFormField(
@@ -227,7 +227,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFCAF23),
                                               width: 2.0,
                                             ),
@@ -235,7 +235,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -244,7 +244,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -252,13 +252,13 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF1F4F8),
+                                          fillColor: Color(0xFFF1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF101213),
+                                              color: Color(0xFF101213),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -270,7 +270,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                             .asValidator(context),
                                       ),
                                     ),
-                                    SizedBox(
+                                    Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
                                       child: TextFormField(
@@ -300,7 +300,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFCAF23),
                                               width: 2.0,
                                             ),
@@ -308,7 +308,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -317,7 +317,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -325,13 +325,13 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF1F4F8),
+                                          fillColor: Color(0xFFF1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF101213),
+                                              color: Color(0xFF101213),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -343,7 +343,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                             .asValidator(context),
                                       ),
                                     ),
-                                    SizedBox(
+                                    Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
                                       child: TextFormField(
@@ -375,7 +375,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFCAF23),
                                               width: 2.0,
                                             ),
@@ -383,7 +383,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -392,7 +392,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -400,13 +400,13 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF1F4F8),
+                                          fillColor: Color(0xFFF1F4F8),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF101213),
+                                              color: Color(0xFF101213),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -419,7 +419,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 12.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -466,7 +466,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
@@ -481,12 +481,12 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                   0.9,
                                           height: 44.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: const Color(0xFFFCAF23),
+                                          color: Color(0xFFFCAF23),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .headlineSmall
@@ -498,7 +498,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -507,18 +507,18 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 16.0)),
+                                  ].divide(SizedBox(height: 16.0)),
                                 ),
                               ),
                             ),
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 40.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -559,7 +559,7 @@ class _FibrosisIndexWidgetState extends State<FibrosisIndexWidget> {
                             ],
                           ),
                         ),
-                      ].divide(const SizedBox(height: 12.0)),
+                      ].divide(SizedBox(height: 12.0)),
                     ),
                   ),
                 ),

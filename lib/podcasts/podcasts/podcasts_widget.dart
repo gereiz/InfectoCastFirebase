@@ -46,7 +46,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
         },
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: const Color(0xFF2B5EA6),
+          backgroundColor: Color(0xFF2B5EA6),
           body: SafeArea(
             top: true,
             child: Column(
@@ -55,7 +55,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                 wrapWithModel(
                   model: _model.topBarModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: const TopBarWidget(),
+                  child: TopBarWidget(),
                 ),
                 Container(
                   width: double.infinity,
@@ -64,7 +64,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                     color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -72,7 +72,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 8.0),
                               child: Text(
                                 'Podcasts  Adicionados recentemente',
@@ -95,7 +95,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return const Center(
+                                return Center(
                                   child: SizedBox(
                                     width: 50.0,
                                     height: 50.0,
@@ -115,20 +115,20 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                 scrollDirection: Axis.vertical,
                                 itemCount: listViewPodcastsRecordList.length,
                                 separatorBuilder: (_, __) =>
-                                    const SizedBox(height: 6.0),
+                                    SizedBox(height: 6.0),
                                 itemBuilder: (context, listViewIndex) {
                                   final listViewPodcastsRecord =
                                       listViewPodcastsRecordList[listViewIndex];
                                   return Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(8.0),
                                     child: Container(
                                       width: 100.0,
                                       height:
                                           MediaQuery.sizeOf(context).height *
                                               0.29,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF4F4F4),
-                                        boxShadow: const [
+                                        color: Color(0xFFF4F4F4),
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x6E74746C),
@@ -145,7 +145,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 10.0),
                                         child: SingleChildScrollView(
                                           child: Column(
@@ -154,7 +154,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                 MainAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 4.0, 4.0, 4.0),
                                                 child: Row(
@@ -180,12 +180,12 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 10.0),
                                                 child: FlutterFlowYoutubePlayer(
                                                   url:
-                                                      listViewPodcastsRecord.link,
+                                                      '${listViewPodcastsRecord.link}',
                                                   autoPlay: false,
                                                   looping: true,
                                                   mute: false,
@@ -194,7 +194,7 @@ class _PodcastsWidgetState extends State<PodcastsWidget> {
                                                   strictRelatedVideos: false,
                                                 ),
                                               ),
-                                            ].divide(const SizedBox(height: 6.0)),
+                                            ].divide(SizedBox(height: 6.0)),
                                           ),
                                         ),
                                       ),

@@ -41,7 +41,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -50,7 +50,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: double.infinity,
@@ -59,7 +59,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -67,7 +67,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                         child: GridView(
                           padding: EdgeInsets.zero,
                           gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 10.0,
                             mainAxisSpacing: 10.0,
@@ -87,8 +87,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                 width: 100.0,
                                 height: MediaQuery.sizeOf(context).height * 0.1,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFF4F4F4),
-                                  boxShadow: const [
+                                  color: Color(0xFFF4F4F4),
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x6E74746C),
@@ -104,7 +104,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -128,7 +128,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                    ].divide(const SizedBox(height: 11.0)),
+                                    ].divide(SizedBox(height: 11.0)),
                                   ),
                                 ),
                               ),
@@ -145,8 +145,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                 width: 100.0,
                                 height: MediaQuery.sizeOf(context).height * 0.1,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFF4F4F4),
-                                  boxShadow: const [
+                                  color: Color(0xFFF4F4F4),
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x6E74746C),
@@ -162,7 +162,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -186,7 +186,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                    ].divide(const SizedBox(height: 11.0)),
+                                    ].divide(SizedBox(height: 11.0)),
                                   ),
                                 ),
                               ),
@@ -204,8 +204,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                 width: 100.0,
                                 height: MediaQuery.sizeOf(context).height * 0.1,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFF4F4F4),
-                                  boxShadow: const [
+                                  color: Color(0xFFF4F4F4),
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x6E74746C),
@@ -221,7 +221,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -245,7 +245,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                    ].divide(const SizedBox(height: 11.0)),
+                                    ].divide(SizedBox(height: 11.0)),
                                   ),
                                 ),
                               ),
@@ -263,8 +263,8 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                 width: 100.0,
                                 height: MediaQuery.sizeOf(context).height * 0.1,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFF4F4F4),
-                                  boxShadow: const [
+                                  color: Color(0xFFF4F4F4),
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x6E74746C),
@@ -280,7 +280,7 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -304,78 +304,301 @@ class _CalculadorasWidgetState extends State<CalculadorasWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                    ].divide(const SizedBox(height: 11.0)),
+                                    ].divide(SizedBox(height: 11.0)),
                                   ),
                                 ),
                               ),
                             ),
-                            if (responsiveVisibility(
-                              context: context,
-                              phone: false,
-                              tablet: false,
-                              tabletLandscape: false,
-                              desktop: false,
-                            ))
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('equationsGlomecular');
-                                },
-                                child: Container(
-                                  width: 100.0,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.1,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFF4F4F4),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x6E74746C),
-                                        offset: Offset(
-                                          0.0,
-                                          2.0,
-                                        ),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    border: Border.all(
-                                      color: Colors.transparent,
-                                    ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('equationsGlomecular');
+                              },
+                              child: Container(
+                                width: 100.0,
+                                height: MediaQuery.sizeOf(context).height * 0.1,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF4F4F4),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0x6E74746C),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  border: Border.all(
+                                    color: Colors.transparent,
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.coronavirus_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 36.0,
-                                        ),
-                                        Text(
-                                          'Equations for Glomerular Filtration Rate (GFR)',
-                                          textAlign: TextAlign.center,
-                                          maxLines: 3,
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleLarge
-                                              .override(
-                                                fontFamily:
-                                                    'Fira Sans Extra Condensed',
-                                                fontSize: 14.0,
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ].divide(const SizedBox(height: 11.0)),
-                                    ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.coronavirus_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 36.0,
+                                      ),
+                                      Text(
+                                        'Equations for Glomerular Filtration Rate (GFR)',
+                                        textAlign: TextAlign.center,
+                                        maxLines: 3,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 11.0)),
                                   ),
                                 ),
                               ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('CURB65Score');
+                              },
+                              child: Container(
+                                width: 100.0,
+                                height: MediaQuery.sizeOf(context).height * 0.1,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF4F4F4),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0x6E74746C),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  border: Border.all(
+                                    color: Colors.transparent,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.coronavirus_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 36.0,
+                                      ),
+                                      Text(
+                                        'CURB-65 Score for Pneumonia Severity',
+                                        textAlign: TextAlign.center,
+                                        maxLines: 3,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 11.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('meldNa');
+                              },
+                              child: Container(
+                                width: 100.0,
+                                height: MediaQuery.sizeOf(context).height * 0.1,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF4F4F4),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0x6E74746C),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  border: Border.all(
+                                    color: Colors.transparent,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.coronavirus_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 36.0,
+                                      ),
+                                      Text(
+                                        'MELD Na (UNOS/OPTN)',
+                                        textAlign: TextAlign.center,
+                                        maxLines: 3,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 11.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('SIRS');
+                              },
+                              child: Container(
+                                width: 100.0,
+                                height: MediaQuery.sizeOf(context).height * 0.1,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF4F4F4),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0x6E74746C),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  border: Border.all(
+                                    color: Colors.transparent,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.coronavirus_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 36.0,
+                                      ),
+                                      Text(
+                                        'SIRS, Sepsis, and Septic Shock Criteria',
+                                        textAlign: TextAlign.center,
+                                        maxLines: 3,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 11.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('CURB65Score');
+                              },
+                              child: Container(
+                                width: 100.0,
+                                height: MediaQuery.sizeOf(context).height * 0.1,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF4F4F4),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0x6E74746C),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  border: Border.all(
+                                    color: Colors.transparent,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.coronavirus_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 36.0,
+                                      ),
+                                      Text(
+                                        'Framingham Risk Score for Hard Coronary Heart Disease',
+                                        textAlign: TextAlign.center,
+                                        maxLines: 3,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily:
+                                                  'Fira Sans Extra Condensed',
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 11.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),

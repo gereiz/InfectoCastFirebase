@@ -42,12 +42,12 @@ class _ExclusaoContaWidgetState extends State<ExclusaoContaWidget> {
     return Container(
       width: double.infinity,
       height: MediaQuery.sizeOf(context).height * 1.0,
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxHeight: 350.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             blurRadius: 5.0,
             color: Color(0x3B1D2429),
@@ -57,7 +57,7 @@ class _ExclusaoContaWidgetState extends State<ExclusaoContaWidget> {
             ),
           )
         ],
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(16.0),
@@ -65,7 +65,7 @@ class _ExclusaoContaWidgetState extends State<ExclusaoContaWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -112,8 +112,8 @@ class _ExclusaoContaWidgetState extends State<ExclusaoContaWidget> {
               options: FFButtonOptions(
                 width: double.infinity,
                 height: 60.0,
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).error,
                 textStyle: FlutterFlowTheme.of(context).bodyLarge.override(
                       fontFamily: 'Readex Pro',
@@ -121,7 +121,7 @@ class _ExclusaoContaWidgetState extends State<ExclusaoContaWidget> {
                       letterSpacing: 0.0,
                     ),
                 elevation: 2.0,
-                borderSide: const BorderSide(
+                borderSide: BorderSide(
                   color: Colors.transparent,
                   width: 1.0,
                 ),
@@ -135,8 +135,8 @@ class _ExclusaoContaWidgetState extends State<ExclusaoContaWidget> {
               options: FFButtonOptions(
                 width: double.infinity,
                 height: 60.0,
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).info,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Lexend Deca',
@@ -146,13 +146,13 @@ class _ExclusaoContaWidgetState extends State<ExclusaoContaWidget> {
                       fontWeight: FontWeight.normal,
                     ),
                 elevation: 0.0,
-                borderSide: const BorderSide(
+                borderSide: BorderSide(
                   color: Colors.transparent,
                   width: 0.0,
                 ),
               ),
             ),
-          ].divide(const SizedBox(height: 16.0)),
+          ].divide(SizedBox(height: 16.0)),
         ),
       ),
     );

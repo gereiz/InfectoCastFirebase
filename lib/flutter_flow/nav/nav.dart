@@ -79,25 +79,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
           routes: [
             FFRoute(
               name: 'login',
               path: 'login',
-              builder: (context, params) => const LoginWidget(),
+              builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
               name: 'inicio',
               path: 'inicio',
               builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'inicio')
-                  : const NavBarPage(
+                  ? NavBarPage(initialPage: 'inicio')
+                  : NavBarPage(
                       initialPage: 'inicio',
                       page: InicioWidget(),
                     ),
@@ -105,14 +105,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'cadastro',
               path: 'cadastro',
-              builder: (context, params) => const CadastroWidget(),
+              builder: (context, params) => CadastroWidget(),
             ),
             FFRoute(
               name: 'blog',
               path: 'blog',
               builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'blog')
-                  : const NavBarPage(
+                  ? NavBarPage(initialPage: 'blog')
+                  : NavBarPage(
                       initialPage: 'blog',
                       page: BlogWidget(),
                     ),
@@ -203,8 +203,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'podcasts',
               path: 'podcasts',
               builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'podcasts')
-                  : const NavBarPage(
+                  ? NavBarPage(initialPage: 'podcasts')
+                  : NavBarPage(
                       initialPage: 'podcasts',
                       page: PodcastsWidget(),
                     ),
@@ -213,8 +213,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'calculadoras',
               path: 'calculadoras',
               builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'calculadoras')
-                  : const NavBarPage(
+                  ? NavBarPage(initialPage: 'calculadoras')
+                  : NavBarPage(
                       initialPage: 'calculadoras',
                       page: CalculadorasWidget(),
                     ),
@@ -222,7 +222,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'clearanceDeCreatinina',
               path: 'clearanceDeCreatinina',
-              builder: (context, params) => const NavBarPage(
+              builder: (context, params) => NavBarPage(
                 initialPage: '',
                 page: ClearanceDeCreatininaWidget(),
               ),
@@ -230,52 +230,52 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'perfil',
               path: 'perfil',
-              builder: (context, params) => const PerfilWidget(),
+              builder: (context, params) => PerfilWidget(),
             ),
             FFRoute(
               name: 'editPerfil',
               path: 'editPerfil',
-              builder: (context, params) => const EditPerfilWidget(),
+              builder: (context, params) => EditPerfilWidget(),
             ),
             FFRoute(
               name: 'suporte',
               path: 'suporte',
-              builder: (context, params) => const SuporteWidget(),
+              builder: (context, params) => SuporteWidget(),
             ),
             FFRoute(
               name: 'termos',
               path: 'termos',
-              builder: (context, params) => const TermosWidget(),
+              builder: (context, params) => TermosWidget(),
             ),
             FFRoute(
               name: 'alteraSenha',
               path: 'alteraSenha',
-              builder: (context, params) => const AlteraSenhaWidget(),
+              builder: (context, params) => AlteraSenhaWidget(),
             ),
             FFRoute(
               name: 'atualizacoesRecentes',
               path: 'atualizacoesRecentes',
-              builder: (context, params) => const AtualizacoesRecentesWidget(),
+              builder: (context, params) => AtualizacoesRecentesWidget(),
             ),
             FFRoute(
               name: 'excluiConta',
               path: 'excluiConta',
-              builder: (context, params) => const ExcluiContaWidget(),
+              builder: (context, params) => ExcluiContaWidget(),
             ),
             FFRoute(
               name: 'listaPlataformas',
               path: 'listaPlataformas',
-              builder: (context, params) => const ListaPlataformasWidget(),
+              builder: (context, params) => ListaPlataformasWidget(),
             ),
             FFRoute(
               name: 'recuperaSenha',
               path: 'recuperaSenha',
-              builder: (context, params) => const RecuperaSenhaWidget(),
+              builder: (context, params) => RecuperaSenhaWidget(),
             ),
             FFRoute(
               name: 'planos',
               path: 'planos',
-              builder: (context, params) => const NavBarPage(
+              builder: (context, params) => NavBarPage(
                 initialPage: '',
                 page: PlanosWidget(),
               ),
@@ -284,12 +284,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'planoContratado',
               path: 'parabens',
               requireAuth: true,
-              builder: (context, params) => const PlanoContratadoWidget(),
+              builder: (context, params) => PlanoContratadoWidget(),
             ),
             FFRoute(
               name: 'buscaGlobal',
               path: 'buscaGlobal',
-              builder: (context, params) => const NavBarPage(
+              builder: (context, params) => NavBarPage(
                 initialPage: '',
                 page: BuscaGlobalWidget(),
               ),
@@ -311,7 +311,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'chat_2_main',
               path: 'chat2Main',
               requireAuth: true,
-              builder: (context, params) => const NavBarPage(
+              builder: (context, params) => NavBarPage(
                 initialPage: '',
                 page: Chat2MainWidget(),
               ),
@@ -346,23 +346,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'dashboardPlano',
               path: 'dashboardPlano',
-              builder: (context, params) => const DashboardPlanoWidget(),
+              builder: (context, params) => DashboardPlanoWidget(),
             ),
             FFRoute(
               name: 'novaVersao',
               path: 'versao',
               requireAuth: true,
-              builder: (context, params) => const NovaVersaoWidget(),
+              builder: (context, params) => NovaVersaoWidget(),
             ),
             FFRoute(
               name: 'admin',
               path: 'admin',
-              builder: (context, params) => const AdminWidget(),
+              builder: (context, params) => AdminWidget(),
             ),
             FFRoute(
               name: 'buscaGlobalCopy',
               path: 'buscaGlobalCopy',
-              builder: (context, params) => const NavBarPage(
+              builder: (context, params) => NavBarPage(
                 initialPage: '',
                 page: BuscaGlobalCopyWidget(),
               ),
@@ -370,7 +370,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'equationsGlomecular',
               path: 'equationsGlomecular',
-              builder: (context, params) => const NavBarPage(
+              builder: (context, params) => NavBarPage(
                 initialPage: '',
                 page: EquationsGlomecularWidget(),
               ),
@@ -378,7 +378,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'fibrosisIndex',
               path: 'fibrosisIndex',
-              builder: (context, params) => const NavBarPage(
+              builder: (context, params) => NavBarPage(
                 initialPage: '',
                 page: FibrosisIndexWidget(),
               ),
@@ -405,7 +405,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'SteroidConversionCalculator',
               path: 'steroidConversionCalculator',
-              builder: (context, params) => const NavBarPage(
+              builder: (context, params) => NavBarPage(
                 initialPage: '',
                 page: SteroidConversionCalculatorWidget(),
               ),
@@ -413,9 +413,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'SequentialOrganFailureAssessment',
               path: 'sequentialOrganFailureAssessment',
-              builder: (context, params) => const NavBarPage(
+              builder: (context, params) => NavBarPage(
                 initialPage: '',
                 page: SequentialOrganFailureAssessmentWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'CURB65Score',
+              path: 'CURB65Score',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: CURB65ScoreWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'meldNa',
+              path: 'meldNa',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: MeldNaWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'meldNaCopy',
+              path: 'meldNaCopy',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: MeldNaCopyWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'SIRS',
+              path: 'sirs',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: SirsWidget(),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
@@ -659,7 +691,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

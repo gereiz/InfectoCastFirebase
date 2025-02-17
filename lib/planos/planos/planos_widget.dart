@@ -45,7 +45,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -54,7 +54,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: MediaQuery.sizeOf(context).width * 1.0,
@@ -66,16 +66,16 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(16.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: MediaQuery.sizeOf(context).height * 0.65,
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxHeight: double.infinity,
                         ),
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          boxShadow: const [
+                          boxShadow: [
                             BoxShadow(
                               blurRadius: 4.0,
                               color: Color(0x33000000),
@@ -88,7 +88,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: Builder(
                             builder: (context) {
@@ -97,7 +97,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                   .toList();
 
                               return ListView.builder(
-                                padding: const EdgeInsets.fromLTRB(
+                                padding: EdgeInsets.fromLTRB(
                                   0,
                                   0,
                                   0,
@@ -108,7 +108,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                 itemBuilder: (context, planosIndex) {
                                   final planosItem = planos[planosIndex];
                                   return Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 10.0),
                                     child: Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -120,7 +120,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 4.0, 4.0, 4.0),
                                         child: SingleChildScrollView(
                                           primary: false,
@@ -132,7 +132,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                 CrossAxisAlignment.center,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 8.0, 0.0, 32.0),
                                                 child: Text(
@@ -156,7 +156,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 20.0),
                                                 child: Text(
@@ -184,10 +184,10 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                     launchURL(url!),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(8.0),
+                                                  padding: EdgeInsets.all(8.0),
                                                   child: FFButtonWidget(
                                                     onPressed: () async {
                                                       _model.isPurchaseSuccessful =
@@ -207,16 +207,16 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                             return WebViewAware(
                                                               child:
                                                                   AlertDialog(
-                                                                title: const Text(
+                                                                title: Text(
                                                                     'Erro'),
-                                                                content: const Text(
+                                                                content: Text(
                                                                     'Erro ao realizar a compra da assinatura!'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
                                                                         Navigator.pop(
                                                                             alertDialogContext),
-                                                                    child: const Text(
+                                                                    child: Text(
                                                                         'Ok'),
                                                                   ),
                                                                 ],
@@ -233,20 +233,20 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                       width: double.infinity,
                                                       height: 48.0,
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
-                                                      color: const Color(0xFFFCAF23),
+                                                      color: Color(0xFFFCAF23),
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)

@@ -68,35 +68,116 @@ double? equationsforGlomerularFiltration(
   int idade,
   String sexo,
   double src,
-  double a,
-  double b,
+  String? tipo,
+  double scys,
+  String etnia,
 ) {
-  if (sexo == 'Feminino') {
-    if (src <= 0.7) {
+  if (tipo == "Creatinina CKD-EPI 2021") {
+    double a;
+    double b;
+    if (sexo == 'Feminino') {
       a = 0.7;
-      b = -0.241;
-    } else {
-      a = 0.7;
-      b = -1.2;
-    }
-  } else if (sexo == 'Masculino') {
-    if (src <= 0.9) {
-      a = 0.9;
-      b = -0.302;
+      b = (src <= 0.7) ? -0.241 : -1.2;
     } else {
       a = 0.9;
-      b = -1.2;
+      b = (src <= 0.9) ? -0.302 : -1.2;
     }
-  }
 
-  double divisao = src / a;
+    double fatorSexo = (sexo == 'Feminino') ? 1.012 : 1.0;
 
-  double raiz = math.pow(divisao, b) as double;
+    double divisao = src / a;
+    double potencia = math.pow(divisao, b) as double;
 
-  if (sexo == 'Masculino') {
-    return 142 * raiz * (0.9938 * idade);
+    double eGFR = 142 * potencia * math.pow(0.9938, idade) * fatorSexo;
+
+    return eGFR;
+  } else if (tipo == "2021 CKD-EPI Creatinina-Cistatina C") {
+    double a, b, c, d;
+    double fatorSexo = (sexo == 'Feminino') ? 0.963 : 1.0;
+
+    if (sexo == 'Feminino') {
+      a = 0.7;
+      c = 0.8;
+      if (src <= 0.7) {
+        b = -0.219;
+      } else {
+        b = -0.544;
+      }
+      if (scys <= 0.8) {
+        d = -0.323;
+      } else {
+        d = -0.778;
+      }
+    } else {
+      a = 0.9;
+      c = 0.8;
+      if (src <= 0.9) {
+        b = -0.144;
+      } else {
+        b = -0.544;
+      }
+      if (scys <= 0.8) {
+        d = -0.323;
+      } else {
+        d = -0.778;
+      }
+    }
+
+    double eGFR = 135 *
+        math.pow(src / a, b) *
+        math.pow(scys / c, d) *
+        math.pow(0.9961, idade) *
+        fatorSexo;
+
+    return eGFR;
+  } else if (tipo == "Creatinina CKD-EPI 2009") {
+    double a, b, c;
+    double fatorEtnia = (etnia == "Negro") ? 1.159 : 1.0;
+
+    if (sexo == 'Feminino') {
+      a = 144;
+      b = 0.7;
+      c = (src <= 0.7) ? -0.329 : -1.209;
+    } else {
+      a = 141;
+      b = 0.9;
+      c = (src <= 0.9) ? -0.411 : -1.209;
+    }
+
+    double eGFR =
+        a * math.pow(src / b, c) * math.pow(0.993, idade) * fatorEtnia;
+    return eGFR;
+  } else if (tipo == "2012 CKD-EPI Cistatina C") {
+    double a, b;
+    b = (sexo == 'Feminino') ? 0.932 : 1.0;
+    a = (scys <= 0.8) ? -0.499 : -1.328;
+
+    double eGFR = 133 * math.pow(scys / 0.8, a) * math.pow(0.996, idade) * b;
+    return eGFR;
+  } else if (tipo == "2012 CKD-EPI Creatinina–Cistatina C") {
+    double a, b, c, d;
+    double fatorEtnia = (etnia == "Negro") ? 1.08 : 1.0;
+
+    if (sexo == 'Feminino') {
+      a = 130;
+      b = 0.7;
+      c = (src <= 0.7) ? -0.248 : -0.601;
+      d = (scys <= 0.8) ? -0.375 : -0.711;
+    } else {
+      a = 135;
+      b = 0.9;
+      c = (src <= 0.9) ? -0.207 : -0.601;
+      d = (scys <= 0.8) ? -0.375 : -0.711;
+    }
+
+    double eGFR = a *
+        math.pow(src / b, c) *
+        math.pow(scys / 0.8, d) *
+        math.pow(0.995, idade) *
+        fatorEtnia;
+    return eGFR;
   } else {
-    return 142 * raiz * (1.012 * idade);
+    return 0.00;
   }
 }
 
@@ -143,5 +224,71 @@ String? totalFibrosis(
     return 'Investigação adicional necessária. Estágio aproximado de fibrose: Ishak 2-3.';
   } else if (total > 3.25) {
     return 'Fibrose avançada (estágio METAVIR F3-F4) provável (McPherson 2017). Estágio aproximado de fibrose: Ishak 4-6 ';
+  }
+}
+
+double? calculateMELDNa(
+  double creatinine,
+  double bilirubin,
+  double inr,
+  double sodium,
+  bool dialysis,
+) {
+  // Aplicar as regras para os valores de entrada
+  creatinine = (creatinine < 1.0) ? 1.0 : creatinine;
+  bilirubin = (bilirubin < 1.0) ? 1.0 : bilirubin;
+  inr = (inr < 1.0) ? 1.0 : inr;
+
+  if (creatinine > 4.0 || dialysis) {
+    creatinine = 4.0;
+  }
+
+  if (sodium < 125) {
+    sodium = 125;
+  } else if (sodium > 137) {
+    sodium = 137;
+  }
+
+  // Cálculo inicial do MELD(i)
+  double meldI = 0.957 * math.log(creatinine) +
+      0.378 * math.log(bilirubin) +
+      1.120 * math.log(inr) +
+      0.643;
+  meldI = (meldI * 10).roundToDouble() /
+      10.0 *
+      10; // Arredondar e multiplicar por 10
+
+  double meld = meldI;
+
+  // Aplicar a correção de sódio se MELD(i) > 11
+  if (meldI > 11) {
+    meld = meldI + 1.32 * (137 - sodium) - (0.033 * meldI * (137 - sodium));
+  }
+
+  // Garantir que o MELD não ultrapasse 40
+  return meld.clamp(6.0, 40.0).roundToDouble();
+}
+
+String calcularSepsis(
+  List<bool> respostas,
+  bool infeccaoSuspeita,
+  bool acidoseLactica,
+  bool hipotensao,
+  bool falenciaOrgans,
+) {
+  int sirsCount = respostas.where((r) => r).length;
+
+  if (sirsCount < 2) {
+    return "Este paciente não atende aos critérios de SIRS. Para outras causas de choque, veja a seção Próximas etapas.";
+  } else if (sirsCount >= 2 && infeccaoSuspeita == true) {
+    return "Este paciente atende aos critérios de sepse. Siga suas diretrizes para sepse, que normalmente incluem ressuscitação agressiva de fluidos, antibióticos precoces de amplo espectro, consulta na UTI, avaliação de PVC e, ocasionalmente, pressores e transfusão.";
+  } else if (sirsCount >= 2 && acidoseLactica == true) {
+    return "Este paciente atende aos critérios de sepse grave.";
+  } else if (sirsCount >= 2 && hipotensao == true) {
+    return "Este paciente atende aos critérios de choque séptico.";
+  } else if (sirsCount >= 2 && falenciaOrgans == true) {
+    return "Este paciente apresenta síndrome de disfunção de múltiplos órgãos.";
+  } else {
+    return "Este paciente atende aos critérios de SIRS.";
   }
 }

@@ -12,14 +12,14 @@ Future<List<T>> _readQuery<T>(
 Future<List<ListaCategoriasRow>> performListaCategorias(
   Database database,
 ) {
-  const query = '''
+  final query = '''
 select * from categories
 ''';
   return _readQuery(database, query, (d) => ListaCategoriasRow(d));
 }
 
 class ListaCategoriasRow extends SqliteRow {
-  ListaCategoriasRow(super.data);
+  ListaCategoriasRow(Map<String, dynamic> data) : super(data);
 
   int get id => data['id'] as int;
   String get title => data['title'] as String;
@@ -37,13 +37,13 @@ Future<List<ListaSubcategoriasRow>> performListaSubcategorias(
   int? idCategory,
 }) {
   final query = '''
-select * from subcategories where id_category = $idCategory
+select * from subcategories where id_category = ${idCategory}
 ''';
   return _readQuery(database, query, (d) => ListaSubcategoriasRow(d));
 }
 
 class ListaSubcategoriasRow extends SqliteRow {
-  ListaSubcategoriasRow(super.data);
+  ListaSubcategoriasRow(Map<String, dynamic> data) : super(data);
 
   int get id => data['id'] as int;
   String get title => data['title'] as String;
@@ -61,13 +61,13 @@ Future<List<ListaTopicosRow>> performListaTopicos(
   int? idSubCategoria,
 }) {
   final query = '''
-select * from topics where id_subcategory = $idSubCategoria
+select * from topics where id_subcategory = ${idSubCategoria}
 ''';
   return _readQuery(database, query, (d) => ListaTopicosRow(d));
 }
 
 class ListaTopicosRow extends SqliteRow {
-  ListaTopicosRow(super.data);
+  ListaTopicosRow(Map<String, dynamic> data) : super(data);
 
   int get id => data['id'] as int;
   String get title => data['title'] as String;

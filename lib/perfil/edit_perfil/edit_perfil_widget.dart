@@ -89,7 +89,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                     letterSpacing: 0.0,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             toolbarHeight: MediaQuery.sizeOf(context).height * 0.05,
             elevation: 2.0,
@@ -108,7 +108,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                 ))
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 24.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 24.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -118,7 +118,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Text(
                                   'Clique para adicionar uma nova foto',
@@ -131,20 +131,20 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     4.0, 4.0, 4.0, 4.0),
                                 child: Container(
                                   width: 130.0,
                                   height: 130.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFE0E3E7),
+                                    color: Color(0xFFE0E3E7),
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: const Color(0xFFFCAF23),
+                                      color: Color(0xFFFCAF23),
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
+                                    padding: EdgeInsets.all(2.0),
                                     child: AuthUserStreamWidget(
                                       builder: (context) => InkWell(
                                         splashColor: Colors.transparent,
@@ -221,7 +221,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                           width: 90.0,
                                           height: 90.0,
                                           clipBehavior: Clip.antiAlias,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.network(
@@ -243,10 +243,10 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                     ),
                   ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(8.0, 14.0, 8.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(8.0, 14.0, 8.0, 0.0),
                     child: Material(
                       color: Colors.transparent,
                       elevation: 2.0,
@@ -267,13 +267,13 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                             Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: MediaQuery.sizeOf(context).height * 0.32,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 20.0, 16.0),
                                     child: AuthUserStreamWidget(
                                       builder: (context) => TextFormField(
@@ -289,7 +289,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                               .labelMedium
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                color: const Color(0xFF57636C),
+                                                color: Color(0xFF57636C),
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
@@ -300,14 +300,14 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Fira Sans Extra Condensed',
-                                                    color: const Color(0xFF57636C),
+                                                    color: Color(0xFF57636C),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight:
                                                         FontWeight.normal,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFE0E3E7),
                                               width: 2.0,
                                             ),
@@ -315,7 +315,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFF4B39EF),
                                               width: 2.0,
                                             ),
@@ -323,7 +323,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -332,7 +332,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -342,7 +342,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                           filled: true,
                                           fillColor: Colors.white,
                                           contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 24.0, 0.0, 24.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -350,7 +350,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                             .override(
                                               fontFamily:
                                                   'Fira Sans Extra Condensed',
-                                              color: const Color(0xFF14181B),
+                                              color: Color(0xFF14181B),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
@@ -362,7 +362,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 20.0, 16.0),
                                     child: TextFormField(
                                       controller: _model.emailTextController,
@@ -378,7 +378,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                             .override(
                                               fontFamily:
                                                   'Fira Sans Extra Condensed',
-                                              color: const Color(0xFF57636C),
+                                              color: Color(0xFF57636C),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
@@ -387,13 +387,13 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
-                                              color: const Color(0xFF57636C),
+                                              color: Color(0xFF57636C),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0xFFE0E3E7),
                                             width: 2.0,
                                           ),
@@ -401,7 +401,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0xFF4B39EF),
                                             width: 2.0,
                                           ),
@@ -409,7 +409,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0xFFFF5963),
                                             width: 2.0,
                                           ),
@@ -417,7 +417,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0xFFFF5963),
                                             width: 2.0,
                                           ),
@@ -427,7 +427,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                         filled: true,
                                         fillColor: Colors.white,
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 24.0, 0.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -435,7 +435,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                           .override(
                                             fontFamily:
                                                 'Fira Sans Extra Condensed',
-                                            color: const Color(0xFF14181B),
+                                            color: Color(0xFF14181B),
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
@@ -446,7 +446,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 20.0, 16.0),
                                     child: AuthUserStreamWidget(
                                       builder: (context) => TextFormField(
@@ -464,7 +464,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                                   .override(
                                                     fontFamily:
                                                         'Fira Sans Extra Condensed',
-                                                    color: const Color(0xFF57636C),
+                                                    color: Color(0xFF57636C),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight:
@@ -475,13 +475,13 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                               .labelMedium
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                color: const Color(0xFF57636C),
+                                                color: Color(0xFF57636C),
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFE0E3E7),
                                               width: 2.0,
                                             ),
@@ -489,7 +489,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFF4B39EF),
                                               width: 2.0,
                                             ),
@@ -497,7 +497,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -506,7 +506,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0xFFFF5963),
                                               width: 2.0,
                                             ),
@@ -516,7 +516,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                           filled: true,
                                           fillColor: Colors.white,
                                           contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 24.0, 0.0, 24.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -524,7 +524,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                             .override(
                                               fontFamily:
                                                   'Fira Sans Extra Condensed',
-                                              color: const Color(0xFF14181B),
+                                              color: Color(0xFF14181B),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
@@ -536,7 +536,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 16.0)),
+                                ].divide(SizedBox(height: 16.0)),
                               ),
                             ),
                             Row(
@@ -553,7 +553,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                         .emailTextController.text.isEmpty) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
-                                        const SnackBar(
+                                        SnackBar(
                                           content: Text(
                                             'Email required!',
                                           ),
@@ -598,9 +598,9 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                               ],
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.05),
+                              alignment: AlignmentDirectional(0.0, 0.05),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -618,13 +618,13 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                       builder: (alertDialogContext) {
                                         return WebViewAware(
                                           child: AlertDialog(
-                                            title: const Text('Sucesso!'),
-                                            content: const Text('Dados alterados!'),
+                                            title: Text('Sucesso!'),
+                                            content: Text('Dados alterados!'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext),
-                                                child: const Text('Ok'),
+                                                child: Text('Ok'),
                                               ),
                                             ],
                                           ),
@@ -637,11 +637,11 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                   options: FFButtonOptions(
                                     width: 270.0,
                                     height: 50.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0xFFFCAF23),
+                                    color: Color(0xFFFCAF23),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -653,7 +653,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                           fontWeight: FontWeight.normal,
                                         ),
                                     elevation: 2.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -668,9 +668,9 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                 (currentUserEmail ==
                                     'georgie.reis@outlook.com'))
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.05),
+                                alignment: AlignmentDirectional(0.0, 0.05),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
                                   child: AuthUserStreamWidget(
                                     builder: (context) => FFButtonWidget(
@@ -681,12 +681,12 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                       options: FFButtonOptions(
                                         width: 270.0,
                                         height: 50.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: const Color(0xFFFCAF23),
+                                        color: Color(0xFFFCAF23),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .override(
@@ -698,7 +698,7 @@ class _EditPerfilWidgetState extends State<EditPerfilWidget> {
                                               fontWeight: FontWeight.normal,
                                             ),
                                         elevation: 2.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),

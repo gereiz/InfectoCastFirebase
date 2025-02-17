@@ -4,6 +4,7 @@ import '/backend/backend.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:csv/csv.dart';
 import 'package:synchronized/synchronized.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -19,7 +20,7 @@ class FFAppState extends ChangeNotifier {
   }
 
   Future initializePersistedState() async {
-    secureStorage = const FlutterSecureStorage();
+    secureStorage = FlutterSecureStorage();
     await _safeInitAsync(() async {
       _msgNotification =
           await secureStorage.getStringList('ff_msgNotification') ??
@@ -87,7 +88,7 @@ class FFAppState extends ChangeNotifier {
     secureStorage.delete(key: 'ff_authtoken');
   }
 
-  int _localAppVersion = 6;
+  int _localAppVersion = 7;
   int get localAppVersion => _localAppVersion;
   set localAppVersion(int value) {
     _localAppVersion = value;
@@ -160,12 +161,12 @@ extension FlutterSecureStorageExtensions on FlutterSecureStorage {
         if (result == null || result.isEmpty) {
           return null;
         }
-        return const CsvToListConverter()
+        return CsvToListConverter()
             .convert(result)
             .first
             .map((e) => e.toString())
             .toList();
       });
   Future<void> setStringList(String key, List<String> value) async =>
-      await writeSync(key: key, value: const ListToCsvConverter().convert([value]));
+      await writeSync(key: key, value: ListToCsvConverter().convert([value]));
 }

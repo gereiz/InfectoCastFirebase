@@ -59,22 +59,22 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.8, 0.8),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0, 1.396),
-            end: const Offset(0, 0),
+            begin: Offset(0, 1.396),
+            end: Offset(0, 0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 40.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -93,22 +93,22 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.8, 0.8),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(1.222, 0),
-            end: const Offset(0, 0),
+            begin: Offset(1.222, 0),
+            end: Offset(0, 0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 40.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -138,7 +138,7 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
           onWillPop: () async => false,
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFF2B5EA6),
+            backgroundColor: Color(0xFF2B5EA6),
             body: SafeArea(
               top: true,
               child: Column(
@@ -147,7 +147,7 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                   wrapWithModel(
                     model: _model.topBarModel,
                     updateCallback: () => safeSetState(() {}),
-                    child: const TopBarWidget(),
+                    child: TopBarWidget(),
                   ),
                   FutureBuilder<ApiCallResponse>(
                     future: LinksInfectoGroup.topicoCall.call(
@@ -156,7 +156,7 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
-                        return const Center(
+                        return Center(
                           child: SizedBox(
                             width: 50.0,
                             height: 50.0,
@@ -177,7 +177,7 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               5.0, 10.0, 5.0, 10.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -243,11 +243,11 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,
@@ -277,7 +277,7 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 8.0,
                                                                 0.0, 8.0),
                                                     child: FFButtonWidget(
@@ -290,21 +290,21 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                                                         width: double.infinity,
                                                         height: 48.0,
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
                                                                     24.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
                                                         color:
-                                                            const Color(0xFFFCAF23),
+                                                            Color(0xFFFCAF23),
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -320,7 +320,7 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                                                                       0.0,
                                                                 ),
                                                         elevation: 3.0,
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                           width: 1.0,
@@ -349,7 +349,7 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.
                                                   if (!snapshot.hasData) {
-                                                    return const Center(
+                                                    return Center(
                                                       child: SizedBox(
                                                         width: 50.0,
                                                         height: 50.0,
@@ -394,7 +394,7 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                                                         itemCount:
                                                             topicVideos.length,
                                                         separatorBuilder:
-                                                            (_, __) => const SizedBox(
+                                                            (_, __) => SizedBox(
                                                                 height: 8.0),
                                                         itemBuilder: (context,
                                                             topicVideosIndex) {
@@ -403,7 +403,7 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                                                                   topicVideosIndex];
                                                           return FlutterFlowYoutubePlayer(
                                                             url:
-                                                                topicVideosItem,
+                                                                '${topicVideosItem}',
                                                             autoPlay: false,
                                                             looping: true,
                                                             mute: false,
@@ -419,13 +419,13 @@ class _TopicoCopyWidgetState extends State<TopicoCopyWidget>
                                                   );
                                                 },
                                               ),
-                                          ].divide(const SizedBox(height: 12.0)),
+                                          ].divide(SizedBox(height: 12.0)),
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ].addToEnd(const SizedBox(height: 20.0)),
+                              ].addToEnd(SizedBox(height: 20.0)),
                             ),
                           ),
                         ),

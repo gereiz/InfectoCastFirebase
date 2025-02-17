@@ -73,7 +73,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                     letterSpacing: 0.0,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             toolbarHeight: MediaQuery.sizeOf(context).height * 0.05,
             elevation: 2.0,
@@ -82,7 +82,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +90,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                 Flexible(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: MediaQuery.sizeOf(context).height * 0.22,
@@ -120,7 +120,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                       ))
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 5.0),
                                           child: ClipRRect(
                                             borderRadius:
@@ -154,7 +154,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, 1.0),
+                                  alignment: AlignmentDirectional(-1.0, 1.0),
                                   child: Container(
                                     width: 90.0,
                                     height: 90.0,
@@ -168,12 +168,12 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                       ),
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                        color: const Color(0xFFFCAF23),
+                                        color: Color(0xFFFCAF23),
                                         width: 2.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 4.0, 4.0, 4.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => InkWell(
@@ -238,7 +238,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                             .override(
                                               fontFamily:
                                                   'Fira Sans Extra Condensed',
-                                              color: const Color(0xFF101213),
+                                              color: Color(0xFF101213),
                                               fontSize: 26.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -246,7 +246,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           2.0, 4.0, 0.0, 16.0),
                                       child: Text(
                                         currentUserEmail,
@@ -255,7 +255,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                             .override(
                                               fontFamily:
                                                   'Fira Sans Extra Condensed',
-                                              color: const Color(0xFF57636C),
+                                              color: Color(0xFF57636C),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -273,7 +273,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
                     height: MediaQuery.sizeOf(context).height * 0.63,
@@ -285,7 +285,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 14.0, 0.0, 0.0),
                           child: Text(
                             'Seus dados',
@@ -293,7 +293,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Fira Sans Extra Condensed',
-                                  color: const Color(0xFF57636C),
+                                  color: Color(0xFF57636C),
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
@@ -301,7 +301,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -322,7 +322,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 height: 60.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  boxShadow: const [
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 3.0,
                                       color: Color(0x6E74746C),
@@ -336,17 +336,17 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                   shape: BoxShape.rectangle,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      const Icon(
+                                      Icon(
                                         Icons.account_circle_outlined,
                                         color: Color(0xFFFCAF23),
                                         size: 24.0,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Editar perfil',
@@ -355,14 +355,14 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                               .override(
                                                 fontFamily:
                                                     'Fira Sans Extra Condensed',
-                                                color: const Color(0xFF57636C),
+                                                color: Color(0xFF57636C),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
                                       ),
-                                      const Expanded(
+                                      Expanded(
                                         child: Align(
                                           alignment:
                                               AlignmentDirectional(0.9, 0.0),
@@ -381,7 +381,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -402,7 +402,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 height: 60.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  boxShadow: const [
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 3.0,
                                       color: Color(0x6E74746C),
@@ -416,17 +416,17 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                   shape: BoxShape.rectangle,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      const Icon(
+                                      Icon(
                                         Icons.payment,
                                         color: Color(0xFFFCAF23),
                                         size: 24.0,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Planos',
@@ -435,14 +435,14 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                               .override(
                                                 fontFamily:
                                                     'Fira Sans Extra Condensed',
-                                                color: const Color(0xFF57636C),
+                                                color: Color(0xFF57636C),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
                                       ),
-                                      const Expanded(
+                                      Expanded(
                                         child: Align(
                                           alignment:
                                               AlignmentDirectional(0.9, 0.0),
@@ -461,7 +461,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: Text(
                             'Configurações do App',
@@ -469,7 +469,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Fira Sans Extra Condensed',
-                                  color: const Color(0xFF57636C),
+                                  color: Color(0xFF57636C),
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
@@ -477,7 +477,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -498,7 +498,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 height: 60.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  boxShadow: const [
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 3.0,
                                       color: Color(0x6E74746C),
@@ -512,17 +512,17 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                   shape: BoxShape.rectangle,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      const Icon(
+                                      Icon(
                                         Icons.help_outline_rounded,
                                         color: Color(0xFFFCAF23),
                                         size: 24.0,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Suporte',
@@ -531,14 +531,14 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                               .override(
                                                 fontFamily:
                                                     'Fira Sans Extra Condensed',
-                                                color: const Color(0xFF57636C),
+                                                color: Color(0xFF57636C),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
                                       ),
-                                      const Expanded(
+                                      Expanded(
                                         child: Align(
                                           alignment:
                                               AlignmentDirectional(0.9, 0.0),

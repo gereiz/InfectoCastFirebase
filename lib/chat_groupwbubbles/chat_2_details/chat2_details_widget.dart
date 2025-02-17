@@ -90,7 +90,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
               context.goNamed(
                 'chat_2_main',
                 extra: <String, dynamic>{
-                  kTransitionInfoKey: const TransitionInfo(
+                  kTransitionInfoKey: TransitionInfo(
                     hasTransition: true,
                     transitionType: PageTransitionType.leftToRight,
                     duration: Duration(milliseconds: 230),
@@ -107,7 +107,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
-                return const Center(
+                return Center(
                   child: SizedBox(
                     width: 50.0,
                     height: 50.0,
@@ -129,9 +129,9 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                       children: [
                         if (conditionalBuilderUsersRecord.photoUrl != '')
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, -1.0),
+                            alignment: AlignmentDirectional(-1.0, -1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: Container(
                                 width: 44.0,
@@ -146,7 +146,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(2.0),
+                                  padding: EdgeInsets.all(2.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.network(
@@ -178,7 +178,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                     ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: AutoSizeText(
                                   valueOrDefault<String>(
@@ -209,15 +209,15 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 12.0, 4.0),
-                          child: SizedBox(
+                          child: Container(
                             width: 54.0,
                             height: 44.0,
                             child: Stack(
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(1.0, 1.0),
+                                  alignment: AlignmentDirectional(1.0, 1.0),
                                   child: FutureBuilder<UsersRecord>(
                                     future: UsersRecord.getDocumentOnce(widget
                                         .chatRef!.users
@@ -227,7 +227,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
-                                        return const Center(
+                                        return Center(
                                           child: SizedBox(
                                             width: 50.0,
                                             height: 50.0,
@@ -246,12 +246,12 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                         width: 32.0,
                                         height: 32.0,
                                         decoration: BoxDecoration(
-                                          color: const Color(0xFF2B5EA6),
+                                          color: Color(0xFF2B5EA6),
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           shape: BoxShape.rectangle,
                                           border: Border.all(
-                                            color: const Color(0xFF2B5EA6),
+                                            color: Color(0xFF2B5EA6),
                                             width: 2.0,
                                           ),
                                         ),
@@ -261,15 +261,15 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                         .photoUrl !=
                                                     '') {
                                               return Padding(
-                                                padding: const EdgeInsets.all(2.0),
+                                                padding: EdgeInsets.all(2.0),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
                                                   child: CachedNetworkImage(
-                                                    fadeInDuration: const Duration(
+                                                    fadeInDuration: Duration(
                                                         milliseconds: 200),
-                                                    fadeOutDuration: const Duration(
+                                                    fadeOutDuration: Duration(
                                                         milliseconds: 200),
                                                     imageUrl:
                                                         valueOrDefault<String>(
@@ -285,7 +285,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                               );
                                             } else {
                                               return Padding(
-                                                padding: const EdgeInsets.all(2.0),
+                                                padding: EdgeInsets.all(2.0),
                                                 child: Container(
                                                   width: 100.0,
                                                   height: 100.0,
@@ -298,7 +298,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                             8.0),
                                                   ),
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
                                                     valueOrDefault<String>(
@@ -330,16 +330,16 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: Container(
                                     width: 32.0,
                                     height: 32.0,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFF2B5EA6),
+                                      color: Color(0xFF2B5EA6),
                                       borderRadius: BorderRadius.circular(12.0),
                                       shape: BoxShape.rectangle,
                                       border: Border.all(
-                                        color: const Color(0xFF2B5EA6),
+                                        color: Color(0xFF2B5EA6),
                                         width: 2.0,
                                       ),
                                     ),
@@ -349,15 +349,15 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                     .photoUrl !=
                                                 '') {
                                           return Padding(
-                                            padding: const EdgeInsets.all(2.0),
+                                            padding: EdgeInsets.all(2.0),
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: CachedNetworkImage(
                                                 fadeInDuration:
-                                                    const Duration(milliseconds: 200),
+                                                    Duration(milliseconds: 200),
                                                 fadeOutDuration:
-                                                    const Duration(milliseconds: 200),
+                                                    Duration(milliseconds: 200),
                                                 imageUrl:
                                                     valueOrDefault<String>(
                                                   conditionalBuilderUsersRecord
@@ -372,7 +372,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                           );
                                         } else {
                                           return Padding(
-                                            padding: const EdgeInsets.all(2.0),
+                                            padding: EdgeInsets.all(2.0),
                                             child: Container(
                                               width: 100.0,
                                               height: 100.0,
@@ -383,7 +383,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                               ),
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
@@ -431,7 +431,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                     ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: Text(
                                   '${valueOrDefault<String>(
@@ -442,7 +442,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                       .labelSmall
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: const Color(0xFF2B5EA6),
+                                        color: Color(0xFF2B5EA6),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -459,7 +459,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
           ),
           actions: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 8.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 8.0),
               child: FlutterFlowIconButton(
                 borderColor: FlutterFlowTheme.of(context).alternate,
                 borderRadius: 12.0,
@@ -475,7 +475,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                   await showModalBottomSheet(
                     isScrollControlled: true,
                     backgroundColor: FlutterFlowTheme.of(context).accent4,
-                    barrierColor: const Color(0x00FFFFFF),
+                    barrierColor: Color(0x00FFFFFF),
                     context: context,
                     builder: (context) {
                       return WebViewAware(

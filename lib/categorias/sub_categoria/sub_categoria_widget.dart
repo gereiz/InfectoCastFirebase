@@ -52,7 +52,7 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -61,7 +61,7 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: double.infinity,
@@ -70,7 +70,7 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -88,7 +88,7 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
-                              return const Center(
+                              return Center(
                                 child: SizedBox(
                                   width: 50.0,
                                   height: 50.0,
@@ -106,7 +106,7 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
                             return GridView.builder(
                               padding: EdgeInsets.zero,
                               gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                  SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 5.0,
                                 mainAxisSpacing: 6.0,
@@ -145,8 +145,8 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
                                     height:
                                         MediaQuery.sizeOf(context).height * 0.1,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFF4F4F4),
-                                      boxShadow: const [
+                                      color: Color(0xFFF4F4F4),
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 4.0,
                                           color: Color(0x6E74746C),
@@ -162,7 +162,7 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: EdgeInsets.all(8.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -186,13 +186,13 @@ class _SubCategoriaWidgetState extends State<SubCategoriaWidget> {
                                                 .override(
                                                   fontFamily:
                                                       'Fira Sans Extra Condensed',
-                                                  color: const Color(0xFF1D1D1B),
+                                                  color: Color(0xFF1D1D1B),
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                           ),
-                                        ].divide(const SizedBox(height: 8.0)),
+                                        ].divide(SizedBox(height: 8.0)),
                                       ),
                                     ),
                                   ),

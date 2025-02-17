@@ -70,7 +70,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
         Container(
           width: double.infinity,
           height: 100.0,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0xFF2B5EA6),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -85,7 +85,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(2.0, 8.0, 2.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(2.0, 8.0, 2.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -117,14 +117,14 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                 builder: (alertDialogContext) {
                                   return WebViewAware(
                                     child: AlertDialog(
-                                      title: const Text('Atenção'),
-                                      content: const Text(
+                                      title: Text('Atenção'),
+                                      content: Text(
                                           'Você já está na página de Home.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -142,11 +142,11 @@ class _TopBarWidgetState extends State<TopBarWidget>
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: const Color(0xFFFCAF23),
+                          color: Color(0xFFFCAF23),
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: EdgeInsets.all(4.0),
                         child: AuthUserStreamWidget(
                           builder: (context) => ClipRRect(
                             borderRadius: BorderRadius.circular(50.0),
@@ -169,7 +169,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                           desktop: false,
                         ))
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: AuthUserStreamWidget(
                               builder: (context) => InkWell(
@@ -203,7 +203,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -231,7 +231,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
-                                    return const Center(
+                                    return Center(
                                       child: SizedBox(
                                         width: 50.0,
                                         height: 50.0,
@@ -262,20 +262,20 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                     badgeColor:
                                         FlutterFlowTheme.of(context).error,
                                     elevation: 4.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 8.0, 8.0, 8.0),
                                     position: badges.BadgePosition.topEnd(),
                                     animationType:
                                         badges.BadgeAnimationType.scale,
                                     toAnimate: true,
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 5.0, 0.0, 0.0),
                                       child: FlutterFlowIconButton(
                                         borderRadius: 20.0,
                                         borderWidth: 1.0,
                                         buttonSize: 40.0,
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.message,
                                           color: Colors.white,
                                           size: 24.0,
@@ -290,7 +290,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                               ),
                             ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 4.0, 0.0, 2.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -300,7 +300,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                               onTap: () async {
                                 context.pushNamed('perfil');
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.engineering_sharp,
                                 color: Colors.white,
                                 size: 24.0,
@@ -308,7 +308,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -322,7 +322,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
 
                                 context.goNamedAuth('login', context.mounted);
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.output_sharp,
                                 color: Colors.white,
                                 size: 24.0,
@@ -336,19 +336,19 @@ class _TopBarWidgetState extends State<TopBarWidget>
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 8.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 8.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 30.0, 0.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -364,7 +364,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 6.0, 10.0, 0.0),
                                     child: Text(
                                       'Bem Vindo(a) ao InfectoCast',
@@ -388,7 +388,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                               0) ==
                                           0))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => ClipRRect(
@@ -407,7 +407,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                           currentUserDocument?.premium, 0) ==
                                       1)
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => ClipRRect(
@@ -426,7 +426,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                                           currentUserDocument?.gold, 0) ==
                                       1)
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => ClipRRect(
@@ -456,7 +456,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
         ),
         Container(
           width: MediaQuery.sizeOf(context).width * 1.0,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0xFF2B5EA6),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(25.0),
@@ -470,7 +470,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
             children: [
               Container(
                 width: MediaQuery.sizeOf(context).width * 1.0,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Color(0xFF2B5EA6),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(25.0),
@@ -480,7 +480,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 8.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 8.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -494,7 +494,7 @@ class _TopBarWidgetState extends State<TopBarWidget>
                       height: 46.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                             blurRadius: 3.0,
                             color: Color(0x33000000),
@@ -509,20 +509,20 @@ class _TopBarWidgetState extends State<TopBarWidget>
                           color: FlutterFlowTheme.of(context).alternate,
                         ),
                       ),
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.search_rounded,
                               color: Color(0xFF57636C),
                               size: 24.0,
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Pesquisar',

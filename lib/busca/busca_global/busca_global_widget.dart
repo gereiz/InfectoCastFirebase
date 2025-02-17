@@ -51,7 +51,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
         onWillPop: () async => false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: const Color(0xFF2B5EA6),
+          backgroundColor: Color(0xFF2B5EA6),
           body: SafeArea(
             top: true,
             child: Column(
@@ -60,12 +60,12 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                 wrapWithModel(
                   model: _model.topBarGModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: const TopBarGWidget(),
+                  child: TopBarGWidget(),
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: 61.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Color(0xFF2B5EA6),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(25.0),
@@ -76,13 +76,13 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 8.0),
+                        EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 8.0),
                     child: Container(
                       width: 138.0,
                       height: 46.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                             blurRadius: 3.0,
                             color: Color(0x33000000),
@@ -97,30 +97,30 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                           color: FlutterFlowTheme.of(context).alternate,
                         ),
                       ),
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.search_rounded,
                               color: Color(0xFF57636C),
                               size: 24.0,
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     4.0, 0.0, 8.0, 0.0),
-                                child: SizedBox(
+                                child: Container(
                                   width: 200.0,
                                   child: TextFormField(
                                     controller: _model.textController,
                                     focusNode: _model.textFieldFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.textController',
-                                      const Duration(milliseconds: 500),
+                                      Duration(milliseconds: 500),
                                       () async {
                                         _model.categoryResults =
                                             await AlgoliaGroup.categoriesCall
@@ -162,7 +162,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                           .secondaryBackground,
                                                     ),
                                                   ),
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 4000),
                                                   backgroundColor:
                                                       FlutterFlowTheme.of(
@@ -184,7 +184,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                         .secondaryBackground,
                                                   ),
                                                 ),
-                                                duration: const Duration(
+                                                duration: Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
                                                     FlutterFlowTheme.of(context)
@@ -206,7 +206,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                 ),
                                               ),
                                               duration:
-                                                  const Duration(milliseconds: 4000),
+                                                  Duration(milliseconds: 4000),
                                               backgroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .warning,
@@ -245,7 +245,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               10.0, 0.0, 10.0, 0.0),
                                       suffixIcon: _model
                                               .textController!.text.isNotEmpty
@@ -299,7 +299,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                                   .secondaryBackground,
                                                             ),
                                                           ),
-                                                          duration: const Duration(
+                                                          duration: Duration(
                                                               milliseconds:
                                                                   4000),
                                                           backgroundColor:
@@ -324,7 +324,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                                 .secondaryBackground,
                                                           ),
                                                         ),
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 4000),
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(
@@ -347,7 +347,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                               .secondaryBackground,
                                                         ),
                                                       ),
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 4000),
                                                       backgroundColor:
                                                           FlutterFlowTheme.of(
@@ -401,19 +401,19 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                     color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 if (_model.textController.text != '')
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
@@ -428,7 +428,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                 [];
 
                                         return ListView.builder(
-                                          padding: const EdgeInsets.fromLTRB(
+                                          padding: EdgeInsets.fromLTRB(
                                             0,
                                             2.0,
                                             0,
@@ -444,7 +444,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                 categoriesList[
                                                     categoriesListIndex];
                                             return Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 0.0, 8.0, 8.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
@@ -505,8 +505,8 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                     width: 100.0,
                                                     height: 30.0,
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFF4F4F4),
-                                                      boxShadow: const [
+                                                      color: Color(0xFFF4F4F4),
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -530,7 +530,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       0.0,
@@ -566,7 +566,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -590,7 +590,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                                     ),
                                                               ),
                                                             ),
-                                                          ].divide(const SizedBox(
+                                                          ].divide(SizedBox(
                                                               width: 4.0)),
                                                         ),
                                                       ],
@@ -618,7 +618,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                               [];
 
                                       return ListView.builder(
-                                        padding: const EdgeInsets.fromLTRB(
+                                        padding: EdgeInsets.fromLTRB(
                                           0,
                                           2.0,
                                           0,
@@ -635,7 +635,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                   subcategoriesListIndex];
                                           return Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 8.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -691,8 +691,8 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                   width: 100.0,
                                                   height: 30.0,
                                                   decoration: BoxDecoration(
-                                                    color: const Color(0xFFF4F4F4),
-                                                    boxShadow: const [
+                                                    color: Color(0xFFF4F4F4),
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -716,7 +716,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -751,7 +751,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -775,7 +775,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                                   ),
                                                             ),
                                                           ),
-                                                        ].divide(const SizedBox(
+                                                        ].divide(SizedBox(
                                                             width: 4.0)),
                                                       ),
                                                     ],
@@ -801,7 +801,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                           [];
 
                                       return ListView.builder(
-                                        padding: const EdgeInsets.fromLTRB(
+                                        padding: EdgeInsets.fromLTRB(
                                           0,
                                           2.0,
                                           0,
@@ -817,7 +817,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                               topicsList[topicsListIndex];
                                           return Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 8.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -870,8 +870,8 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                   width: 100.0,
                                                   height: 30.0,
                                                   decoration: BoxDecoration(
-                                                    color: const Color(0xFFF4F4F4),
-                                                    boxShadow: const [
+                                                    color: Color(0xFFF4F4F4),
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -895,7 +895,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -930,7 +930,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -954,7 +954,7 @@ class _BuscaGlobalWidgetState extends State<BuscaGlobalWidget> {
                                                                   ),
                                                             ),
                                                           ),
-                                                        ].divide(const SizedBox(
+                                                        ].divide(SizedBox(
                                                             width: 4.0)),
                                                       ),
                                                     ],

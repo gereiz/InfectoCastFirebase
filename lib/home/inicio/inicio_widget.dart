@@ -74,7 +74,7 @@ class _InicioWidgetState extends State<InicioWidget> {
         onWillPop: () async => false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: const Color(0xFF2B5EA6),
+          backgroundColor: Color(0xFF2B5EA6),
           body: SafeArea(
             top: true,
             child: Column(
@@ -83,7 +83,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                 wrapWithModel(
                   model: _model.topBarModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: const TopBarWidget(),
+                  child: TopBarWidget(),
                 ),
                 Container(
                   width: double.infinity,
@@ -92,7 +92,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                     color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(12.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -105,7 +105,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return const Center(
+                                return Center(
                                   child: SizedBox(
                                     width: 50.0,
                                     height: 50.0,
@@ -122,7 +122,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                               return GridView.builder(
                                 padding: EdgeInsets.zero,
                                 gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                    SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 5.0,
                                   mainAxisSpacing: 6.0,
@@ -166,8 +166,8 @@ class _InicioWidgetState extends State<InicioWidget> {
                                           MediaQuery.sizeOf(context).height *
                                               0.1,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF4F4F4),
-                                        boxShadow: const [
+                                        color: Color(0xFFF4F4F4),
+                                        boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x6E74746C),
@@ -184,7 +184,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
+                                        padding: EdgeInsets.all(8.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           mainAxisAlignment:
@@ -202,7 +202,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                             ),
                                             Flexible(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 4.0),
                                                 child: AutoSizeText(
@@ -224,7 +224,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 8.0)),
+                                          ].divide(SizedBox(height: 8.0)),
                                         ),
                                       ),
                                     ),

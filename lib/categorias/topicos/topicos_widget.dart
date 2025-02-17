@@ -52,7 +52,7 @@ class _TopicosWidgetState extends State<TopicosWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -61,7 +61,7 @@ class _TopicosWidgetState extends State<TopicosWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: double.infinity,
@@ -70,13 +70,13 @@ class _TopicosWidgetState extends State<TopicosWidget> {
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: StreamBuilder<List<TopicsRecord>>(
                             stream: queryTopicsRecord(
@@ -90,7 +90,7 @@ class _TopicosWidgetState extends State<TopicosWidget> {
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return const Center(
+                                return Center(
                                   child: SizedBox(
                                     width: 50.0,
                                     height: 50.0,
@@ -105,7 +105,7 @@ class _TopicosWidgetState extends State<TopicosWidget> {
                                   snapshot.data!;
 
                               return ListView.builder(
-                                padding: const EdgeInsets.fromLTRB(
+                                padding: EdgeInsets.fromLTRB(
                                   0,
                                   2.0,
                                   0,
@@ -119,7 +119,7 @@ class _TopicosWidgetState extends State<TopicosWidget> {
                                   final listViewTopicsRecord =
                                       listViewTopicsRecordList[listViewIndex];
                                   return Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -203,8 +203,8 @@ class _TopicosWidgetState extends State<TopicosWidget> {
                                           width: 100.0,
                                           height: 30.0,
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFF4F4F4),
-                                            boxShadow: const [
+                                            color: Color(0xFFF4F4F4),
+                                            boxShadow: [
                                               BoxShadow(
                                                 blurRadius: 4.0,
                                                 color: Color(0x33000000),
@@ -223,7 +223,7 @@ class _TopicosWidgetState extends State<TopicosWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -241,7 +241,7 @@ class _TopicosWidgetState extends State<TopicosWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 8.0, 0.0),
                                                 child: Row(
@@ -294,7 +294,7 @@ class _TopicosWidgetState extends State<TopicosWidget> {
                                                         ),
                                                       ),
                                                   ].divide(
-                                                      const SizedBox(width: 4.0)),
+                                                      SizedBox(width: 4.0)),
                                                 ),
                                               ),
                                             ],

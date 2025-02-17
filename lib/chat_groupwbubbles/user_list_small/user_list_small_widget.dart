@@ -50,14 +50,8 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
     return MouseRegion(
       opaque: false,
       cursor: MouseCursor.defer ?? MouseCursor.defer,
-      onEnter: ((event) async {
-        safeSetState(() => _model.iuserHovered = true);
-      }),
-      onExit: ((event) async {
-        safeSetState(() => _model.iuserHovered = false);
-      }),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
+        duration: Duration(milliseconds: 150),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
           color: _model.iuserHovered
@@ -69,7 +63,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+          padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -77,10 +71,10 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                 width: 40.0,
                 height: 40.0,
                 decoration: BoxDecoration(
-                  color: const Color(0xD02B5EA6),
+                  color: Color(0xD02B5EA6),
                   borderRadius: BorderRadius.circular(12.0),
                   border: Border.all(
-                    color: const Color(0xFF2B5EA6),
+                    color: Color(0xFF2B5EA6),
                     width: 2.0,
                   ),
                 ),
@@ -89,12 +83,12 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                     if (widget.userRef?.photoUrl != null &&
                         widget.userRef?.photoUrl != '') {
                       return Padding(
-                        padding: const EdgeInsets.all(2.0),
+                        padding: EdgeInsets.all(2.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: CachedNetworkImage(
-                            fadeInDuration: const Duration(milliseconds: 200),
-                            fadeOutDuration: const Duration(milliseconds: 200),
+                            fadeInDuration: Duration(milliseconds: 200),
+                            fadeOutDuration: Duration(milliseconds: 200),
                             imageUrl: widget.userRef!.photoUrl,
                             width: 44.0,
                             height: 44.0,
@@ -104,7 +98,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                       );
                     } else {
                       return Padding(
-                        padding: const EdgeInsets.all(2.0),
+                        padding: EdgeInsets.all(2.0),
                         child: Container(
                           width: 100.0,
                           height: 100.0,
@@ -113,7 +107,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                                 .secondaryBackground,
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             valueOrDefault<String>(
                               widget.userRef?.displayName,
@@ -137,7 +131,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -156,7 +150,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           valueOrDefault<String>(
                             widget.userRef?.email,
@@ -165,7 +159,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodySmall.override(
                                     fontFamily: 'Readex Pro',
-                                    color: const Color(0xFF2B5EA6),
+                                    color: Color(0xFF2B5EA6),
                                     letterSpacing: 0.0,
                                   ),
                         ),
@@ -178,18 +172,18 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                 Container(
                   height: 32.0,
                   decoration: BoxDecoration(
-                    color: const Color(0xC42B5EA6),
+                    color: Color(0xC42B5EA6),
                     borderRadius: BorderRadius.circular(12.0),
                     border: Border.all(
-                      color: const Color(0xFF2B5EA6),
+                      color: Color(0xFF2B5EA6),
                       width: 2.0,
                     ),
                   ),
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                       child: Text(
                         'EU',
                         textAlign: TextAlign.center,
@@ -206,6 +200,12 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
           ),
         ),
       ),
+      onEnter: ((event) async {
+        safeSetState(() => _model.iuserHovered = true);
+      }),
+      onExit: ((event) async {
+        safeSetState(() => _model.iuserHovered = false);
+      }),
     );
   }
 }

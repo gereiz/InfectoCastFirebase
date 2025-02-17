@@ -73,14 +73,14 @@ class _AdminWidgetState extends State<AdminWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
             child: Container(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: MediaQuery.sizeOf(context).height * 0.81,
@@ -98,7 +98,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                       if (valueOrDefault<bool>(
                           currentUserDocument?.isAdmin, false))
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.05),
+                          alignment: AlignmentDirectional(0.0, 0.05),
                           child: AuthUserStreamWidget(
                             builder: (context) => FFButtonWidget(
                               onPressed: () async {
@@ -131,7 +131,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                               FlutterFlowTheme.of(context).info,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context).warning,
                                     ),
@@ -148,7 +148,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                               FlutterFlowTheme.of(context).info,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context).warning,
                                     ),
@@ -161,11 +161,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                               options: FFButtonOptions(
                                 width: 270.0,
                                 height: 50.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFFFCAF23),
+                                color: Color(0xFFFCAF23),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
@@ -176,7 +176,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                       fontWeight: FontWeight.normal,
                                     ),
                                 elevation: 2.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -187,7 +187,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                         ),
                     ],
                   ),
-                ].divide(const SizedBox(height: 16.0)).around(const SizedBox(height: 16.0)),
+                ].divide(SizedBox(height: 16.0)).around(SizedBox(height: 16.0)),
               ),
             ),
           ),

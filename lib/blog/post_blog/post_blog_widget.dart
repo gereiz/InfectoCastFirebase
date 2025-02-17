@@ -62,7 +62,7 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: double.infinity,
@@ -71,7 +71,7 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -94,7 +94,7 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         2.0, 0.0, 2.0, 0.0),
                                     child: AutoSizeText(
                                       valueOrDefault<String>(
@@ -114,17 +114,17 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
                                           ),
                                     ),
                                   ),
-                                  const Row(
+                                  Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [],
                                   ),
-                                ].divide(const SizedBox(height: 12.0)),
+                                ].divide(SizedBox(height: 12.0)),
                               ),
                             ),
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: Html(
                             data:
@@ -132,7 +132,7 @@ class _PostBlogWidgetState extends State<PostBlogWidget> {
                             onLinkTap: (url, _, __) => launchURL(url!),
                           ),
                         ),
-                      ].divide(const SizedBox(height: 12.0)),
+                      ].divide(SizedBox(height: 12.0)),
                     ),
                   ),
                 ),

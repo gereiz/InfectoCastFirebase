@@ -43,22 +43,22 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.8, 0.8),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0, 1.396),
-            end: const Offset(0, 0),
+            begin: Offset(0, 1.396),
+            end: Offset(0, 0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 40.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -77,22 +77,22 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.8, 0.8),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0, 1.396),
-            end: const Offset(0, 0),
+            begin: Offset(0, 1.396),
+            end: Offset(0, 0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 40.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -111,22 +111,22 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.8, 0.8),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0, 1.396),
-            end: const Offset(0, 0),
+            begin: Offset(0, 1.396),
+            end: Offset(0, 0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 40.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -145,22 +145,22 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.8, 0.8),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0, 1.396),
-            end: const Offset(0, 0),
+            begin: Offset(0, 1.396),
+            end: Offset(0, 0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 40.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -179,22 +179,22 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.8, 0.8),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.8, 0.8),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(1.222, 0),
-            end: const Offset(0, 0),
+            begin: Offset(1.222, 0),
+            end: Offset(0, 0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 40.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 40.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -225,38 +225,38 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
           body: SafeArea(
             top: true,
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
                       child: Container(
                         width: 100.0,
                         height: 100.0,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF92CB68),
+                          color: Color(0xFF92CB68),
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: const Color(0xFF92CB68),
+                            color: Color(0xFF92CB68),
                             width: 4.0,
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Container(
                             width: 140.0,
                             height: 140.0,
                             decoration: BoxDecoration(
-                              color: const Color(0xFF92CB68),
+                              color: Color(0xFF92CB68),
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: const Color(0xFF92CB68),
+                                color: Color(0xFF92CB68),
                                 width: 4.0,
                               ),
                             ),
@@ -276,9 +276,9 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Text(
                             'Assinatura realizada!',
@@ -294,9 +294,9 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 10.0),
                           child: Text(
                             'Você agora é um membro PRO do InfectoCst',
@@ -313,7 +313,7 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Text(
                           'Volte para a página inicial e aproveite conteúdos exclusivos !',
                           textAlign: TextAlign.center,
@@ -330,7 +330,7 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 100.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 100.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         context.pushNamed('inicio');
@@ -339,11 +339,11 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: const Color(0xFFFCAF23),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFFFCAF23),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Fira Sans Extra Condensed',
@@ -352,7 +352,7 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
                                   letterSpacing: 0.0,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -361,7 +361,7 @@ class _PlanoContratadoWidgetState extends State<PlanoContratadoWidget>
                     ).animateOnPageLoad(
                         animationsMap['buttonOnPageLoadAnimation']!),
                   ),
-                ].divide(const SizedBox(height: 8.0)),
+                ].divide(SizedBox(height: 8.0)),
               ),
             ),
           ),

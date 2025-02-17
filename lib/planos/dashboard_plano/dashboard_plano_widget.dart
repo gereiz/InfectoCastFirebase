@@ -74,7 +74,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                     letterSpacing: 0.0,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             toolbarHeight: double.infinity,
             elevation: 2.0,
@@ -85,9 +85,9 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
           child: Container(
             width: double.infinity,
             height: MediaQuery.sizeOf(context).height * 0.88,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -96,7 +96,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                   Flexible(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.21,
@@ -123,11 +123,11 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 0.0),
                                         child: AuthUserStreamWidget(
                                           builder: (context) => Text(
-                                            'Olá $currentUserDisplayName, atualmente seu plano é:',
+                                            'Olá ${currentUserDisplayName}, atualmente seu plano é:',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -167,7 +167,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                                           0) ==
                                                       0))
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: ClipRRect(
@@ -185,7 +185,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                                   ),
                                                 ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 0.0),
                                                 child: Text(
@@ -197,7 +197,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                                         fontFamily:
                                                             'Fira Sans Extra Condensed',
                                                         color:
-                                                            const Color(0xFFFCAF23),
+                                                            Color(0xFFFCAF23),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -218,7 +218,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 20.0, 0.0, 0.0),
                                                 child: ClipRRect(
@@ -236,7 +236,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 0.0),
                                                 child: Text(
@@ -248,7 +248,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                                         fontFamily:
                                                             'Fira Sans Extra Condensed',
                                                         color:
-                                                            const Color(0xFFFCAF23),
+                                                            Color(0xFFFCAF23),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -268,7 +268,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 20.0, 0.0, 0.0),
                                                 child: ClipRRect(
@@ -286,7 +286,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 0.0),
                                                 child: Text(
@@ -298,7 +298,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                                         fontFamily:
                                                             'Fira Sans Extra Condensed',
                                                         color:
-                                                            const Color(0xFFFCAF23),
+                                                            Color(0xFFFCAF23),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -322,7 +322,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: MediaQuery.sizeOf(context).height * 0.57,
@@ -334,7 +334,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 14.0, 0.0, 14.0),
                             child: Text(
                               'Gerencie seu plano',
@@ -342,7 +342,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                   .labelMedium
                                   .override(
                                     fontFamily: 'Fira Sans Extra Condensed',
-                                    color: const Color(0xFF57636C),
+                                    color: Color(0xFF57636C),
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
@@ -350,7 +350,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -360,14 +360,14 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                     width: double.infinity,
                                     height:
                                         MediaQuery.sizeOf(context).height * 0.4,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: SingleChildScrollView(
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 10.0),
                                             child: Text(
                                               '• Assinatura auto-renovável\n\n• Durações de 1 mês (R\$ 29,90), 1 ano (R\$ 249,90)\n\n• Sua assinatura será cobrada em sua conta do iTunes na confirmação da compra e será renovada automaticamente (na duração definida), a menos que a renovação automática seja desativada pelo menos 24 horas antes do final do período atual.\n\n• A assinatura atual não pode ser cancelada durante o período de assinatura ativa; no entanto, você pode gerenciar sua assinatura e/ou desativar a renovação automática visitando as configurações de sua conta do iTunes após a compra.',
@@ -379,14 +379,14 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                                         fontFamily:
                                                             'Fira Sans Extra Condensed',
                                                         color:
-                                                            const Color(0xFF57636C),
+                                                            Color(0xFF57636C),
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 10.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -485,7 +485,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 12.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -506,14 +506,14 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: const Text('Atenção!'),
-                                          content: const Text(
+                                          title: Text('Atenção!'),
+                                          content: Text(
                                               'Você já possui o plano premium'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Ok'),
+                                              child: Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -537,7 +537,7 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                   height: 60.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 3.0,
                                         color: Color(0x6E74746C),
@@ -551,18 +551,18 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsets.all(12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.payment,
                                           color: Color(0xFFFCAF23),
                                           size: 24.0,
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Alterar seu plano',
@@ -571,14 +571,14 @@ class _DashboardPlanoWidgetState extends State<DashboardPlanoWidget> {
                                                 .override(
                                                   fontFamily:
                                                       'Fira Sans Extra Condensed',
-                                                  color: const Color(0xFF57636C),
+                                                  color: Color(0xFF57636C),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ),
-                                        const Expanded(
+                                        Expanded(
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.9, 0.0),

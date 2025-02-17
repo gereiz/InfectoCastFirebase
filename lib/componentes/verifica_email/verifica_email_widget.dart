@@ -59,15 +59,15 @@ class _VerificaEmailWidgetState extends State<VerificaEmailWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 700.0,
                   ),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
                         blurRadius: 12.0,
                         color: Color(0x33000000),
@@ -80,14 +80,14 @@ class _VerificaEmailWidgetState extends State<VerificaEmailWidget> {
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -131,7 +131,7 @@ class _VerificaEmailWidgetState extends State<VerificaEmailWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             'Seu e-mail ainda não foi verificado. Por favor, verifique seu e-mail antes de acessar o InfectoCast.',
@@ -144,7 +144,7 @@ class _VerificaEmailWidgetState extends State<VerificaEmailWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -157,8 +157,8 @@ class _VerificaEmailWidgetState extends State<VerificaEmailWidget> {
                                 },
                                 text: 'Re-enviar Email',
                                 options: FFButtonOptions(
-                                  padding: const EdgeInsets.all(24.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsets.all(24.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).info,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -169,7 +169,7 @@ class _VerificaEmailWidgetState extends State<VerificaEmailWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                   elevation: 1.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),

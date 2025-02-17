@@ -50,7 +50,7 @@ class _SteroidConversionCalculatorWidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2B5EA6),
+        backgroundColor: Color(0xFF2B5EA6),
         body: SafeArea(
           top: true,
           child: Column(
@@ -59,7 +59,7 @@ class _SteroidConversionCalculatorWidgetState
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Container(
                 width: double.infinity,
@@ -68,14 +68,14 @@ class _SteroidConversionCalculatorWidgetState
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 20.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -99,7 +99,7 @@ class _SteroidConversionCalculatorWidgetState
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(height: 12.0)),
+                                  ].divide(SizedBox(height: 12.0)),
                                 ),
                               ),
                             ],
@@ -111,7 +111,7 @@ class _SteroidConversionCalculatorWidgetState
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -121,7 +121,7 @@ class _SteroidConversionCalculatorWidgetState
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Convertendo de:',
@@ -139,7 +139,7 @@ class _SteroidConversionCalculatorWidgetState
                                       ],
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 14.0),
                                       child: FlutterFlowDropDown<double>(
                                         controller: _model
@@ -155,7 +155,7 @@ class _SteroidConversionCalculatorWidgetState
                                           5.0,
                                           4.0
                                         ]),
-                                        optionLabels: const [
+                                        optionLabels: [
                                           'Betametasona (IV)',
                                           'Cortisona (PO)',
                                           'Dexametasona (IV ou VO)',
@@ -213,7 +213,7 @@ class _SteroidConversionCalculatorWidgetState
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -222,9 +222,9 @@ class _SteroidConversionCalculatorWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 20.0),
-                                      child: SizedBox(
+                                      child: Container(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.9,
@@ -256,7 +256,7 @@ class _SteroidConversionCalculatorWidgetState
                                                   BorderRadius.circular(10.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFCAF23),
                                                 width: 2.0,
                                               ),
@@ -264,7 +264,7 @@ class _SteroidConversionCalculatorWidgetState
                                                   BorderRadius.circular(10.0),
                                             ),
                                             errorBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -273,7 +273,7 @@ class _SteroidConversionCalculatorWidgetState
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFFF5963),
                                                 width: 2.0,
                                               ),
@@ -281,13 +281,13 @@ class _SteroidConversionCalculatorWidgetState
                                                   BorderRadius.circular(10.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
+                                            fillColor: Color(0xFFF1F4F8),
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
                                                 fontFamily: 'Roboto',
-                                                color: const Color(0xFF101213),
+                                                color: Color(0xFF101213),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -301,14 +301,14 @@ class _SteroidConversionCalculatorWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'Convertendo para:',
@@ -328,7 +328,7 @@ class _SteroidConversionCalculatorWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 14.0),
                                       child: FlutterFlowDropDown<double>(
                                         controller: _model
@@ -344,7 +344,7 @@ class _SteroidConversionCalculatorWidgetState
                                           5.0,
                                           4.0
                                         ]),
-                                        optionLabels: const [
+                                        optionLabels: [
                                           'Betametasona (IV)',
                                           'Cortisona (PO)',
                                           'Dexametasona (IV ou VO)',
@@ -404,7 +404,7 @@ class _SteroidConversionCalculatorWidgetState
                                                 .alternate,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: true,
@@ -413,7 +413,7 @@ class _SteroidConversionCalculatorWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 12.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -435,7 +435,7 @@ class _SteroidConversionCalculatorWidgetState
                                                     locale: '',
                                                   )}'),
                                                   content: Text(
-                                                      'Equivalência aproximada de: ${() {
+                                                      'Equivalência aproximada de: ${'${() {
                                                     if (_model
                                                             .tipoEsteroide2Value ==
                                                         75.0) {
@@ -471,7 +471,7 @@ class _SteroidConversionCalculatorWidgetState
                                                     } else {
                                                       return '';
                                                     }
-                                                  }()} a: ${_model.dosagemTextController.text}mg de: ${() {
+                                                  }()}'} a: ${_model.dosagemTextController.text}mg de: ${() {
                                                     if (_model
                                                             .tipoEsteroide1Value ==
                                                         75.0) {
@@ -513,7 +513,7 @@ class _SteroidConversionCalculatorWidgetState
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 ),
@@ -528,12 +528,12 @@ class _SteroidConversionCalculatorWidgetState
                                                   0.9,
                                           height: 44.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: const Color(0xFFFCAF23),
+                                          color: Color(0xFFFCAF23),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .headlineSmall
@@ -545,7 +545,7 @@ class _SteroidConversionCalculatorWidgetState
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -561,10 +561,11 @@ class _SteroidConversionCalculatorWidgetState
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 40.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -605,7 +606,7 @@ class _SteroidConversionCalculatorWidgetState
                             ],
                           ),
                         ),
-                      ].divide(const SizedBox(height: 16.0)),
+                      ].divide(SizedBox(height: 16.0)),
                     ),
                   ),
                 ),

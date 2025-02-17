@@ -43,13 +43,11 @@ void main() async {
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
-    child: const MyApp(),
+    child: MyApp(),
   ));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
@@ -91,7 +89,7 @@ class _MyAppState extends State<MyApp> {
       });
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      const Duration(milliseconds: 1000),
+      Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
@@ -111,7 +109,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'InfectoCast',
-      localizationsDelegates: const [
+      localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -128,7 +126,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class NavBarPage extends StatefulWidget {
-  const NavBarPage({super.key, this.initialPage, this.page});
+  NavBarPage({Key? key, this.initialPage, this.page}) : super(key: key);
 
   final String? initialPage;
   final Widget? page;
@@ -152,10 +150,10 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'inicio': const InicioWidget(),
-      'blog': const BlogWidget(),
-      'podcasts': const PodcastsWidget(),
-      'calculadoras': const CalculadorasWidget(),
+      'inicio': InicioWidget(),
+      'blog': BlogWidget(),
+      'podcasts': PodcastsWidget(),
+      'calculadoras': CalculadorasWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -168,21 +166,20 @@ class _NavBarPageState extends State<NavBarPage> {
               .removeViewPadding(removeBottom: true),
           child: _currentPage ?? tabs[_currentPageName]!),
       extendBody: true,
-
       bottomNavigationBar: FloatingNavbar(
         currentIndex: currentIndex,
         onTap: (i) => safeSetState(() {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: const Color(0xFF2B5EA6),
-        selectedItemColor: const Color(0xFFF4F4F4),
-        unselectedItemColor: const Color(0x8A000000),
-        selectedBackgroundColor: const Color(0x00000000),
+        backgroundColor: Color(0xFF2B5EA6),
+        selectedItemColor: Color(0xFFF4F4F4),
+        unselectedItemColor: Color(0x8A000000),
+        selectedBackgroundColor: Color(0x00000000),
         borderRadius: 0.0,
         itemBorderRadius: 8.0,
-        margin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        margin: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
         width: double.infinity,
         elevation: 0.0,
         items: [
@@ -193,7 +190,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   Icons.home_outlined,
                   color:
-                      currentIndex == 0 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
+                      currentIndex == 0 ? Color(0xFFF4F4F4) : Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
@@ -201,8 +198,8 @@ class _NavBarPageState extends State<NavBarPage> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 0
-                        ? const Color(0xFFF4F4F4)
-                        : const Color(0x8A000000),
+                        ? Color(0xFFF4F4F4)
+                        : Color(0x8A000000),
                     fontSize: 11.0,
                   ),
                 ),
@@ -216,7 +213,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   Icons.newspaper,
                   color:
-                      currentIndex == 1 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
+                      currentIndex == 1 ? Color(0xFFF4F4F4) : Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
@@ -224,8 +221,8 @@ class _NavBarPageState extends State<NavBarPage> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 1
-                        ? const Color(0xFFF4F4F4)
-                        : const Color(0x8A000000),
+                        ? Color(0xFFF4F4F4)
+                        : Color(0x8A000000),
                     fontSize: 11.0,
                   ),
                 ),
@@ -239,7 +236,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   Icons.queue_music_sharp,
                   color:
-                      currentIndex == 2 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
+                      currentIndex == 2 ? Color(0xFFF4F4F4) : Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
@@ -247,8 +244,8 @@ class _NavBarPageState extends State<NavBarPage> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 2
-                        ? const Color(0xFFF4F4F4)
-                        : const Color(0x8A000000),
+                        ? Color(0xFFF4F4F4)
+                        : Color(0x8A000000),
                     fontSize: 11.0,
                   ),
                 ),
@@ -262,7 +259,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 Icon(
                   Icons.calculate_outlined,
                   color:
-                      currentIndex == 3 ? const Color(0xFFF4F4F4) : const Color(0x8A000000),
+                      currentIndex == 3 ? Color(0xFFF4F4F4) : Color(0x8A000000),
                   size: 24.0,
                 ),
                 Text(
@@ -270,8 +267,8 @@ class _NavBarPageState extends State<NavBarPage> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 3
-                        ? const Color(0xFFF4F4F4)
-                        : const Color(0x8A000000),
+                        ? Color(0xFFF4F4F4)
+                        : Color(0x8A000000),
                     fontSize: 11.0,
                   ),
                 ),
